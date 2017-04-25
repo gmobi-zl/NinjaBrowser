@@ -20,7 +20,8 @@
         <FrameLayout android:id="@+id/switcher_header"
                      android:layout_width="match_parent"
                      android:layout_height="@dimen/layout_height_48dp"
-                     android:minHeight="@dimen/layout_height_48dp">
+                     android:minHeight="@dimen/layout_height_48dp"
+            android:focusable="false">
 
             <ImageButton android:id="@+id/switcher_setting"
                          android:contentDescription="@null"
@@ -72,12 +73,14 @@
         <HorizontalScrollView android:id="@+id/switcher_scroller"
                               android:layout_width="match_parent"
                               android:layout_height="match_parent"
-                              android:scrollbars="none">
+                              android:scrollbars="none"
+            android:focusable="false">
 
             <LinearLayout android:id="@+id/switcher_container"
                           android:orientation="horizontal"
                           android:layout_width="wrap_content"
-                          android:layout_height="match_parent">
+                          android:layout_height="match_parent"
+                android:focusable="false">
             </LinearLayout>
 
         </HorizontalScrollView>
@@ -88,19 +91,13 @@
                   android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                  android:background="@color/background_dark"
-        android:focusable="true"
-        android:clickable="true"
-        android:focusableInTouchMode="true">
+                  android:background="@color/background_dark">
 
         <RelativeLayout android:id="@+id/main_omnibox"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/layout_height_48dp"
                         android:minHeight="@dimen/layout_height_48dp"
-                        android:background="@color/background_dark"
-            android:focusable="true"
-            android:clickable="true"
-            android:focusableInTouchMode="true">
+                        android:background="@color/background_dark">
 
             <ImageButton android:id="@+id/main_omnibox_overflow"
                          android:contentDescription="@null"
@@ -126,9 +123,6 @@
                             android:layout_alignParentLeft="true"
                             android:layout_toLeftOf="@id/main_omnibox_overflow"
                             android:layout_marginLeft="@dimen/layout_margin_8dp"
-                            android:focusable="true"
-                            android:clickable="true"
-                            android:focusableInTouchMode="true"
                             android:background="@drawable/round_corner_shape_white">
 
                 <ImageButton android:id="@+id/main_omnibox_bookmark"
@@ -204,7 +198,10 @@
                         android:layout_height="@dimen/layout_height_48dp"
                         android:minHeight="@dimen/layout_height_48dp"
                         android:background="@color/background_dark"
-                        android:visibility="gone">
+                        android:visibility="gone"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true">
 
             <LinearLayout android:id="@+id/main_search_left"
                           android:orientation="horizontal"
@@ -283,7 +280,10 @@
         <FrameLayout android:id="@+id/main_content"
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
-                     android:background="@color/white">
+                     android:background="@color/white"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true">
         </FrameLayout>
 
     </LinearLayout>

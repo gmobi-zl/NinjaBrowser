@@ -24,6 +24,7 @@ import android.text.Html;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.KeyListener;
+import android.util.Log;
 import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -219,20 +220,22 @@ public class BrowserActivity extends Activity implements BrowserController {
         } else if (intent != null && filePathCallback != null) {
             filePathCallback = null;
         } else {
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-            if (sp.getBoolean(getString(R.string.sp_first), true)) {
-                String lang;
-                if (getResources().getConfiguration().locale.getLanguage().equals("zh")) {
-                    lang = BrowserUnit.INTRODUCTION_ZH;
-                } else {
-                    lang = BrowserUnit.INTRODUCTION_EN;
-                }
-                pinAlbums(BrowserUnit.BASE_URL + lang);
-                sp.edit().putBoolean(getString(R.string.sp_first), false).commit();
-            } else {
-                // default web url  zhangliang
-                pinAlbums("http://www.baidu.com");
-            }
+            pinAlbums("http://www.baidu.com");
+
+//            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+//            if (sp.getBoolean(getString(R.string.sp_first), true)) {
+//                String lang;
+//                if (getResources().getConfiguration().locale.getLanguage().equals("zh")) {
+//                    lang = BrowserUnit.INTRODUCTION_ZH;
+//                } else {
+//                    lang = BrowserUnit.INTRODUCTION_EN;
+//                }
+//                pinAlbums(BrowserUnit.BASE_URL + lang);
+//                sp.edit().putBoolean(getString(R.string.sp_first), false).commit();
+//            } else {
+//                // default web url  zhangliang
+//                pinAlbums("http://www.baidu.com");
+//            }
         }
     }
 
@@ -356,10 +359,21 @@ public class BrowserActivity extends Activity implements BrowserController {
             }
         }
 
+        View rootview = this.getWindow().getDecorView();
+        View focusView = rootview.findFocus();
+        ViewParent parentView = focusView.getParent();
+        int focusViewId = rootview.findFocus().getId();
+        Log.i("Ninja","focusViewId = " + focusViewId);
+        Log.i("Ninja","focusView = " + focusView);
+        Log.i("Ninja","parentView = " + parentView);
+
         return super.onKeyUp(keyCode, event);
     }
 
     private void initSwitcherView() {
+        LinearLayout switcherView = (LinearLayout) findViewById(R.id.switcher_view);
+        switcherView.setVisibility(View.GONE);
+
         switcherScroller = (HorizontalScrollView) findViewById(R.id.switcher_scroller);
         switcherContainer = (LinearLayout) findViewById(R.id.switcher_container);
         switcherSetting = (ImageButton) findViewById(R.id.switcher_setting);
@@ -443,6 +457,10 @@ public class BrowserActivity extends Activity implements BrowserController {
         inputBox.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                Log.i("Ninja","onEditorAction actionId = " + actionId);
+                Log.i("Ninja","onEditorAction KeyEvent = " + event);
+
                 if (currentAlbumController == null) { // || !(actionId == EditorInfo.IME_ACTION_DONE)
                     return false;
                 }
