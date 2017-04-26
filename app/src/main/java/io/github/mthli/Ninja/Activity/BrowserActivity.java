@@ -359,13 +359,14 @@ public class BrowserActivity extends Activity implements BrowserController {
             }
         }
 
-        View rootview = this.getWindow().getDecorView();
-        View focusView = rootview.findFocus();
-        ViewParent parentView = focusView.getParent();
-        int focusViewId = rootview.findFocus().getId();
-        Log.i("Ninja","focusViewId = " + focusViewId);
-        Log.i("Ninja","focusView = " + focusView);
-        Log.i("Ninja","parentView = " + parentView);
+//        View rootview = this.getWindow().getDecorView();
+//        View focusView = rootview.findFocus();
+//        ViewParent parentView = focusView.getParent();
+//        int focusViewId = rootview.findFocus().getId();
+//        Log.i("Ninja","keyCode = " + keyCode);
+//        Log.i("Ninja","focusViewId = " + focusViewId);
+//        Log.i("Ninja","focusView = " + focusView);
+//        Log.i("Ninja","parentView = " + parentView);
 
         return super.onKeyUp(keyCode, event);
     }
@@ -425,6 +426,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 
             @Override
             public boolean canSwipe() {
+                Log.i("Ninja", "inputBox setOnTouchListener canSwipe");
                 SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(BrowserActivity.this);
                 boolean ob = sp.getBoolean(getString(R.string.sp_omnibox_control), true);
                 return !switcherPanel.isKeyBoardShowing() && ob;
@@ -432,6 +434,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 
             @Override
             public void onSwipe() {
+                Log.i("Ninja", "inputBox setOnTouchListener onSwipe");
                 inputBox.setKeyListener(null);
                 inputBox.setFocusable(false);
                 inputBox.setFocusableInTouchMode(false);
@@ -440,6 +443,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 
             @Override
             public void onBound(boolean canSwitch, boolean left) {
+                Log.i("Ninja", "inputBox setOnTouchListener onBound");
                 inputBox.setKeyListener(keyListener);
                 inputBox.setFocusable(true);
                 inputBox.setFocusableInTouchMode(true);
@@ -476,6 +480,20 @@ public class BrowserActivity extends Activity implements BrowserController {
                 return false;
             }
         });
+
+        inputBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = inputBox.getText().toString().trim();
+                if (query.isEmpty()) {
+                    NinjaToast.show(BrowserActivity.this, R.string.toast_input_empty);
+                } else {
+                    updateAlbum(query);
+                    hideSoftInput(inputBox);
+                }
+            }
+        });
+
         updateBookmarks();
         updateAutoComplete();
 
@@ -1067,6 +1085,8 @@ public class BrowserActivity extends Activity implements BrowserController {
         inputBox.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("Ninja", "inputBox onItemClick");
+
                 String url = ((TextView) view.findViewById(R.id.complete_item_url)).getText().toString();
                 inputBox.setText(Html.fromHtml(BrowserUnit.urlWrapper(url)), EditText.BufferType.SPANNABLE);
                 inputBox.setSelection(url.length());
@@ -1074,6 +1094,19 @@ public class BrowserActivity extends Activity implements BrowserController {
                 hideSoftInput(inputBox);
             }
         });
+
+        inputBox.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("Ninja", "inputBox item change : " + position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.i("Ninja", "inputBox item onNothingSelected ");
+            }
+        });
+
     }
 
     @Override

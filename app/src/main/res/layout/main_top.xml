@@ -4,10 +4,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/switcher_panel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-    android:focusable="true"
-    android:clickable="true"
-    android:focusableInTouchMode="true">
+        android:layout_height="match_parent">
 
     <LinearLayout android:id="@+id/switcher_view"
                   android:orientation="vertical"
@@ -153,7 +150,7 @@
                     android:focusableInTouchMode="true">
                 </ImageButton>
 
-                <AutoCompleteTextView android:id="@+id/main_omnibox_input"
+                <io.github.mthli.Ninja.View.MoAutoCompleteTextView android:id="@+id/main_omnibox_input"
                                       android:layout_width="match_parent"
                                       android:layout_height="@dimen/layout_height_36dp"
                                       android:minHeight="@dimen/layout_height_36dp"
@@ -171,10 +168,10 @@
                                       android:imeOptions="actionGo"
                                       android:inputType="textNoSuggestions|textWebEditText"
                                       android:background="@color/white"
+                    android:windowSoftInputMode="stateHidden"
                     android:focusable="true"
-                    android:clickable="true"
                     android:focusableInTouchMode="true">
-                </AutoCompleteTextView>
+                </io.github.mthli.Ninja.View.MoAutoCompleteTextView>
 
             </RelativeLayout>
 
