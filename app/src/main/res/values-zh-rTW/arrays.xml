@@ -20,13 +20,16 @@
 
     <!-- Main -->
     <string-array name="main_overflow">
-        <item>回到頂部</item>
-        <item>添加撥號</item>
+        <!--<item>回到頂部</item>-->
+        <!--<item>添加撥號</item>-->
         <item>頁內搜索</item>
-        <item>網頁截圖</item>
-        <item>閱讀模式</item>
-        <item>分享</item>
-        <item>排版</item>
+        <item>書籤</item>
+        <item>歷史記錄</item>
+        <item>設置</item>
+        <!--<item>網頁截圖</item>-->
+        <!--<item>閱讀模式</item>-->
+        <!--<item>分享</item>-->
+        <!--<item>排版</item>-->
         <item>退出</item>
     </string-array>
 

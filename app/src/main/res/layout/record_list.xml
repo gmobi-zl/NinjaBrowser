@@ -9,7 +9,10 @@
     <ListView android:id="@+id/record_list"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:drawSelectorOnTop="true">
+              android:drawSelectorOnTop="true"
+        android:focusable="true"
+        android:clickable="true"
+        android:focusableInTouchMode="true">
     </ListView>
 
     <TextView android:id="@+id/record_list_empty"

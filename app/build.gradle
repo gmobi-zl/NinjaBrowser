@@ -4,18 +4,40 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
     defaultConfig {
-        applicationId "io.github.mthli.Ninja"
+        applicationId "com.popobrowser.lite"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionName "1.0.0"
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
+
+    signingConfigs {
+        gmobiKey {
+            keyAlias 'gmobi'
+            keyPassword '4gmobi2admin'
+            storeFile file('../release.keystore')
+            storePassword '4gmobi2admin'
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.gmobiKey
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 

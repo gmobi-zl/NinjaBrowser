@@ -67,13 +67,14 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     private HorizontalScrollView switcherScroller;
     private LinearLayout switcherContainer;
+    //private LinearLayout switcherRootView;
     private ImageButton switcherSetting;
     private ImageButton switcherBookmarks;
     private ImageButton switcherHistory;
     private ImageButton switcherAdd;
 
     private RelativeLayout omnibox;
-    private AutoCompleteTextView inputBox;
+    private MoAutoCompleteTextView inputBox;
     private ImageButton omniboxBookmark;
     private ImageButton omniboxRefresh;
     private ImageButton omniboxOverflow;
@@ -337,6 +338,10 @@ public class BrowserActivity extends Activity implements BrowserController {
             //return showOverflow();
         } else if (keyCode == KeyEvent.KEYCODE_BACK) {
             // When video fullscreen, first close it
+//            if (switcherRootView.getVisibility() == View.VISIBLE){
+//                switcherRootView.setVisibility(View.GONE);
+//            }
+
             if (fullscreenHolder != null || customView != null || videoView != null) {
                 return onHideCustomView();
             }
@@ -372,8 +377,8 @@ public class BrowserActivity extends Activity implements BrowserController {
     }
 
     private void initSwitcherView() {
-        LinearLayout switcherView = (LinearLayout) findViewById(R.id.switcher_view);
-        switcherView.setVisibility(View.GONE);
+        //switcherRootView = (LinearLayout) findViewById(R.id.switcher_view);
+        //switcherRootView.setVisibility(View.GONE);
 
         switcherScroller = (HorizontalScrollView) findViewById(R.id.switcher_scroller);
         switcherContainer = (LinearLayout) findViewById(R.id.switcher_container);
@@ -414,49 +419,49 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     private void initOmnibox() {
         omnibox = (RelativeLayout) findViewById(R.id.main_omnibox);
-        inputBox = (AutoCompleteTextView) findViewById(R.id.main_omnibox_input);
+        inputBox = (MoAutoCompleteTextView) findViewById(R.id.main_omnibox_input);
         omniboxBookmark = (ImageButton) findViewById(R.id.main_omnibox_bookmark);
         omniboxRefresh = (ImageButton) findViewById(R.id.main_omnibox_refresh);
         omniboxOverflow = (ImageButton) findViewById(R.id.main_omnibox_overflow);
         progressBar = (ProgressBar) findViewById(R.id.main_progress_bar);
 
         omnibox.setEnabled(true);
-        inputBox.setOnTouchListener(new SwipeToBoundListener(omnibox, new SwipeToBoundListener.BoundCallback() {
-            private KeyListener keyListener = inputBox.getKeyListener();
-
-            @Override
-            public boolean canSwipe() {
-                Log.i("Ninja", "inputBox setOnTouchListener canSwipe");
-                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(BrowserActivity.this);
-                boolean ob = sp.getBoolean(getString(R.string.sp_omnibox_control), true);
-                return !switcherPanel.isKeyBoardShowing() && ob;
-            }
-
-            @Override
-            public void onSwipe() {
-                Log.i("Ninja", "inputBox setOnTouchListener onSwipe");
-                inputBox.setKeyListener(null);
-                inputBox.setFocusable(false);
-                inputBox.setFocusableInTouchMode(false);
-                inputBox.clearFocus();
-            }
-
-            @Override
-            public void onBound(boolean canSwitch, boolean left) {
-                Log.i("Ninja", "inputBox setOnTouchListener onBound");
-                inputBox.setKeyListener(keyListener);
-                inputBox.setFocusable(true);
-                inputBox.setFocusableInTouchMode(true);
-                inputBox.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-                inputBox.clearFocus();
-
-                if (canSwitch) {
-                    AlbumController controller = nextAlbumController(left);
-                    showAlbum(controller, false, false, true);
-                    NinjaToast.show(BrowserActivity.this, controller.getAlbumTitle());
-                }
-            }
-        }));
+//        inputBox.setOnTouchListener(new SwipeToBoundListener(omnibox, new SwipeToBoundListener.BoundCallback() {
+//            private KeyListener keyListener = inputBox.getKeyListener();
+//
+//            @Override
+//            public boolean canSwipe() {
+//                Log.i("Ninja", "inputBox setOnTouchListener canSwipe");
+//                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(BrowserActivity.this);
+//                boolean ob = sp.getBoolean(getString(R.string.sp_omnibox_control), true);
+//                return !switcherPanel.isKeyBoardShowing() && ob;
+//            }
+//
+//            @Override
+//            public void onSwipe() {
+//                Log.i("Ninja", "inputBox setOnTouchListener onSwipe");
+//                inputBox.setKeyListener(null);
+//                inputBox.setFocusable(false);
+//                inputBox.setFocusableInTouchMode(false);
+//                inputBox.clearFocus();
+//            }
+//
+//            @Override
+//            public void onBound(boolean canSwitch, boolean left) {
+//                Log.i("Ninja", "inputBox setOnTouchListener onBound");
+//                inputBox.setKeyListener(keyListener);
+//                inputBox.setFocusable(true);
+//                inputBox.setFocusableInTouchMode(true);
+//                inputBox.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+//                inputBox.clearFocus();
+//
+//                if (canSwitch) {
+//                    AlbumController controller = nextAlbumController(left);
+//                    showAlbum(controller, false, false, true);
+//                    NinjaToast.show(BrowserActivity.this, controller.getAlbumTitle());
+//                }
+//            }
+//        }));
 
         inputBox.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -656,6 +661,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("popobrowser", "bookmarks or history item clicked...");
                 updateAlbum(list.get(position).getURL());
             }
         });
@@ -663,7 +669,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                showListMenu(adapter, list, position);
+                //showListMenu(adapter, list, position);
                 return true;
             }
         });
@@ -756,6 +762,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             layout.setFlag(BrowserUnit.FLAG_BOOKMARKS);
             layout.setAlbumCover(ViewUnit.capture(layout, dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
             layout.setAlbumTitle(getString(R.string.album_title_bookmarks));
+            layout.setFocusable(true);
             holder = layout;
             initBHList(layout, false);
         } else if (flag == BrowserUnit.FLAG_HISTORY) {
@@ -764,6 +771,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             layout.setFlag(BrowserUnit.FLAG_HISTORY);
             layout.setAlbumCover(ViewUnit.capture(layout, dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
             layout.setAlbumTitle(getString(R.string.album_title_history));
+            layout.setFocusable(true);
             holder = layout;
             initBHList(layout, false);
         } else if (flag == BrowserUnit.FLAG_HOME) {
@@ -1107,6 +1115,18 @@ public class BrowserActivity extends Activity implements BrowserController {
             }
         });
 
+        inputBox.setListKeyBoardClickedListener(new MoAutoCompleteTextView.IPopListItemClickedListener() {
+            @Override
+            public void onClicked(int pos) {
+                String url = adapter.getSelectItemUrl(pos);
+                if (url != null){
+                    inputBox.setText(Html.fromHtml(BrowserUnit.urlWrapper(url)), EditText.BufferType.SPANNABLE);
+                    inputBox.setSelection(url.length());
+                    updateAlbum(url);
+                    hideSoftInput(inputBox);
+                }
+            }
+        });
     }
 
     @Override
@@ -1534,24 +1554,24 @@ public class BrowserActivity extends Activity implements BrowserController {
         final String[] array = getResources().getStringArray(R.array.main_overflow);
         final List<String> stringList = new ArrayList<>();
         stringList.addAll(Arrays.asList(array));
-        if (currentAlbumController != null && currentAlbumController instanceof NinjaRelativeLayout) {
-            stringList.remove(array[0]); // Go to top
-            stringList.remove(array[1]); // Add to home
-            stringList.remove(array[2]); // Find in page
-            stringList.remove(array[3]); // Screenshot
-            stringList.remove(array[4]); // Readability
-            stringList.remove(array[5]); // Share
-
-            NinjaRelativeLayout ninjaRelativeLayout = (NinjaRelativeLayout) currentAlbumController;
-            if (ninjaRelativeLayout.getFlag() != BrowserUnit.FLAG_HOME) {
-                stringList.remove(array[6]); // Relayout
-            }
-        } else if (currentAlbumController != null && currentAlbumController instanceof NinjaWebView) {
-            if (!sp.getBoolean(getString(R.string.sp_readability), false)) {
-                stringList.remove(array[4]); // Readability
-            }
-            stringList.remove(array[6]); // Relayout
-        }
+//        if (currentAlbumController != null && currentAlbumController instanceof NinjaRelativeLayout) {
+//            //stringList.remove(array[0]); // Go to top
+//            stringList.remove(array[1]); // Add to home
+//            stringList.remove(array[2]); // Find in page
+//            //stringList.remove(array[3]); // Screenshot
+//            //stringList.remove(array[4]); // Readability
+//            //stringList.remove(array[5]); // Share
+//
+//            NinjaRelativeLayout ninjaRelativeLayout = (NinjaRelativeLayout) currentAlbumController;
+//            if (ninjaRelativeLayout.getFlag() != BrowserUnit.FLAG_HOME) {
+//                stringList.remove(array[6]); // Relayout
+//            }
+//        } else if (currentAlbumController != null && currentAlbumController instanceof NinjaWebView) {
+//            if (!sp.getBoolean(getString(R.string.sp_readability), false)) {
+//                stringList.remove(array[4]); // Readability
+//            }
+//            stringList.remove(array[6]); // Relayout
+//        }
 
         ListView listView = (ListView) layout.findViewById(R.id.dialog_list);
         DialogAdapter dialogAdapter = new DialogAdapter(this, R.layout.dialog_text_item, stringList);
@@ -1561,139 +1581,156 @@ public class BrowserActivity extends Activity implements BrowserController {
         final AlertDialog dialog = builder.create();
         dialog.show();
 
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 String s = stringList.get(position);
-                if (s.equals(array[0])) { // Go to top
-                    NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
-                    ObjectAnimator anim = ObjectAnimator.ofInt(ninjaWebView, "scrollY", ninjaWebView.getScrollY(), 0);
-                    anim.setDuration(mediumAnimTime);
-                    anim.start();
-                } else if (s.equals(array[1])) { // Add to home
-                    NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
-                    RecordAction action = new RecordAction(BrowserActivity.this);
-                    action.open(true);
-                    if (action.checkGridItem(ninjaWebView.getUrl())) {
-                        NinjaToast.show(BrowserActivity.this, R.string.toast_already_exist_in_home);
-                    } else {
-                        String title = ninjaWebView.getTitle().trim();
-                        String url = ninjaWebView.getUrl().trim();
-                        Bitmap bitmap = ViewUnit.capture(ninjaWebView, dimen156dp, dimen117dp, false, Bitmap.Config.ARGB_8888);
-                        String filename = System.currentTimeMillis() + BrowserUnit.SUFFIX_PNG;
-                        int ordinal = action.listGrid().size();
-                        GridItem item = new GridItem(title, url, filename, ordinal);
-
-                        if (BrowserUnit.bitmap2File(BrowserActivity.this, bitmap, filename) && action.addGridItem(item)) {
-                            NinjaToast.show(BrowserActivity.this, R.string.toast_add_to_home_successful);
-                        } else {
-                            NinjaToast.show(BrowserActivity.this, R.string.toast_add_to_home_failed);
-                        }
-                    }
-                    action.close();
-                } else if (s.equals(array[2])) { // Find in page
+                if (s.equals(array[0])){
                     hideSoftInput(inputBox);
                     showSearchPanel();
-                } else if (s.equals(array[3])) { // Screenshot
-                    NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
-                    new ScreenshotTask(BrowserActivity.this, ninjaWebView).execute();
-                } else if (s.equals(array[4])) { // Readability
-                    String token = sp.getString(getString(R.string.sp_readability_token), null);
-                    if (token == null || token.trim().isEmpty()) {
-                        NinjaToast.show(BrowserActivity.this, R.string.toast_token_empty);
-                    } else {
-                        NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
-                        Intent intent = new Intent(BrowserActivity.this, ReadabilityActivity.class);
-                        intent.putExtra(IntentUnit.URL, ninjaWebView.getUrl());
-                        startActivity(intent);
-                    }
-                } else if (s.equals(array[5])) { // Share
-                    if (!prepareRecord()) {
-                        NinjaToast.show(BrowserActivity.this, R.string.toast_share_failed);
-                    } else {
-                        NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
-                        IntentUnit.share(BrowserActivity.this, ninjaWebView.getTitle(), ninjaWebView.getUrl());
-                    }
-                } else if (s.equals(array[6])) { // Relayout
-                    NinjaRelativeLayout ninjaRelativeLayout = (NinjaRelativeLayout) currentAlbumController;
-                    final DynamicGridView gridView = (DynamicGridView) ninjaRelativeLayout.findViewById(R.id.home_grid);
-                    final List<GridItem> gridList = ((GridAdapter) gridView.getAdapter()).getList();
-
-                    omnibox.setVisibility(View.GONE);
-                    relayoutOK.setVisibility(View.VISIBLE);
-
-                    relayoutOK.setOnTouchListener(new View.OnTouchListener() {
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                                relayoutOK.setTextColor(getResources().getColor(R.color.blue_500));
-                            } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
-                                relayoutOK.setTextColor(getResources().getColor(R.color.white));
-                            }
-
-                            return false;
-                        }
-                    });
-
-                    relayoutOK.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            gridView.stopEditMode();
-                            relayoutOK.setVisibility(View.GONE);
-                            omnibox.setVisibility(View.VISIBLE);
-
-                            RecordAction action = new RecordAction(BrowserActivity.this);
-                            action.open(true);
-                            action.clearGrid();
-                            for (GridItem item : gridList) {
-                                action.addGridItem(item);
-                            }
-                            action.close();
-                            NinjaToast.show(BrowserActivity.this, R.string.toast_relayout_successful);
-                        }
-                    });
-
-                    gridView.setOnDragListener(new DynamicGridView.OnDragListener() {
-                        private GridItem dragItem;
-
-                        @Override
-                        public void onDragStarted(int position) {
-                            dragItem = gridList.get(position);
-                        }
-
-                        @Override
-                        public void onDragPositionsChanged(int oldPosition, int newPosition) {
-                            if (oldPosition < newPosition) {
-                                for (int i = newPosition; i > oldPosition; i--) {
-                                    GridItem item = gridList.get(i);
-                                    item.setOrdinal(i - 1);
-                                }
-                            } else if (oldPosition > newPosition) {
-                                for (int i = newPosition; i < oldPosition; i++) {
-                                    GridItem item = gridList.get(i);
-                                    item.setOrdinal(i + 1);
-                                }
-                            }
-                            dragItem.setOrdinal(newPosition);
-
-                            Collections.sort(gridList, new Comparator<GridItem>() {
-                                @Override
-                                public int compare(GridItem first, GridItem second) {
-                                    if (first.getOrdinal() < second.getOrdinal()) {
-                                        return -1;
-                                    } else if (first.getOrdinal() > second.getOrdinal()) {
-                                        return 1;
-                                    } else {
-                                        return 0;
-                                    }
-                                }
-                            });
-                        }
-                    });
-                    gridView.startEditMode();
-                } else if (s.equals(array[7])) { // Quit
+                }else if (s.equals(array[1])) { // bookmarks
+                    //switcherRootView.setVisibility(View.VISIBLE);
+                    addAlbum(BrowserUnit.FLAG_BOOKMARKS);
+                }else if (s.equals(array[2])) { // history
+                    //switcherRootView.setVisibility(View.VISIBLE);
+                    addAlbum(BrowserUnit.FLAG_HISTORY);
+                }else if (s.equals(array[3])) { // Settings
+                    Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
+                    startActivity(intent);
+                }else if (s.equals(array[4])) { // Quit
                     finish();
                 }
+//                if (s.equals(array[0])) { // Go to top
+//                    NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
+//                    ObjectAnimator anim = ObjectAnimator.ofInt(ninjaWebView, "scrollY", ninjaWebView.getScrollY(), 0);
+//                    anim.setDuration(mediumAnimTime);
+//                    anim.start();
+//                } else if (s.equals(array[1])) { // Add to home
+//                    NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
+//                    RecordAction action = new RecordAction(BrowserActivity.this);
+//                    action.open(true);
+//                    if (action.checkGridItem(ninjaWebView.getUrl())) {
+//                        NinjaToast.show(BrowserActivity.this, R.string.toast_already_exist_in_home);
+//                    } else {
+//                        String title = ninjaWebView.getTitle().trim();
+//                        String url = ninjaWebView.getUrl().trim();
+//                        Bitmap bitmap = ViewUnit.capture(ninjaWebView, dimen156dp, dimen117dp, false, Bitmap.Config.ARGB_8888);
+//                        String filename = System.currentTimeMillis() + BrowserUnit.SUFFIX_PNG;
+//                        int ordinal = action.listGrid().size();
+//                        GridItem item = new GridItem(title, url, filename, ordinal);
+//
+//                        if (BrowserUnit.bitmap2File(BrowserActivity.this, bitmap, filename) && action.addGridItem(item)) {
+//                            NinjaToast.show(BrowserActivity.this, R.string.toast_add_to_home_successful);
+//                        } else {
+//                            NinjaToast.show(BrowserActivity.this, R.string.toast_add_to_home_failed);
+//                        }
+//                    }
+//                    action.close();
+//                } else if (s.equals(array[2])) { // Find in page
+//                    hideSoftInput(inputBox);
+//                    showSearchPanel();
+//                } else if (s.equals(array[3])) { // Screenshot
+//                    NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
+//                    new ScreenshotTask(BrowserActivity.this, ninjaWebView).execute();
+//                } else if (s.equals(array[4])) { // Readability
+//                    String token = sp.getString(getString(R.string.sp_readability_token), null);
+//                    if (token == null || token.trim().isEmpty()) {
+//                        NinjaToast.show(BrowserActivity.this, R.string.toast_token_empty);
+//                    } else {
+//                        NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
+//                        Intent intent = new Intent(BrowserActivity.this, ReadabilityActivity.class);
+//                        intent.putExtra(IntentUnit.URL, ninjaWebView.getUrl());
+//                        startActivity(intent);
+//                    }
+//                } else if (s.equals(array[5])) { // Share
+//                    if (!prepareRecord()) {
+//                        NinjaToast.show(BrowserActivity.this, R.string.toast_share_failed);
+//                    } else {
+//                        NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
+//                        IntentUnit.share(BrowserActivity.this, ninjaWebView.getTitle(), ninjaWebView.getUrl());
+//                    }
+//                } else if (s.equals(array[6])) { // Relayout
+//                    NinjaRelativeLayout ninjaRelativeLayout = (NinjaRelativeLayout) currentAlbumController;
+//                    final DynamicGridView gridView = (DynamicGridView) ninjaRelativeLayout.findViewById(R.id.home_grid);
+//                    final List<GridItem> gridList = ((GridAdapter) gridView.getAdapter()).getList();
+//
+//                    omnibox.setVisibility(View.GONE);
+//                    relayoutOK.setVisibility(View.VISIBLE);
+//
+//                    relayoutOK.setOnTouchListener(new View.OnTouchListener() {
+//                        @Override
+//                        public boolean onTouch(View v, MotionEvent event) {
+//                            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                                relayoutOK.setTextColor(getResources().getColor(R.color.blue_500));
+//                            } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+//                                relayoutOK.setTextColor(getResources().getColor(R.color.white));
+//                            }
+//
+//                            return false;
+//                        }
+//                    });
+//
+//                    relayoutOK.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            gridView.stopEditMode();
+//                            relayoutOK.setVisibility(View.GONE);
+//                            omnibox.setVisibility(View.VISIBLE);
+//
+//                            RecordAction action = new RecordAction(BrowserActivity.this);
+//                            action.open(true);
+//                            action.clearGrid();
+//                            for (GridItem item : gridList) {
+//                                action.addGridItem(item);
+//                            }
+//                            action.close();
+//                            NinjaToast.show(BrowserActivity.this, R.string.toast_relayout_successful);
+//                        }
+//                    });
+//
+//                    gridView.setOnDragListener(new DynamicGridView.OnDragListener() {
+//                        private GridItem dragItem;
+//
+//                        @Override
+//                        public void onDragStarted(int position) {
+//                            dragItem = gridList.get(position);
+//                        }
+//
+//                        @Override
+//                        public void onDragPositionsChanged(int oldPosition, int newPosition) {
+//                            if (oldPosition < newPosition) {
+//                                for (int i = newPosition; i > oldPosition; i--) {
+//                                    GridItem item = gridList.get(i);
+//                                    item.setOrdinal(i - 1);
+//                                }
+//                            } else if (oldPosition > newPosition) {
+//                                for (int i = newPosition; i < oldPosition; i++) {
+//                                    GridItem item = gridList.get(i);
+//                                    item.setOrdinal(i + 1);
+//                                }
+//                            }
+//                            dragItem.setOrdinal(newPosition);
+//
+//                            Collections.sort(gridList, new Comparator<GridItem>() {
+//                                @Override
+//                                public int compare(GridItem first, GridItem second) {
+//                                    if (first.getOrdinal() < second.getOrdinal()) {
+//                                        return -1;
+//                                    } else if (first.getOrdinal() > second.getOrdinal()) {
+//                                        return 1;
+//                                    } else {
+//                                        return 0;
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    });
+//                    gridView.startEditMode();
+//                } else if (s.equals(array[7])) { // Quit
+//                    finish();
+//                }
 
                 dialog.hide();
                 dialog.dismiss();

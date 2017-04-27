@@ -20,13 +20,16 @@
 
     <!-- Main -->
     <string-array name="main_overflow">
-        <item>Go to top</item>
-        <item>Add to home</item>
+        <!--<item>Go to top</item>-->
+        <!--<item>Add to home</item>-->
         <item>Find in page</item>
-        <item>Screenshot</item>
-        <item>Readability</item>
-        <item>Share</item>
-        <item>Relayout</item>
+        <item>Bookmarks</item>
+        <item>History</item>
+        <item>Settings</item>
+        <!--<item>Screenshot</item>-->
+        <!--<item>Readability</item>-->
+        <!--<item>Share</item>-->
+        <!--<item>Relayout</item>-->
         <item>Quit</item>
     </string-array>
 

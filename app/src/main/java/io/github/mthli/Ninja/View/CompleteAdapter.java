@@ -14,17 +14,30 @@ import io.github.mthli.Ninja.Unit.BrowserUnit;
 import java.util.*;
 
 public class CompleteAdapter extends BaseAdapter implements Filterable {
+
+    public static CharSequence trim(CharSequence cs) {
+        int len = cs.length();
+        int st = 0;
+        while ((st < len) && (cs.charAt(st) <= ' ')) {
+            st++;
+        }
+        while ((st < len) && (cs.charAt(len - 1) <= ' ')) {
+            len--;
+        }
+        return ((st > 0) || (len < cs.length())) ? cs.subSequence(st, len) : cs;
+    }
+
     private class CompleteFilter extends Filter {
         @Override
         protected FilterResults performFiltering(CharSequence prefix) {
             if (prefix == null) {
                 return new FilterResults();
             }
-
+            CharSequence userPrefix = trim(prefix);
             resultList.clear();
             for (CompleteItem item : originalList) {
-                if (item.getTitle().contains(prefix) || item.getURL().contains(prefix)) {
-                    if (item.getTitle().contains(prefix)) {
+                if (item.getTitle().contains(userPrefix) || item.getURL().contains(userPrefix)) {
+                    if (item.getTitle().contains(userPrefix)) {
                         item.setIndex(item.getTitle().indexOf(prefix.toString()));
                     } else if (item.getURL().contains(prefix)) {
                         item.setIndex(item.getURL().indexOf(prefix.toString()));
@@ -181,5 +194,16 @@ public class CompleteAdapter extends BaseAdapter implements Filterable {
         }
 
         return view;
+    }
+
+    public String getSelectItemUrl(int pos){
+        CompleteItem item = null;
+
+        if (resultList != null && pos >= 0 && pos < resultList.size()){
+            item = resultList.get(pos);
+            return item.getURL();
+        }
+
+        return null;
     }
 }

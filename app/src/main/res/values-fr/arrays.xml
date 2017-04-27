@@ -20,13 +20,16 @@
 
     <!-- Main -->
     <string-array name="main_overflow">
-        <item>Haut de page</item>
-        <item>Ajouter à l\'accueil</item>
+        <!--<item>Haut de page</item>-->
+        <!--<item>Ajouter à l\'accueil</item>-->
         <item>Trouver dans la page</item>
-        <item>Capture d\'écran</item>
-        <item>Lisibilité</item>
-        <item>Partager</item>
-        <item>Réarranger</item>
+        <item>Signets</item>
+        <item>Histoire</item>
+        <item>Paramètres</item>
+        <!--<item>Capture d\'écran</item>-->
+        <!--<item>Lisibilité</item>-->
+        <!--<item>Partager</item>-->
+        <!--<item>Réarranger</item>-->
         <item>Quitter</item>
     </string-array>
 
