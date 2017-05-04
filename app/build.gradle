@@ -1,5 +1,19 @@
 apply plugin: 'com.android.application'
 
+ext {
+    /**
+     * keys in build config
+     */
+    KEY_BUILD_TYPE_STRING = 'String'
+    KEY_BUILD_TYPE_BOOL = 'boolean'
+    KEY_BUILD_TYPE_DOUBLE = 'double'
+    KEY_BUILD_DATE = 'BUILD_DATE'
+    KEY_BUILD_URL = 'BASE_URL'
+    KEY_BUILD_GROUP = 'GROUP'
+    KEY_BUILD_IMAGE = 'IMAGE_SCALE'
+    KEY_BUILD_DCH = 'DISTRIBUTION_CHANNEL'
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.0'

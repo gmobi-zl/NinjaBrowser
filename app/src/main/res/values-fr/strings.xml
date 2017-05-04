@@ -362,11 +362,14 @@
         Importer les favoris
     </string>
     <string name="bookmarks_filename">
-        Favoris Ninja
+        Favoris
     </string>
     <!-- Clear -->
     <string name="setting_title_clear_control">
         Contrôle du nettoyage
+    </string>
+    <string name="setting_title_clear_action">
+        nettoyage
     </string>
     <!-- Others setting -->
     <string name="setting_title_others">

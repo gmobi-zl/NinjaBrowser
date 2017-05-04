@@ -362,10 +362,13 @@
         導入書簽
     </string>
     <string name="bookmarks_filename">
-        Ninja書簽
+        書簽
     </string>
     <!-- Clear -->
     <string name="setting_title_clear_control">
+        清空數據
+    </string>
+    <string name="setting_title_clear_action">
         清空數據
     </string>
     <!-- Others setting -->

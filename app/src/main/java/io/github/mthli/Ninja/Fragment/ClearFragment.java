@@ -1,11 +1,29 @@
 package io.github.mthli.Ninja.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
+
 import io.github.mthli.Ninja.R;
+import io.github.mthli.Ninja.Unit.BrowserUnit;
+import io.github.mthli.Ninja.View.NinjaToast;
 
 public class ClearFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+    public interface IClearClickedListener{
+        void onClicked();
+    }
+
+    private IClearClickedListener clearActionOnClickHdl;
+
+    public void setClearOnClickHdl(IClearClickedListener clearActionOnClickHdl) {
+        this.clearActionOnClickHdl = clearActionOnClickHdl;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,4 +45,15 @@ public class ClearFragment extends PreferenceFragment implements SharedPreferenc
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sp, String key) {}
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        switch (preference.getTitleRes()) {
+            case R.string.setting_title_clear_action:
+                if (clearActionOnClickHdl != null)
+                    clearActionOnClickHdl.onClicked();
+                break;
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
 }

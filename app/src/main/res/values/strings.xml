@@ -362,11 +362,14 @@
         Import Bookmarks
     </string>
     <string name="bookmarks_filename">
-        NinjaBookmarks
+        Bookmarks
     </string>
     <!-- Clear -->
     <string name="setting_title_clear_control">
         Clear Control
+    </string>
+    <string name="setting_title_clear_action">
+        Clear
     </string>
     <!-- Others setting -->
     <string name="setting_title_others">

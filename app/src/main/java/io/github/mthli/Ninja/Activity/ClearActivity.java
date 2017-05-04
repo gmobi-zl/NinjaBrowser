@@ -23,12 +23,19 @@ public class ClearActivity extends Activity {
         super.onCreate(savedInstanceState);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getFragmentManager().beginTransaction().replace(android.R.id.content, new ClearFragment()).commit();
+        ClearFragment clearFrag = new ClearFragment();
+        clearFrag.setClearOnClickHdl(new ClearFragment.IClearClickedListener() {
+            @Override
+            public void onClicked() {
+                clear();
+            }
+        });
+        getFragmentManager().beginTransaction().replace(android.R.id.content, clearFrag).commit();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.clear_menu, menu);
+        //getMenuInflater().inflate(R.menu.clear_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -50,13 +57,24 @@ public class ClearActivity extends Activity {
         return true;
     }
 
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
+//        Intent intent = new Intent();
+//        intent.putExtra(DB_CHANGE, dbChange);
+//        setResult(Activity.RESULT_OK, intent);
+//        finish();
+//        return true;
+//    }
+
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
-        Intent intent = new Intent();
-        intent.putExtra(DB_CHANGE, dbChange);
-        setResult(Activity.RESULT_OK, intent);
-        finish();
-        return true;
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent();
+            intent.putExtra(DB_CHANGE, dbChange);
+            setResult(Activity.RESULT_OK, intent);
+            finish();
+        }
+        return super.onKeyUp(keyCode, event);
     }
 
     private void clear() {

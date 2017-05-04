@@ -21,9 +21,8 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.Html;
-import android.text.InputType;
 import android.text.TextWatcher;
-import android.text.method.KeyListener;
+import android.util.Base64;
 import android.util.Log;
 import android.view.*;
 import android.view.animation.Animation;
@@ -40,16 +39,20 @@ import io.github.mthli.Ninja.Browser.AlbumController;
 import io.github.mthli.Ninja.Browser.BrowserContainer;
 import io.github.mthli.Ninja.Browser.BrowserController;
 import io.github.mthli.Ninja.Service.ClearService;
-import io.github.mthli.Ninja.Task.ScreenshotTask;
 import io.github.mthli.Ninja.Database.Record;
 import io.github.mthli.Ninja.Database.RecordAction;
 import io.github.mthli.Ninja.R;
 import io.github.mthli.Ninja.Service.HolderService;
+import io.github.mthli.Ninja.Utils.AdvertisingIdClient;
 import io.github.mthli.Ninja.Unit.BrowserUnit;
 import io.github.mthli.Ninja.Unit.IntentUnit;
+import io.github.mthli.Ninja.Utils.HttpHelper;
+import io.github.mthli.Ninja.Utils.JsonHelper;
+import io.github.mthli.Ninja.Utils.SystemHelper;
 import io.github.mthli.Ninja.Unit.ViewUnit;
 import io.github.mthli.Ninja.View.*;
 import org.askerov.dynamicgrid.DynamicGridView;
+import org.json.JSONObject;
 
 import java.util.*;
 
@@ -64,6 +67,9 @@ public class BrowserActivity extends Activity implements BrowserController {
     private float dimen117dp;
     private float dimen108dp;
     private float dimen48dp;
+
+    private static final String DEFAULT_HOME_PAGE = "http://search.reachads.net";
+    Map<String, String> extraHeaders = null;
 
     private HorizontalScrollView switcherScroller;
     private LinearLayout switcherContainer;
@@ -115,6 +121,13 @@ public class BrowserActivity extends Activity implements BrowserController {
     private int longAnimTime = 0;
     private AlbumController currentAlbumController = null;
 
+    private String adid;
+    private String ipcountry;
+    private String ipcity;
+    private Handler extraHandler = new Handler();
+    private Context mContext;
+    final static String URL_IP_LOCATION = "http://ip.mocean.cc/s";
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -125,6 +138,30 @@ public class BrowserActivity extends Activity implements BrowserController {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    adid = AdvertisingIdClient.getAdvertisingIdInfo(mContext).getId();
+                } catch (Exception e) {
+                    Log.e("error", e.toString());
+                }
+
+                try{
+                    HttpHelper.Response resp = HttpHelper.doGet(URL_IP_LOCATION, null);
+                    if (resp != null && resp.getBody() != null){
+                        JSONObject jo = JsonHelper.parse(resp.getBody());
+                        ipcountry = jo.optString("country", null);
+                        ipcity = jo.optString("city", null);
+                    }
+                }catch(Exception e){
+                    Log.e("error", e.toString());
+                }
+            }
+        }).start();
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityManager.TaskDescription description = new ActivityManager.TaskDescription(
                     getString(R.string.app_name),
@@ -221,7 +258,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         } else if (intent != null && filePathCallback != null) {
             filePathCallback = null;
         } else {
-            pinAlbums("http://www.baidu.com");
+            pinAlbums(DEFAULT_HOME_PAGE);
 
 //            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 //            if (sp.getBoolean(getString(R.string.sp_first), true)) {
@@ -869,6 +906,74 @@ public class BrowserActivity extends Activity implements BrowserController {
         albumView.startAnimation(animation);
     }
 
+    public String getImei() {
+        return SystemHelper.getPhoneInfo(this).getImei();
+    }
+
+    public String getImsi() {
+        return SystemHelper.getPhoneInfo(this).getImsi();
+    }
+
+    public String getWifiMac() {
+        String wmac = SystemHelper.getWifiMac(this);
+        return "02:00:00:00:00:00".equals(wmac) ? null : wmac;
+    }
+
+    public JSONObject getDeviceInfoAsJson() {
+        JSONObject json = new JSONObject();
+        try {
+            int sw = SystemHelper.getScreenWidth(this);
+            int sh = SystemHelper.getScreenHeight(this);
+
+            json.put("app", SystemHelper.getAppId(this));
+            json.put("ch", "");
+            json.put("app_v", SystemHelper.getAppVersion(this));
+            if (getImsi() != null) json.put("imsi", getImsi());
+            if (getImei() != null) json.put("imei", getImei());
+            json.put("adid", adid == null ? "" : adid);
+            json.put("ua", SystemHelper.getUA(false));
+            json.put("os", "android");
+            json.put("os_v", SystemHelper.getOsVersion());
+            if (getWifiMac() != null) json.put("wmac", getWifiMac());
+            json.put("sn", SystemHelper.getAndroidId(this));
+            json.put("sa", SystemHelper.isSystemApp(this));
+            json.put("sw", sw);
+            json.put("sh", sh);
+            json.put("sd", SystemHelper.getScreenDensity(this));
+            json.put("lang", Locale.getDefault().toString());
+            json.put("country", SystemHelper.getCountry(this));
+            json.put("net", SystemHelper.getNetworkType(this));
+            json.put("roaming", SystemHelper.isRoaming(this));
+
+            if (ipcountry != null){
+                json.put("ipcountry", ipcountry);
+            }
+        } catch(Exception e){
+            Log.e("error", e.toString());
+        }
+        return json;
+    }
+
+    private Map<String, String> getHomePageExtraHeaders(){
+        if (extraHeaders == null){
+            extraHeaders = new HashMap<String, String>();
+
+            try {
+                JSONObject devInfo = getDeviceInfoAsJson();
+                if (devInfo != null){
+                    String devStr = devInfo.toString();
+                    byte[] bs  = Base64.encode(devStr.getBytes(), Base64.DEFAULT);
+                    String data = new String(bs);
+                    extraHeaders.put("X-Requested-With", data);
+                }
+            } catch (Exception e){
+
+            }
+        }
+
+        return extraHeaders;
+    }
+
     private synchronized void pinAlbums(String url) {
         hideSoftInput(inputBox);
         hideSearchPanel();
@@ -914,7 +1019,14 @@ public class BrowserActivity extends Activity implements BrowserController {
             webView.setAlbumCover(ViewUnit.capture(webView, dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
             webView.setAlbumTitle(getString(R.string.album_untitled));
             ViewUnit.bound(this, webView);
-            webView.loadUrl(url);
+
+            if (url.equals(DEFAULT_HOME_PAGE)){
+                Map<String, String> expHeader = getHomePageExtraHeaders();
+                webView.loadUrl(url, expHeader);
+                //webView.loadUrl(url);
+            } else {
+                webView.loadUrl(url);
+            }
 
             BrowserContainer.add(webView);
             final View albumView = webView.getAlbumView();

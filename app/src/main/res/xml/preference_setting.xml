@@ -148,7 +148,7 @@
 
         <!--<Preference android:title="@string/setting_title_import_bookmarks" />-->
 
-        <!--<Preference android:title="@string/setting_title_clear_control" />-->
+        <Preference android:title="@string/setting_title_clear_control" />
 
     </PreferenceCategory>
 

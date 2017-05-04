@@ -263,7 +263,6 @@ public class NinjaWebView extends WebView implements AlbumController {
 
             return;
         }
-
         webViewClient.updateWhite(adBlock.isWhite(url));
         super.loadUrl(url);
         if (browserController != null && foreground) {
@@ -411,4 +410,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         }
         return true;
     }
+
+
 }
