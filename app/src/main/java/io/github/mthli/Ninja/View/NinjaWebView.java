@@ -24,6 +24,7 @@ import io.github.mthli.Ninja.Unit.IntentUnit;
 import io.github.mthli.Ninja.Unit.ViewUnit;
 
 import java.net.URISyntaxException;
+import java.util.Map;
 
 public class NinjaWebView extends WebView implements AlbumController {
     private static final float[] NEGATIVE_COLOR = {
@@ -45,6 +46,8 @@ public class NinjaWebView extends WebView implements AlbumController {
     private NinjaDownloadListener downloadListener;
     private NinjaClickHandler clickHandler;
     private GestureDetector gestureDetector;
+    private Map<String, String> extraHeader;
+    private String extraHeaderUrl;
 
     private AdBlock adBlock;
     public AdBlock getAdBlock() {
@@ -68,6 +71,13 @@ public class NinjaWebView extends WebView implements AlbumController {
     public void setBrowserController(BrowserController browserController) {
         this.browserController = browserController;
         this.album.setBrowserController(browserController);
+    }
+
+    public void setExtraHeaderUrl(String extraHeaderUrl) {
+        this.extraHeaderUrl = extraHeaderUrl;
+    }
+    public void setExtraHeader(Map<String, String> extraHeader) {
+        this.extraHeader = extraHeader;
     }
 
     public NinjaWebView(Context context) {
@@ -245,6 +255,10 @@ public class NinjaWebView extends WebView implements AlbumController {
         if (url == null || url.trim().isEmpty()) {
             NinjaToast.show(context, R.string.toast_load_error);
             return;
+        }
+        if (this.webViewClient != null){
+            this.webViewClient.setExtraHeaderUrl(extraHeaderUrl);
+            this.webViewClient.setExtraHeader(extraHeader);
         }
 
         url = BrowserUnit.queryWrapper(context, url.trim());

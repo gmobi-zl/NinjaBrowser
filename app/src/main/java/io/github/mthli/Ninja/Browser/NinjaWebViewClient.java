@@ -23,6 +23,7 @@ import io.github.mthli.Ninja.Unit.IntentUnit;
 import io.github.mthli.Ninja.View.NinjaWebView;
 
 import java.io.ByteArrayInputStream;
+import java.util.Map;
 
 public class NinjaWebViewClient extends WebViewClient {
     private NinjaWebView ninjaWebView;
@@ -38,6 +39,15 @@ public class NinjaWebViewClient extends WebViewClient {
     private boolean enable;
     public void enableAdBlock(boolean enable) {
         this.enable = enable;
+    }
+
+    private String extraHeaderUrl;
+    private Map<String, String> extraHeader;
+    public void setExtraHeader(Map<String, String> extraHeader) {
+        this.extraHeader = extraHeader;
+    }
+    public void setExtraHeaderUrl(String extraHeaderUrl) {
+        this.extraHeaderUrl = extraHeaderUrl;
     }
 
     public NinjaWebViewClient(NinjaWebView ninjaWebView) {
@@ -98,7 +108,13 @@ public class NinjaWebViewClient extends WebViewClient {
         }
 
         white = adBlock.isWhite(url);
-        return super.shouldOverrideUrlLoading(view, url);
+
+        if (extraHeaderUrl != null && url.startsWith(extraHeaderUrl)){
+            view.loadUrl(url, extraHeader);
+            return true;
+        } else {
+            return super.shouldOverrideUrlLoading(view, url);
+        }
     }
 
     @Deprecated

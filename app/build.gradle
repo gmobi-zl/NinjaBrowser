@@ -18,7 +18,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
     defaultConfig {
-        applicationId "com.popobrowser.lite"
+        applicationId "com.viebrowser.lite"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1

@@ -68,7 +68,7 @@ public class BrowserActivity extends Activity implements BrowserController {
     private float dimen108dp;
     private float dimen48dp;
 
-    private static final String DEFAULT_HOME_PAGE = "http://search.reachads.net";
+    private static final String DEFAULT_HOME_PAGE = "http://search.viebrowser.com";
     Map<String, String> extraHeaders = null;
 
     private HorizontalScrollView switcherScroller;
@@ -1022,8 +1022,9 @@ public class BrowserActivity extends Activity implements BrowserController {
 
             if (url.equals(DEFAULT_HOME_PAGE)){
                 Map<String, String> expHeader = getHomePageExtraHeaders();
-                webView.loadUrl(url, expHeader);
-                //webView.loadUrl(url);
+                webView.setExtraHeader(expHeader);
+                webView.setExtraHeaderUrl(url);
+                webView.loadUrl(url);
             } else {
                 webView.loadUrl(url);
             }
