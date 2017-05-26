@@ -60,7 +60,7 @@ public class BrowserActivity extends Activity implements BrowserController {
     // Sync with NinjaToast.show() 2000ms delay
     private static final int DOUBLE_TAPS_QUIT_DEFAULT = 2000;
 
-    private SwitcherPanel switcherPanel;
+//    private SwitcherPanel switcherPanel;
     private int anchor;
     private float dimen156dp;
     private float dimen144dp;
@@ -74,25 +74,25 @@ public class BrowserActivity extends Activity implements BrowserController {
     private HorizontalScrollView switcherScroller;
     private LinearLayout switcherContainer;
     //private LinearLayout switcherRootView;
-    private ImageButton switcherSetting;
-    private ImageButton switcherBookmarks;
-    private ImageButton switcherHistory;
-    private ImageButton switcherAdd;
+//    private ImageButton switcherSetting;
+//    private ImageButton switcherBookmarks;
+//    private ImageButton switcherHistory;
+//    private ImageButton switcherAdd;
 
     private RelativeLayout omnibox;
     private MoAutoCompleteTextView inputBox;
-    private ImageButton omniboxBookmark;
-    private ImageButton omniboxRefresh;
-    private ImageButton omniboxOverflow;
+//    private ImageButton omniboxBookmark;
+//    private ImageButton omniboxRefresh;
+//    private ImageButton omniboxOverflow;
     private ProgressBar progressBar;
 
-    private RelativeLayout searchPanel;
-    private EditText searchBox;
-    private ImageButton searchUp;
-    private ImageButton searchDown;
-    private ImageButton searchCancel;
+//    private RelativeLayout searchPanel;
+//    private EditText searchBox;
+//    private ImageButton searchUp;
+//    private ImageButton searchDown;
+//    private ImageButton searchCancel;
 
-    private Button relayoutOK;
+//    private Button relayoutOK;
     private FrameLayout contentFrame;
 
     private class VideoCompletionListener implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener {
@@ -171,31 +171,32 @@ public class BrowserActivity extends Activity implements BrowserController {
             setTaskDescription(description);
         }
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        anchor = Integer.valueOf(sp.getString(getString(R.string.sp_anchor), "0"));
-        if (anchor == 0) {
-            setContentView(R.layout.main_top);
-        } else {
-            setContentView(R.layout.main_bottom);
-        }
+//        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+//        anchor = Integer.valueOf(sp.getString(getString(R.string.sp_anchor), "0"));
+//        if (anchor == 0) {
+//            setContentView(R.layout.main_top);
+//        } else {
+//            setContentView(R.layout.main_bottom);
+//        }
+        setContentView(R.layout.main_lite);
 
         create = true;
         shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
         mediumAnimTime = getResources().getInteger(android.R.integer.config_mediumAnimTime);
         longAnimTime = getResources().getInteger(android.R.integer.config_longAnimTime);
-        switcherPanel = (SwitcherPanel) findViewById(R.id.switcher_panel);
-        switcherPanel.setStatusListener(new SwitcherPanel.StatusListener() {
-            @Override
-            public void onFling() {}
-
-            @Override
-            public void onExpanded() {}
-
-            @Override
-            public void onCollapsed() {
-                inputBox.clearFocus();
-            }
-        });
+//        switcherPanel = (SwitcherPanel) findViewById(R.id.switcher_panel);
+//        switcherPanel.setStatusListener(new SwitcherPanel.StatusListener() {
+//            @Override
+//            public void onFling() {}
+//
+//            @Override
+//            public void onExpanded() {}
+//
+//            @Override
+//            public void onCollapsed() {
+//                inputBox.clearFocus();
+//            }
+//        });
 
         dimen156dp = getResources().getDimensionPixelSize(R.dimen.layout_width_156dp);
         dimen144dp = getResources().getDimensionPixelSize(R.dimen.layout_width_144dp);
@@ -206,7 +207,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         initSwitcherView();
         initOmnibox();
         initSearchPanel();
-        relayoutOK = (Button) findViewById(R.id.main_relayout_ok);
+        //relayoutOK = (Button) findViewById(R.id.main_relayout_ok);
         contentFrame = (FrameLayout) findViewById(R.id.main_content);
 
         new AdBlock(this); // For AdBlock cold boot
@@ -291,7 +292,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                 DynamicGridView gridView = (DynamicGridView) layout.findViewById(R.id.home_grid);
                 if (gridView.isEditMode()) {
                     gridView.stopEditMode();
-                    relayoutOK.setVisibility(View.GONE);
+                    //relayoutOK.setVisibility(View.GONE);
                     omnibox.setVisibility(View.VISIBLE);
                     initHomeGrid(layout, true);
                 }
@@ -332,7 +333,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                 DynamicGridView gridView = (DynamicGridView) layout.findViewById(R.id.home_grid);
                 if (gridView.isEditMode()) {
                     gridView.stopEditMode();
-                    relayoutOK.setVisibility(View.GONE);
+                    //relayoutOK.setVisibility(View.GONE);
                     omnibox.setVisibility(View.VISIBLE);
                 }
             }
@@ -340,20 +341,20 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         hideSoftInput(inputBox);
         hideSearchPanel();
-        if (switcherPanel.getStatus() != SwitcherPanel.Status.EXPANDED) {
-            switcherPanel.expanded();
-        }
+//        if (switcherPanel.getStatus() != SwitcherPanel.Status.EXPANDED) {
+//            switcherPanel.expanded();
+//        }
         super.onConfigurationChanged(newConfig);
 
         float coverHeight = ViewUnit.getWindowHeight(this) - ViewUnit.getStatusBarHeight(this) - dimen108dp - dimen48dp;
-        switcherPanel.setCoverHeight(coverHeight);
-        switcherPanel.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                switcherPanel.fixKeyBoardShowing(switcherPanel.getHeight());
-                switcherPanel.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
-        });
+//        switcherPanel.setCoverHeight(coverHeight);
+//        switcherPanel.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                switcherPanel.fixKeyBoardShowing(switcherPanel.getHeight());
+//                switcherPanel.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+//            }
+//        });
 
         if (currentAlbumController != null && currentAlbumController instanceof NinjaRelativeLayout) {
             NinjaRelativeLayout layout = (NinjaRelativeLayout) currentAlbumController;
@@ -419,47 +420,47 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         switcherScroller = (HorizontalScrollView) findViewById(R.id.switcher_scroller);
         switcherContainer = (LinearLayout) findViewById(R.id.switcher_container);
-        switcherSetting = (ImageButton) findViewById(R.id.switcher_setting);
-        switcherBookmarks = (ImageButton) findViewById(R.id.switcher_bookmarks);
-        switcherHistory = (ImageButton) findViewById(R.id.switcher_history);
-        switcherAdd = (ImageButton) findViewById(R.id.switcher_add);
-
-        switcherSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        switcherBookmarks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addAlbum(BrowserUnit.FLAG_BOOKMARKS);
-            }
-        });
-
-        switcherHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addAlbum(BrowserUnit.FLAG_HISTORY);
-            }
-        });
-
-        switcherAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addAlbum(BrowserUnit.FLAG_HOME);
-            }
-        });
+//        switcherSetting = (ImageButton) findViewById(R.id.switcher_setting);
+//        switcherBookmarks = (ImageButton) findViewById(R.id.switcher_bookmarks);
+//        switcherHistory = (ImageButton) findViewById(R.id.switcher_history);
+//        switcherAdd = (ImageButton) findViewById(R.id.switcher_add);
+//
+//        switcherSetting.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        switcherBookmarks.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addAlbum(BrowserUnit.FLAG_BOOKMARKS);
+//            }
+//        });
+//
+//        switcherHistory.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addAlbum(BrowserUnit.FLAG_HISTORY);
+//            }
+//        });
+//
+//        switcherAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addAlbum(BrowserUnit.FLAG_HOME);
+//            }
+//        });
     }
 
     private void initOmnibox() {
         omnibox = (RelativeLayout) findViewById(R.id.main_omnibox);
         inputBox = (MoAutoCompleteTextView) findViewById(R.id.main_omnibox_input);
-        omniboxBookmark = (ImageButton) findViewById(R.id.main_omnibox_bookmark);
-        omniboxRefresh = (ImageButton) findViewById(R.id.main_omnibox_refresh);
-        omniboxOverflow = (ImageButton) findViewById(R.id.main_omnibox_overflow);
+//        omniboxBookmark = (ImageButton) findViewById(R.id.main_omnibox_bookmark);
+//        omniboxRefresh = (ImageButton) findViewById(R.id.main_omnibox_refresh);
+//        omniboxOverflow = (ImageButton) findViewById(R.id.main_omnibox_overflow);
         progressBar = (ProgressBar) findViewById(R.id.main_progress_bar);
 
         omnibox.setEnabled(true);
@@ -539,68 +540,93 @@ public class BrowserActivity extends Activity implements BrowserController {
         updateBookmarks();
         updateAutoComplete();
 
-        omniboxBookmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!prepareRecord()) {
-                    NinjaToast.show(BrowserActivity.this, R.string.toast_add_bookmark_failed);
-                    return;
-                }
+//        omniboxBookmark.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (!prepareRecord()) {
+//                    NinjaToast.show(BrowserActivity.this, R.string.toast_add_bookmark_failed);
+//                    return;
+//                }
+//
+//                NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
+//                String title = ninjaWebView.getTitle();
+//                String url = ninjaWebView.getUrl();
+//
+//                RecordAction action = new RecordAction(BrowserActivity.this);
+//                action.open(true);
+//                if (action.checkBookmark(url)) {
+//                    action.deleteBookmark(url);
+//                    NinjaToast.show(BrowserActivity.this, R.string.toast_delete_bookmark_successful);
+//                } else {
+//                    action.addBookmark(new Record(title, url, System.currentTimeMillis()));
+//                    NinjaToast.show(BrowserActivity.this, R.string.toast_add_bookmark_successful);
+//                }
+//                action.close();
+//
+//                updateBookmarks();
+//                updateAutoComplete();
+//            }
+//        });
 
-                NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
-                String title = ninjaWebView.getTitle();
-                String url = ninjaWebView.getUrl();
+//        omniboxRefresh.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (currentAlbumController == null) {
+//                    NinjaToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
+//                    return;
+//                }
+//
+//                if (currentAlbumController instanceof NinjaWebView) {
+//                    NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
+//                    if (ninjaWebView.isLoadFinish()) {
+//                        ninjaWebView.reload();
+//                    } else {
+//                        ninjaWebView.stopLoading();
+//                    }
+//                } else if (currentAlbumController instanceof NinjaRelativeLayout) {
+//                    final NinjaRelativeLayout layout = (NinjaRelativeLayout) currentAlbumController;
+//                    if (layout.getFlag() == BrowserUnit.FLAG_HOME) {
+//                        initHomeGrid(layout, true);
+//                        return;
+//                    }
+//                    initBHList(layout, true);
+//                } else {
+//                    NinjaToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
+//                }
+//            }
+//        });
+//
+//        omniboxOverflow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showOverflow();
+//            }
+//        });
+    }
 
-                RecordAction action = new RecordAction(BrowserActivity.this);
-                action.open(true);
-                if (action.checkBookmark(url)) {
-                    action.deleteBookmark(url);
-                    NinjaToast.show(BrowserActivity.this, R.string.toast_delete_bookmark_successful);
-                } else {
-                    action.addBookmark(new Record(title, url, System.currentTimeMillis()));
-                    NinjaToast.show(BrowserActivity.this, R.string.toast_add_bookmark_successful);
-                }
-                action.close();
+    private void addToBookMark(){
+        if (!prepareRecord()) {
+            NinjaToast.show(BrowserActivity.this, R.string.toast_add_bookmark_failed);
+            return;
+        }
 
-                updateBookmarks();
-                updateAutoComplete();
-            }
-        });
+        NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
+        String title = ninjaWebView.getTitle();
+        String url = ninjaWebView.getUrl();
 
-        omniboxRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentAlbumController == null) {
-                    NinjaToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
-                    return;
-                }
+        RecordAction action = new RecordAction(BrowserActivity.this);
+        action.open(true);
+        if (action.checkBookmark(url)) {
+            action.deleteBookmark(url);
+            NinjaToast.show(BrowserActivity.this, R.string.toast_delete_bookmark_successful);
+        } else {
+            action.addBookmark(new Record(title, url, System.currentTimeMillis()));
+            NinjaToast.show(BrowserActivity.this, R.string.toast_add_bookmark_successful);
+        }
+        action.close();
 
-                if (currentAlbumController instanceof NinjaWebView) {
-                    NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
-                    if (ninjaWebView.isLoadFinish()) {
-                        ninjaWebView.reload();
-                    } else {
-                        ninjaWebView.stopLoading();
-                    }
-                } else if (currentAlbumController instanceof NinjaRelativeLayout) {
-                    final NinjaRelativeLayout layout = (NinjaRelativeLayout) currentAlbumController;
-                    if (layout.getFlag() == BrowserUnit.FLAG_HOME) {
-                        initHomeGrid(layout, true);
-                        return;
-                    }
-                    initBHList(layout, true);
-                } else {
-                    NinjaToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
-                }
-            }
-        });
-
-        omniboxOverflow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showOverflow();
-            }
-        });
+        updateBookmarks();
+        updateAutoComplete();
     }
 
     private void initHomeGrid(final NinjaRelativeLayout layout, boolean update) {
@@ -713,82 +739,82 @@ public class BrowserActivity extends Activity implements BrowserController {
     }
 
     private void initSearchPanel() {
-        searchPanel = (RelativeLayout) findViewById(R.id.main_search_panel);
-        searchBox = (EditText) findViewById(R.id.main_search_box);
-        searchUp = (ImageButton) findViewById(R.id.main_search_up);
-        searchDown = (ImageButton) findViewById(R.id.main_search_down);
-        searchCancel = (ImageButton) findViewById(R.id.main_search_cancel);
-
-        searchBox.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (currentAlbumController != null && currentAlbumController instanceof NinjaWebView) {
-                    ((NinjaWebView) currentAlbumController).findAllAsync(s.toString());
-                }
-            }
-        });
-
-        searchBox.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId != EditorInfo.IME_ACTION_DONE) {
-                    return false;
-                }
-
-                if (searchBox.getText().toString().isEmpty()) {
-                    NinjaToast.show(BrowserActivity.this, R.string.toast_input_empty);
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        searchUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String query = searchBox.getText().toString();
-                if (query.isEmpty()) {
-                    NinjaToast.show(BrowserActivity.this, R.string.toast_input_empty);
-                    return;
-                }
-
-                hideSoftInput(searchBox);
-                if (currentAlbumController instanceof NinjaWebView) {
-                    ((NinjaWebView) currentAlbumController).findNext(false);
-                }
-            }
-        });
-
-        searchDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String query = searchBox.getText().toString();
-                if (query.isEmpty()) {
-                    NinjaToast.show(BrowserActivity.this, R.string.toast_input_empty);
-                    return;
-                }
-
-                hideSoftInput(searchBox);
-                if (currentAlbumController instanceof NinjaWebView) {
-                    ((NinjaWebView) currentAlbumController).findNext(true);
-                }
-            }
-        });
-
-        searchCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideSearchPanel();
-            }
-        });
+//        searchPanel = (RelativeLayout) findViewById(R.id.main_search_panel);
+//        searchBox = (EditText) findViewById(R.id.main_search_box);
+//        searchUp = (ImageButton) findViewById(R.id.main_search_up);
+//        searchDown = (ImageButton) findViewById(R.id.main_search_down);
+//        searchCancel = (ImageButton) findViewById(R.id.main_search_cancel);
+//
+//        searchBox.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                if (currentAlbumController != null && currentAlbumController instanceof NinjaWebView) {
+//                    ((NinjaWebView) currentAlbumController).findAllAsync(s.toString());
+//                }
+//            }
+//        });
+//
+//        searchBox.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId != EditorInfo.IME_ACTION_DONE) {
+//                    return false;
+//                }
+//
+//                if (searchBox.getText().toString().isEmpty()) {
+//                    NinjaToast.show(BrowserActivity.this, R.string.toast_input_empty);
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+//
+//        searchUp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String query = searchBox.getText().toString();
+//                if (query.isEmpty()) {
+//                    NinjaToast.show(BrowserActivity.this, R.string.toast_input_empty);
+//                    return;
+//                }
+//
+//                hideSoftInput(searchBox);
+//                if (currentAlbumController instanceof NinjaWebView) {
+//                    ((NinjaWebView) currentAlbumController).findNext(false);
+//                }
+//            }
+//        });
+//
+//        searchDown.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String query = searchBox.getText().toString();
+//                if (query.isEmpty()) {
+//                    NinjaToast.show(BrowserActivity.this, R.string.toast_input_empty);
+//                    return;
+//                }
+//
+//                hideSoftInput(searchBox);
+//                if (currentAlbumController instanceof NinjaWebView) {
+//                    ((NinjaWebView) currentAlbumController).findNext(true);
+//                }
+//            }
+//        });
+//
+//        searchCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                hideSearchPanel();
+//            }
+//        });
     }
 
     private synchronized void addAlbum(int flag) {
@@ -872,9 +898,9 @@ public class BrowserActivity extends Activity implements BrowserController {
             webView.deactivate();
 
             albumView.setVisibility(View.VISIBLE);
-            if (currentAlbumController != null) {
-                switcherScroller.smoothScrollTo(currentAlbumController.getAlbumView().getLeft(), 0);
-            }
+//            if (currentAlbumController != null) {
+//                switcherScroller.smoothScrollTo(currentAlbumController.getAlbumView().getLeft(), 0);
+//            }
             return;
         }
 
@@ -1008,7 +1034,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    switcherScroller.smoothScrollTo(currentAlbumController.getAlbumView().getLeft(), 0);
+//                    switcherScroller.smoothScrollTo(currentAlbumController.getAlbumView().getLeft(), 0);
                     currentAlbumController.setAlbumCover(ViewUnit.capture(((View) currentAlbumController), dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
                 }
             }, shortAnimTime);
@@ -1046,7 +1072,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    switcherScroller.smoothScrollTo(currentAlbumController.getAlbumView().getLeft(), 0);
+//                    switcherScroller.smoothScrollTo(currentAlbumController.getAlbumView().getLeft(), 0);
                     currentAlbumController.setAlbumCover(ViewUnit.capture(((View) currentAlbumController), dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
                 }
             }, shortAnimTime);
@@ -1056,7 +1082,7 @@ public class BrowserActivity extends Activity implements BrowserController {
     @Override
     public synchronized void showAlbum(AlbumController controller, boolean anim, final boolean expand, final boolean capture) {
         if (controller == null || controller == currentAlbumController) {
-            switcherPanel.expanded();
+//            switcherPanel.expanded();
             return;
         }
 
@@ -1090,13 +1116,13 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         currentAlbumController = controller;
         currentAlbumController.activate();
-        switcherScroller.smoothScrollTo(currentAlbumController.getAlbumView().getLeft(), 0);
+//        switcherScroller.smoothScrollTo(currentAlbumController.getAlbumView().getLeft(), 0);
         updateOmnibox();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 if (expand) {
-                    switcherPanel.expanded();
+//                    switcherPanel.expanded();
                 }
 
                 if (capture) {
@@ -1245,18 +1271,18 @@ public class BrowserActivity extends Activity implements BrowserController {
     @Override
     public void updateBookmarks() {
         if (currentAlbumController == null || !(currentAlbumController instanceof NinjaWebView)) {
-            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_dark));
+//            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_dark));
             return;
         }
 
         RecordAction action = new RecordAction(this);
         action.open(false);
         String url = ((NinjaWebView) currentAlbumController).getUrl();
-        if (action.checkBookmark(url)) {
-            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_blue));
-        } else {
-            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_dark));
-        }
+//        if (action.checkBookmark(url)) {
+//            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_blue));
+//        } else {
+//            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_dark));
+//        }
         action.close();
     }
 
@@ -1318,11 +1344,11 @@ public class BrowserActivity extends Activity implements BrowserController {
     }
 
     private void updateRefresh(boolean running) {
-        if (running) {
-            omniboxRefresh.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.cl_selector_dark));
-        } else {
-            omniboxRefresh.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.refresh_selector));
-        }
+//        if (running) {
+//            omniboxRefresh.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.cl_selector_dark));
+//        } else {
+//            omniboxRefresh.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.refresh_selector));
+//        }
     }
 
     @Override
@@ -1368,7 +1394,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         if (resultMsg == null) {
             return;
         }
-        switcherPanel.collapsed();
+//        switcherPanel.collapsed();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -1520,9 +1546,9 @@ public class BrowserActivity extends Activity implements BrowserController {
         int vc = Integer.valueOf(sp.getString(getString(R.string.sp_volume), "1"));
 
         if (vc == 0) { // Switch tabs
-            if (switcherPanel.isKeyBoardShowing()) {
-                return true;
-            }
+//            if (switcherPanel.isKeyBoardShowing()) {
+//                return true;
+//            }
 
             AlbumController controller = nextAlbumController(false);
             showAlbum(controller, false, false, true);
@@ -1550,9 +1576,9 @@ public class BrowserActivity extends Activity implements BrowserController {
         int vc = Integer.valueOf(sp.getString(getString(R.string.sp_volume), "1"));
 
         if (vc == 0) { // Switch tabs
-            if (switcherPanel.isKeyBoardShowing()) {
-                return true;
-            }
+//            if (switcherPanel.isKeyBoardShowing()) {
+//                return true;
+//            }
 
             AlbumController controller = nextAlbumController(true);
             showAlbum(controller, false, false, true);
@@ -1578,9 +1604,10 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     private boolean onKeyCodeBack(boolean douQ) {
         hideSoftInput(inputBox);
-        if (switcherPanel.getStatus() != SwitcherPanel.Status.EXPANDED) {
-            switcherPanel.expanded();
-        } else if (currentAlbumController == null) {
+//        if (switcherPanel.getStatus() != SwitcherPanel.Status.EXPANDED) {
+//            switcherPanel.expanded();
+//        } else
+        if (currentAlbumController == null) {
             finish();
         } else if (currentAlbumController instanceof NinjaWebView) {
             NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
@@ -1644,16 +1671,16 @@ public class BrowserActivity extends Activity implements BrowserController {
     }
 
     private void hideSearchPanel() {
-        hideSoftInput(searchBox);
-        searchBox.setText("");
-        searchPanel.setVisibility(View.GONE);
+//        hideSoftInput(searchBox);
+//        searchBox.setText("");
+//        searchPanel.setVisibility(View.GONE);
         omnibox.setVisibility(View.VISIBLE);
     }
 
     private void showSearchPanel() {
         omnibox.setVisibility(View.GONE);
-        searchPanel.setVisibility(View.VISIBLE);
-        showSoftInput(searchBox);
+//        searchPanel.setVisibility(View.VISIBLE);
+//        showSoftInput(searchBox);
     }
 
     private boolean showOverflow() {

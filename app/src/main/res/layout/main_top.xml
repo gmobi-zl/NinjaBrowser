@@ -280,7 +280,6 @@
             android:clickable="true"
             android:focusableInTouchMode="true">
         </FrameLayout>
-
     </LinearLayout>
 
 </io.github.mthli.Ninja.View.SwitcherPanel>

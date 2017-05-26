@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout android:id="@+id/main_omnibox"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height_48dp"
+        android:minHeight="@dimen/layout_height_48dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/blue_800">
+
+        <io.github.mthli.Ninja.View.MoAutoCompleteTextView
+            android:id="@+id/main_omnibox_input"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height_36dp"
+            android:minHeight="@dimen/layout_height_36dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/layout_margin_16dp"
+            android:layout_marginRight="@dimen/layout_margin_16dp"
+            android:hint="@string/main_omnibox_input_hint"
+            android:textColor="@color/text"
+            android:textColorHint="@color/hint"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/text_size_16sp"
+            android:selectAllOnFocus="true"
+            android:completionThreshold="1"
+            android:singleLine="true"
+            android:imeOptions="actionGo"
+            android:inputType="textNoSuggestions|textWebEditText"
+            android:background="@color/white"
+            android:windowSoftInputMode="stateHidden"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+        </io.github.mthli.Ninja.View.MoAutoCompleteTextView>
+
+
+        <ProgressBar android:id="@+id/main_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height_2dp"
+            android:maxHeight="@dimen/layout_height_2dp"
+            android:layout_alignParentBottom="true"
+            android:indeterminate="false"
+            android:indeterminateOnly="false"
+            android:progressDrawable="@drawable/progress_bar_layer_list"
+            android:focusable="false"
+            android:clickable="false"
+            android:focusableInTouchMode="false">
+        </ProgressBar>
+    </RelativeLayout>
+
+    <FrameLayout android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main_omnibox_url"
+        android:layout_above="@+id/rlBottomMenu"
+        android:background="@color/white"
+        android:focusable="true"
+        android:clickable="true"
+        android:focusableInTouchMode="true">
+    </FrameLayout>
+
+    <HorizontalScrollView android:id="@+id/switcher_scroller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main_omnibox_url"
+        android:layout_above="@+id/rlBottomMenu"
+        android:scrollbars="none">
+
+        <LinearLayout android:id="@+id/switcher_container"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:id="@+id/rlBottomMenu"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black"
+        android:focusable="false">
+        <TextView
+            android:id="@+id/tvBottomLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/bottom_ok"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvBottomCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/bottom_ok"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvBottomRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="@string/bottom_back"
+            android:textSize="22sp"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+</RelativeLayout>

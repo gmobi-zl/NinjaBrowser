@@ -535,4 +535,10 @@
         Add
     </string>
 
+    <string name="bottom_ok">
+        OK
+    </string>
+    <string name="bottom_back">
+        Back
+    </string>
 </resources>
