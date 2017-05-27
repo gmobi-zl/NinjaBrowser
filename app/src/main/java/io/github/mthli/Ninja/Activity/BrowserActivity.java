@@ -71,8 +71,8 @@ public class BrowserActivity extends Activity implements BrowserController {
     private static final String DEFAULT_HOME_PAGE = "http://search.viebrowser.com";
     Map<String, String> extraHeaders = null;
 
-    private HorizontalScrollView switcherScroller;
-    private LinearLayout switcherContainer;
+//    private HorizontalScrollView switcherScroller;
+//    private LinearLayout switcherContainer;
     //private LinearLayout switcherRootView;
 //    private ImageButton switcherSetting;
 //    private ImageButton switcherBookmarks;
@@ -391,6 +391,12 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_MENU){
+            showOverflow();
+            return true;
+        }
+
         // When video fullscreen, just control the sound
         if (fullscreenHolder != null || customView != null || videoView != null) {
             if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
@@ -418,8 +424,8 @@ public class BrowserActivity extends Activity implements BrowserController {
         //switcherRootView = (LinearLayout) findViewById(R.id.switcher_view);
         //switcherRootView.setVisibility(View.GONE);
 
-        switcherScroller = (HorizontalScrollView) findViewById(R.id.switcher_scroller);
-        switcherContainer = (LinearLayout) findViewById(R.id.switcher_container);
+//        switcherScroller = (HorizontalScrollView) findViewById(R.id.switcher_scroller);
+//        switcherContainer = (LinearLayout) findViewById(R.id.switcher_container);
 //        switcherSetting = (ImageButton) findViewById(R.id.switcher_setting);
 //        switcherBookmarks = (ImageButton) findViewById(R.id.switcher_bookmarks);
 //        switcherHistory = (ImageButton) findViewById(R.id.switcher_history);
@@ -845,6 +851,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             layout.setAlbumTitle(getString(R.string.album_title_home));
             holder = layout;
             initHomeGrid(layout, true);
+            return;
         } else {
             return;
         }
@@ -853,25 +860,26 @@ public class BrowserActivity extends Activity implements BrowserController {
         albumView.setVisibility(View.INVISIBLE);
 
         BrowserContainer.add(holder);
-        switcherContainer.addView(albumView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.album_slide_in_up);
-        animation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationStart(Animation animation) {
-                albumView.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                showAlbum(holder, false, true, true);
-            }
-        });
-        albumView.startAnimation(animation);
+        showAlbum(holder, false, true, true);
+//        switcherContainer.addView(albumView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//
+//        Animation animation = AnimationUtils.loadAnimation(this, R.anim.album_slide_in_up);
+//        animation.setAnimationListener(new Animation.AnimationListener() {
+//            @Override
+//            public void onAnimationRepeat(Animation animation) {
+//            }
+//
+//            @Override
+//            public void onAnimationStart(Animation animation) {
+//                albumView.setVisibility(View.VISIBLE);
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                showAlbum(holder, false, true, true);
+//            }
+//        });
+//        albumView.startAnimation(animation);
     }
 
     private synchronized void addAlbum(String title, final String url, final boolean foreground, final Message resultMsg) {
@@ -886,10 +894,10 @@ public class BrowserActivity extends Activity implements BrowserController {
         if (currentAlbumController != null && (currentAlbumController instanceof NinjaWebView) && resultMsg != null) {
             int index = BrowserContainer.indexOf(currentAlbumController) + 1;
             BrowserContainer.add(webView, index);
-            switcherContainer.addView(albumView, index, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
+//            switcherContainer.addView(albumView, index, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
         } else {
             BrowserContainer.add(webView);
-            switcherContainer.addView(albumView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//            switcherContainer.addView(albumView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         }
 
         if (!foreground) {
@@ -1003,7 +1011,7 @@ public class BrowserActivity extends Activity implements BrowserController {
     private synchronized void pinAlbums(String url) {
         hideSoftInput(inputBox);
         hideSearchPanel();
-        switcherContainer.removeAllViews();
+//        switcherContainer.removeAllViews();
 
         for (AlbumController controller : BrowserContainer.list()) {
             if (controller instanceof NinjaWebView) {
@@ -1011,7 +1019,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             } else if (controller instanceof NinjaRelativeLayout) {
                 ((NinjaRelativeLayout) controller).setBrowserController(this);
             }
-            switcherContainer.addView(controller.getAlbumView(), LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+//            switcherContainer.addView(controller.getAlbumView(), LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
             controller.getAlbumView().setVisibility(View.VISIBLE);
             controller.deactivate();
         }
@@ -1058,7 +1066,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             BrowserContainer.add(webView);
             final View albumView = webView.getAlbumView();
             albumView.setVisibility(View.VISIBLE);
-            switcherContainer.addView(albumView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//            switcherContainer.addView(albumView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             contentFrame.removeAllViews();
             contentFrame.addView(webView);
 
@@ -1144,14 +1152,14 @@ public class BrowserActivity extends Activity implements BrowserController {
         layout.setAlbumTitle(getString(R.string.album_title_home));
         initHomeGrid(layout, true);
 
-        int index = switcherContainer.indexOfChild(currentAlbumController.getAlbumView());
+//        int index = switcherContainer.indexOfChild(currentAlbumController.getAlbumView());
         currentAlbumController.deactivate();
-        switcherContainer.removeView(currentAlbumController.getAlbumView());
+//        switcherContainer.removeView(currentAlbumController.getAlbumView());
         contentFrame.removeAllViews(); ///
 
-        switcherContainer.addView(layout.getAlbumView(), index, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+//        switcherContainer.addView(layout.getAlbumView(), index, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         contentFrame.addView(layout);
-        BrowserContainer.set(layout, index);
+//        BrowserContainer.set(layout, index);
         currentAlbumController = layout;
         updateOmnibox();
     }
@@ -1172,14 +1180,14 @@ public class BrowserActivity extends Activity implements BrowserController {
             webView.setAlbumTitle(getString(R.string.album_untitled));
             ViewUnit.bound(this, webView);
 
-            int index = switcherContainer.indexOfChild(currentAlbumController.getAlbumView());
+//            int index = switcherContainer.indexOfChild(currentAlbumController.getAlbumView());
             currentAlbumController.deactivate();
-            switcherContainer.removeView(currentAlbumController.getAlbumView());
+//            switcherContainer.removeView(currentAlbumController.getAlbumView());
             contentFrame.removeAllViews(); ///
 
-            switcherContainer.addView(webView.getAlbumView(), index, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+//            switcherContainer.addView(webView.getAlbumView(), index, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             contentFrame.addView(webView);
-            BrowserContainer.set(webView, index);
+//            BrowserContainer.set(webView, index);
             currentAlbumController = webView;
             webView.activate();
 
@@ -1193,17 +1201,17 @@ public class BrowserActivity extends Activity implements BrowserController {
     @Override
     public synchronized void removeAlbum(AlbumController controller) {
         if (currentAlbumController == null || BrowserContainer.size() <= 1) {
-            switcherContainer.removeView(controller.getAlbumView());
+//            switcherContainer.removeView(controller.getAlbumView());
             BrowserContainer.remove(controller);
             addAlbum(BrowserUnit.FLAG_HOME);
             return;
         }
 
         if (controller != currentAlbumController) {
-            switcherContainer.removeView(controller.getAlbumView());
+//            switcherContainer.removeView(controller.getAlbumView());
             BrowserContainer.remove(controller);
         } else {
-            switcherContainer.removeView(controller.getAlbumView());
+//            switcherContainer.removeView(controller.getAlbumView());
             int index = BrowserContainer.indexOf(controller);
             BrowserContainer.remove(controller);
             if (index >= BrowserContainer.size()) {
@@ -1731,15 +1739,17 @@ public class BrowserActivity extends Activity implements BrowserController {
                     hideSoftInput(inputBox);
                     showSearchPanel();
                 }else if (s.equals(array[1])) { // bookmarks
+                    addToBookMark();
+                }else if (s.equals(array[2])) { // bookmarks
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_BOOKMARKS);
-                }else if (s.equals(array[2])) { // history
+                }else if (s.equals(array[3])) { // history
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_HISTORY);
-                }else if (s.equals(array[3])) { // Settings
+                }else if (s.equals(array[4])) { // Settings
                     Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
                     startActivity(intent);
-                }else if (s.equals(array[4])) { // Quit
+                }else if (s.equals(array[5])) { // Quit
                     finish();
                 }
 //                if (s.equals(array[0])) { // Go to top
@@ -1936,6 +1946,18 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         final String[] array = getResources().getStringArray(R.array.list_menu);
         final List<String> stringList = new ArrayList<>();
+
+        RecordAction action = new RecordAction(this);
+        action.open(false);
+        String url = ((NinjaWebView) currentAlbumController).getUrl();
+        if (action.checkBookmark(url)) {
+            if (array != null && array.length > 2){
+                String removeBookmark = getResources().getString(R.string.remove_bookmark);
+                array[1] = removeBookmark;
+            }
+        }
+        action.close();
+
         stringList.addAll(Arrays.asList(array));
         if (currentAlbumController.getFlag() != BrowserUnit.FLAG_BOOKMARKS) {
             stringList.remove(array[3]);
@@ -2150,4 +2172,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         return list.get(index);
     }
+
+
+
 }

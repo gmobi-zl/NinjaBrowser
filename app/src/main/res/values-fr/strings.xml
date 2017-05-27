@@ -535,4 +535,9 @@
         Ajouter
     </string>
 
+
+
+    <string name="remove_bookmark">
+        Supprimer des favoris
+    </string>
 </resources>

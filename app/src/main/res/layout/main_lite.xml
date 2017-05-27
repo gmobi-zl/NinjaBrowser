@@ -8,7 +8,7 @@
         android:layout_height="@dimen/layout_height_48dp"
         android:minHeight="@dimen/layout_height_48dp"
         android:layout_alignParentTop="true"
-        android:background="@color/blue_800">
+        android:background="@color/gray_800">
 
         <io.github.mthli.Ninja.View.MoAutoCompleteTextView
             android:id="@+id/main_omnibox_input"
@@ -19,6 +19,7 @@
             android:layout_marginLeft="@dimen/layout_margin_16dp"
             android:layout_marginRight="@dimen/layout_margin_16dp"
             android:hint="@string/main_omnibox_input_hint"
+            android:paddingLeft="2dp"
             android:textColor="@color/text"
             android:textColorHint="@color/hint"
             android:textCursorDrawable="@null"
@@ -28,7 +29,7 @@
             android:singleLine="true"
             android:imeOptions="actionGo"
             android:inputType="textNoSuggestions|textWebEditText"
-            android:background="@color/white"
+            android:background="@drawable/input_text_selector"
             android:windowSoftInputMode="stateHidden"
             android:focusable="true"
             android:focusableInTouchMode="true">
@@ -52,30 +53,13 @@
     <FrameLayout android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/main_omnibox_url"
+        android:layout_below="@+id/main_omnibox"
         android:layout_above="@+id/rlBottomMenu"
         android:background="@color/white"
         android:focusable="true"
         android:clickable="true"
         android:focusableInTouchMode="true">
     </FrameLayout>
-
-    <HorizontalScrollView android:id="@+id/switcher_scroller"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/main_omnibox_url"
-        android:layout_above="@+id/rlBottomMenu"
-        android:scrollbars="none">
-
-        <LinearLayout android:id="@+id/switcher_container"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:focusable="true"
-            android:focusableInTouchMode="true">
-        </LinearLayout>
-
-    </HorizontalScrollView>
 
     <RelativeLayout
         android:id="@+id/rlBottomMenu"
@@ -91,10 +75,9 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:text="@string/bottom_ok"
+            android:text="@string/bottom_menu"
             android:textSize="22sp"
-            android:textColor="@color/white"
-            android:visibility="gone"/>
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tvBottomCenter"

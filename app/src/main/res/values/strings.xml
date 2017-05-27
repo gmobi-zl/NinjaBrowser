@@ -541,4 +541,10 @@
     <string name="bottom_back">
         Back
     </string>
+    <string name="bottom_menu">
+        Menu
+    </string>
+    <string name="remove_bookmark">
+        Remove from bookmarks
+    </string>
 </resources>

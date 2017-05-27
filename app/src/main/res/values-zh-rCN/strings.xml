@@ -535,4 +535,8 @@
         添加
     </string>
 
+
+    <string name="remove_bookmark">
+        从收藏夹删除
+    </string>
 </resources>
