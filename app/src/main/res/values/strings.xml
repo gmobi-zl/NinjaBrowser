@@ -308,6 +308,24 @@
     <string name="setting_summary_rendering_inverted_grayscale">
         Inverted Grayscale
     </string>
+    <string name="setting_title_textsize">
+        Font Size
+    </string>
+    <string name="setting_summary_textsize_normal">
+        Normal
+    </string>
+    <string name="setting_summary_textsize_smallest">
+        Smallest
+    </string>
+    <string name="setting_summary_textsize_smaller">
+        Smaller
+    </string>
+    <string name="setting_summary_textsize_larger">
+        Larger
+    </string>
+    <string name="setting_summary_textsize_largest">
+        Largest
+    </string>
     <!-- AdBlock setting -->
     <string name="setting_title_adblock">
         AdBlock
@@ -543,6 +561,9 @@
     </string>
     <string name="bottom_menu">
         Menu
+    </string>
+    <string name="bottom_clear">
+        Clear
     </string>
     <string name="remove_bookmark">
         Remove from bookmarks

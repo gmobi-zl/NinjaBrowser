@@ -21,16 +21,11 @@ public class ClearActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_clear);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         ClearFragment clearFrag = new ClearFragment();
-        clearFrag.setClearOnClickHdl(new ClearFragment.IClearClickedListener() {
-            @Override
-            public void onClicked() {
-                clear();
-            }
-        });
-        getFragmentManager().beginTransaction().replace(android.R.id.content, clearFrag).commit();
+        getFragmentManager().beginTransaction().replace(R.id.clearFrame, clearFrag).commit();
     }
 
     @Override
@@ -73,6 +68,8 @@ public class ClearActivity extends Activity {
             intent.putExtra(DB_CHANGE, dbChange);
             setResult(Activity.RESULT_OK, intent);
             finish();
+        } else if (keyCode == KeyEvent.KEYCODE_MENU){
+            clear();
         }
         return super.onKeyUp(keyCode, event);
     }

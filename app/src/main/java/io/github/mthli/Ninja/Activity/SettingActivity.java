@@ -21,10 +21,11 @@ public class SettingActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_setting);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         fragment = new SettingFragment();
-        getFragmentManager().beginTransaction().replace(android.R.id.content, fragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.settingFrame, fragment).commit();
     }
 
     @Override

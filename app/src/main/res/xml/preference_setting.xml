@@ -13,6 +13,14 @@
                 android:entryValues="@array/setting_values_search_engine">
         </io.github.mthli.Ninja.View.SearchEngineListPreference>
 
+        <ListPreference android:key="@string/sp_text_size"
+            android:defaultValue="2"
+            android:title="@string/setting_title_textsize"
+            android:summary="@string/setting_summary_textsize_normal"
+            android:entries="@array/setting_entries_textsize"
+            android:entryValues="@array/setting_values_textsize">
+        </ListPreference>
+
         <!--<ListPreference android:key="@string/sp_notification_priority"-->
                         <!--android:defaultValue="0"-->
                         <!--android:title="@string/setting_title_notification_priority"-->

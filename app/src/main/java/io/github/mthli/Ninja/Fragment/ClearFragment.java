@@ -14,16 +14,6 @@ import io.github.mthli.Ninja.View.NinjaToast;
 
 public class ClearFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    public interface IClearClickedListener{
-        void onClicked();
-    }
-
-    private IClearClickedListener clearActionOnClickHdl;
-
-    public void setClearOnClickHdl(IClearClickedListener clearActionOnClickHdl) {
-        this.clearActionOnClickHdl = clearActionOnClickHdl;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +38,12 @@ public class ClearFragment extends PreferenceFragment implements SharedPreferenc
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        switch (preference.getTitleRes()) {
-            case R.string.setting_title_clear_action:
-                if (clearActionOnClickHdl != null)
-                    clearActionOnClickHdl.onClicked();
-                break;
-        }
+//        switch (preference.getTitleRes()) {
+//            case R.string.setting_title_clear_action:
+//                if (clearActionOnClickHdl != null)
+//                    clearActionOnClickHdl.onClicked();
+//                break;
+//        }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 }

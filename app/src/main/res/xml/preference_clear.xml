@@ -38,10 +38,4 @@
                         android:title="@string/clear_title_passwords">
     </CheckBoxPreference>
 
-    <PreferenceCategory android:title="  ">
-
-        <Preference android:title="@string/setting_title_clear_action" />
-
-    </PreferenceCategory>
-
 </PreferenceScreen>

@@ -201,6 +201,26 @@ public class NinjaWebView extends WebView implements AlbumController {
         initRendering(mode);
 
         webViewClient.enableAdBlock(sp.getBoolean(context.getString(R.string.sp_ad_block), true));
+
+        // font size
+        int fontSize = Integer.valueOf(sp.getString(context.getString(R.string.sp_text_size), "2"));
+        switch(fontSize){
+            case 0:
+                webSettings.setTextSize(WebSettings.TextSize.SMALLEST);
+                break;
+            case 1:
+                webSettings.setTextSize(WebSettings.TextSize.SMALLER);
+                break;
+            case 2:
+                webSettings.setTextSize(WebSettings.TextSize.NORMAL);
+                break;
+            case 3:
+                webSettings.setTextSize(WebSettings.TextSize.LARGER);
+                break;
+            case 4:
+                webSettings.setTextSize(WebSettings.TextSize.LARGEST);
+                break;
+        }
     }
 
     private synchronized void initAlbum() {

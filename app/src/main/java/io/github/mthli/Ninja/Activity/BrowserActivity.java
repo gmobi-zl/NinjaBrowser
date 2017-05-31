@@ -1700,6 +1700,19 @@ public class BrowserActivity extends Activity implements BrowserController {
         builder.setView(layout);
 
         final String[] array = getResources().getStringArray(R.array.main_overflow);
+        if (currentAlbumController != null && currentAlbumController instanceof NinjaWebView) {
+            RecordAction action = new RecordAction(this);
+            action.open(false);
+            String url = ((NinjaWebView) currentAlbumController).getUrl();
+            if (action.checkBookmark(url)) {
+                if (array != null && array.length > 2){
+                    String removeBookmark = getResources().getString(R.string.remove_bookmark);
+                    array[1] = removeBookmark;
+                }
+            }
+            action.close();
+        }
+
         final List<String> stringList = new ArrayList<>();
         stringList.addAll(Arrays.asList(array));
 //        if (currentAlbumController != null && currentAlbumController instanceof NinjaRelativeLayout) {
@@ -1946,17 +1959,6 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         final String[] array = getResources().getStringArray(R.array.list_menu);
         final List<String> stringList = new ArrayList<>();
-
-        RecordAction action = new RecordAction(this);
-        action.open(false);
-        String url = ((NinjaWebView) currentAlbumController).getUrl();
-        if (action.checkBookmark(url)) {
-            if (array != null && array.length > 2){
-                String removeBookmark = getResources().getString(R.string.remove_bookmark);
-                array[1] = removeBookmark;
-            }
-        }
-        action.close();
 
         stringList.addAll(Arrays.asList(array));
         if (currentAlbumController.getFlag() != BrowserUnit.FLAG_BOOKMARKS) {
