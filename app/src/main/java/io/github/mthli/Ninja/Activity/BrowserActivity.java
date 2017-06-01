@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.app.Instrumentation;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -212,6 +213,44 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         new AdBlock(this); // For AdBlock cold boot
         dispatchIntent(getIntent());
+
+        TextView tvBottomLeft = (TextView)findViewById(R.id.tvBottomLeft);
+        tvBottomLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showOverflow();
+            }
+        });
+
+        TextView tvBottomCenter = (TextView)findViewById(R.id.tvBottomCenter);
+        tvBottomCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        TextView tvBottomRight = (TextView)findViewById(R.id.tvBottomRight);
+        tvBottomRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTouchBack();
+            }
+        });
+    }
+
+    public void onTouchBack(){
+        new Thread(){
+            public void run() {
+                try{
+                    Instrumentation inst = new Instrumentation();
+                    inst.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+                }
+                catch (Exception e) {
+                    Log.e("Exception when onBack", e.toString());
+                }
+            }
+        }.start();
     }
 
     @Override
@@ -1741,8 +1780,6 @@ public class BrowserActivity extends Activity implements BrowserController {
 
         final AlertDialog dialog = builder.create();
         dialog.show();
-
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

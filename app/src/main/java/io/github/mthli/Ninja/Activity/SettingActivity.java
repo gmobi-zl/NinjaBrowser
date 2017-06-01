@@ -1,11 +1,16 @@
 package io.github.mthli.Ninja.Activity;
 
 import android.app.Activity;
+import android.app.Instrumentation;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import io.github.mthli.Ninja.Task.ImportBookmarksTask;
 import io.github.mthli.Ninja.Task.ImportWhitelistTask;
 import io.github.mthli.Ninja.View.NinjaToast;
@@ -26,6 +31,44 @@ public class SettingActivity extends Activity {
 
         fragment = new SettingFragment();
         getFragmentManager().beginTransaction().replace(R.id.settingFrame, fragment).commit();
+
+        TextView tvBottomLeft = (TextView)findViewById(R.id.tvBottomLeft);
+        tvBottomLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        TextView tvBottomCenter = (TextView)findViewById(R.id.tvBottomCenter);
+        tvBottomCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        TextView tvBottomRight = (TextView)findViewById(R.id.tvBottomRight);
+        tvBottomRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTouchBack();
+            }
+        });
+    }
+
+    public void onTouchBack(){
+        new Thread(){
+            public void run() {
+                try{
+                    Instrumentation inst = new Instrumentation();
+                    inst.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+                }
+                catch (Exception e) {
+                    Log.e("Exception when onBack", e.toString());
+                }
+            }
+        }.start();
     }
 
     @Override

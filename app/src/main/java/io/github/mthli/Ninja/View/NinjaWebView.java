@@ -166,7 +166,37 @@ public class NinjaWebView extends WebView implements AlbumController {
         WebSettings webSettings = getSettings();
 
         webSettings.setLoadWithOverviewMode(true);
-        webSettings.setTextZoom(100);
+
+        // font size
+        int fontSize = Integer.valueOf(sp.getString(context.getString(R.string.sp_text_size), "2"));
+        switch(fontSize){
+            case 0:
+                //webSettings.setTextSize(WebSettings.TextSize.SMALLEST);
+                webSettings.setTextZoom(50);
+                webSettings.setDefaultFontSize(10);
+                break;
+            case 1:
+                //webSettings.setTextSize(WebSettings.TextSize.SMALLER);
+                webSettings.setTextZoom(75);
+                webSettings.setDefaultFontSize(12);
+                break;
+            case 2:
+                //webSettings.setTextSize(WebSettings.TextSize.NORMAL);
+                webSettings.setTextZoom(100);
+                webSettings.setDefaultFontSize(14);
+                break;
+            case 3:
+                //webSettings.setTextSize(WebSettings.TextSize.LARGER);
+                webSettings.setTextZoom(150);
+                webSettings.setDefaultFontSize(16);
+                break;
+            case 4:
+                //webSettings.setTextSize(WebSettings.TextSize.LARGEST);
+                webSettings.setTextZoom(200);
+                webSettings.setDefaultFontSize(18);
+                break;
+        }
+        //webSettings.setTextZoom(100);
         webSettings.setUseWideViewPort(true);
 
         webSettings.setBlockNetworkImage(!sp.getBoolean(context.getString(R.string.sp_images), true));
@@ -201,26 +231,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         initRendering(mode);
 
         webViewClient.enableAdBlock(sp.getBoolean(context.getString(R.string.sp_ad_block), true));
-
-        // font size
-        int fontSize = Integer.valueOf(sp.getString(context.getString(R.string.sp_text_size), "2"));
-        switch(fontSize){
-            case 0:
-                webSettings.setTextSize(WebSettings.TextSize.SMALLEST);
-                break;
-            case 1:
-                webSettings.setTextSize(WebSettings.TextSize.SMALLER);
-                break;
-            case 2:
-                webSettings.setTextSize(WebSettings.TextSize.NORMAL);
-                break;
-            case 3:
-                webSettings.setTextSize(WebSettings.TextSize.LARGER);
-                break;
-            case 4:
-                webSettings.setTextSize(WebSettings.TextSize.LARGEST);
-                break;
-        }
     }
 
     private synchronized void initAlbum() {

@@ -1,14 +1,19 @@
 package io.github.mthli.Ninja.Activity;
 
 import android.app.Activity;
+import android.app.Instrumentation;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import io.github.mthli.Ninja.Fragment.ClearFragment;
 import io.github.mthli.Ninja.R;
 import io.github.mthli.Ninja.Unit.BrowserUnit;
@@ -26,6 +31,44 @@ public class ClearActivity extends Activity {
 
         ClearFragment clearFrag = new ClearFragment();
         getFragmentManager().beginTransaction().replace(R.id.clearFrame, clearFrag).commit();
+
+        TextView tvBottomLeft = (TextView)findViewById(R.id.tvBottomLeft);
+        tvBottomLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clear();
+            }
+        });
+
+        TextView tvBottomCenter = (TextView)findViewById(R.id.tvBottomCenter);
+        tvBottomCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        TextView tvBottomRight = (TextView)findViewById(R.id.tvBottomRight);
+        tvBottomRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTouchBack();
+            }
+        });
+    }
+
+    public void onTouchBack(){
+        new Thread(){
+            public void run() {
+                try{
+                    Instrumentation inst = new Instrumentation();
+                    inst.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+                }
+                catch (Exception e) {
+                    Log.e("Exception when onBack", e.toString());
+                }
+            }
+        }.start();
     }
 
     @Override
