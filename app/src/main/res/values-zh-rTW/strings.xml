@@ -535,8 +535,37 @@
         添加
     </string>
 
-
+    <string name="bottom_ok">
+        確定
+    </string>
+    <string name="bottom_back">
+        返回
+    </string>
+    <string name="bottom_menu">
+        選項
+    </string>
+    <string name="bottom_clear">
+        清除
+    </string>
     <string name="remove_bookmark">
         書籤中移除
+    </string>
+    <string name="setting_title_textsize">
+        字體大小
+    </string>
+    <string name="setting_summary_textsize_normal">
+        正常
+    </string>
+    <string name="setting_summary_textsize_smallest">
+        極小
+    </string>
+    <string name="setting_summary_textsize_smaller">
+        小
+    </string>
+    <string name="setting_summary_textsize_larger">
+        大
+    </string>
+    <string name="setting_summary_textsize_largest">
+        極大
     </string>
 </resources>

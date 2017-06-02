@@ -150,8 +150,8 @@ public class NinjaWebView extends WebView implements AlbumController {
         webSettings.setGeolocationDatabasePath(context.getFilesDir().toString());
 
         webSettings.setSupportZoom(true);
-        webSettings.setBuiltInZoomControls(true);
-        webSettings.setDisplayZoomControls(false);
+        //webSettings.setBuiltInZoomControls(true);
+        //webSettings.setDisplayZoomControls(true);
 
         webSettings.setDefaultTextEncodingName(BrowserUnit.URL_ENCODING);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -166,34 +166,33 @@ public class NinjaWebView extends WebView implements AlbumController {
         WebSettings webSettings = getSettings();
 
         webSettings.setLoadWithOverviewMode(true);
-
         // font size
         int fontSize = Integer.valueOf(sp.getString(context.getString(R.string.sp_text_size), "2"));
         switch(fontSize){
             case 0:
                 //webSettings.setTextSize(WebSettings.TextSize.SMALLEST);
                 webSettings.setTextZoom(50);
-                webSettings.setDefaultFontSize(10);
+                //webSettings.setDefaultFontSize(10);
                 break;
             case 1:
                 //webSettings.setTextSize(WebSettings.TextSize.SMALLER);
                 webSettings.setTextZoom(75);
-                webSettings.setDefaultFontSize(12);
+                //webSettings.setDefaultFontSize(12);
                 break;
             case 2:
                 //webSettings.setTextSize(WebSettings.TextSize.NORMAL);
                 webSettings.setTextZoom(100);
-                webSettings.setDefaultFontSize(14);
+                //webSettings.setDefaultFontSize(14);
                 break;
             case 3:
                 //webSettings.setTextSize(WebSettings.TextSize.LARGER);
                 webSettings.setTextZoom(150);
-                webSettings.setDefaultFontSize(16);
+                //webSettings.setDefaultFontSize(16);
                 break;
             case 4:
                 //webSettings.setTextSize(WebSettings.TextSize.LARGEST);
                 webSettings.setTextZoom(200);
-                webSettings.setDefaultFontSize(18);
+                //webSettings.setDefaultFontSize(18);
                 break;
         }
         //webSettings.setTextZoom(100);
@@ -206,17 +205,17 @@ public class NinjaWebView extends WebView implements AlbumController {
         webSettings.setSupportMultipleWindows(sp.getBoolean(context.getString(R.string.sp_multiple_windows), false));
         webSettings.setSaveFormData(sp.getBoolean(context.getString(R.string.sp_passwords), true));
 
-        boolean textReflow = sp.getBoolean(context.getString(R.string.sp_text_reflow), true);
-        if (textReflow) {
-            webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                try {
-                    webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
-                } catch (Exception e) {}
-            }
-        } else {
-            webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
-        }
+//        boolean textReflow = sp.getBoolean(context.getString(R.string.sp_text_reflow), true);
+//        if (textReflow) {
+//            webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                try {
+//                    webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
+//                } catch (Exception e) {}
+//            }
+//        } else {
+//            webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+//        }
 
         int userAgent = Integer.valueOf(sp.getString(context.getString(R.string.sp_user_agent), "0"));
         if (userAgent == 1) {

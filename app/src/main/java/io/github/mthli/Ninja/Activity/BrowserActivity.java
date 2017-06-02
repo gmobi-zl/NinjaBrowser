@@ -674,6 +674,31 @@ public class BrowserActivity extends Activity implements BrowserController {
         updateAutoComplete();
     }
 
+    private void refreshPage(){
+        if (currentAlbumController == null) {
+            NinjaToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
+            return;
+        }
+
+        if (currentAlbumController instanceof NinjaWebView) {
+            NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
+            if (ninjaWebView.isLoadFinish()) {
+                ninjaWebView.reload();
+            } else {
+                ninjaWebView.stopLoading();
+            }
+        } else if (currentAlbumController instanceof NinjaRelativeLayout) {
+            final NinjaRelativeLayout layout = (NinjaRelativeLayout) currentAlbumController;
+            if (layout.getFlag() == BrowserUnit.FLAG_HOME) {
+                initHomeGrid(layout, true);
+                return;
+            }
+            initBHList(layout, true);
+        } else {
+            NinjaToast.show(BrowserActivity.this, R.string.toast_refresh_failed);
+        }
+    }
+
     private void initHomeGrid(final NinjaRelativeLayout layout, boolean update) {
         if (update) {
             updateProgress(BrowserUnit.PROGRESS_MIN);
@@ -1788,18 +1813,20 @@ public class BrowserActivity extends Activity implements BrowserController {
                 if (s.equals(array[0])){
                     hideSoftInput(inputBox);
                     showSearchPanel();
-                }else if (s.equals(array[1])) { // bookmarks
+                }else if (s.equals(array[1])) { // refresh
+                    refreshPage();
+                } else if (s.equals(array[2])) { // bookmarks
                     addToBookMark();
-                }else if (s.equals(array[2])) { // bookmarks
+                }else if (s.equals(array[3])) { // bookmarks
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_BOOKMARKS);
-                }else if (s.equals(array[3])) { // history
+                }else if (s.equals(array[4])) { // history
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_HISTORY);
-                }else if (s.equals(array[4])) { // Settings
+                }else if (s.equals(array[5])) { // Settings
                     Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
                     startActivity(intent);
-                }else if (s.equals(array[5])) { // Quit
+                }else if (s.equals(array[6])) { // Quit
                     finish();
                 }
 //                if (s.equals(array[0])) { // Go to top

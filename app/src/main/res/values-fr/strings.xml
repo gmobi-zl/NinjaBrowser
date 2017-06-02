@@ -536,8 +536,37 @@
     </string>
 
 
-
+    <string name="bottom_ok">
+        OK
+    </string>
+    <string name="bottom_back">
+        Arrière
+    </string>
+    <string name="bottom_menu">
+        Menu
+    </string>
+    <string name="bottom_clear">
+        Clair
+    </string>
     <string name="remove_bookmark">
         Supprimer des favoris
+    </string>
+    <string name="setting_title_textsize">
+        taille de police
+    </string>
+    <string name="setting_summary_textsize_normal">
+        normal
+    </string>
+    <string name="setting_summary_textsize_smallest">
+        Le plus petit
+    </string>
+    <string name="setting_summary_textsize_smaller">
+        plus petit
+    </string>
+    <string name="setting_summary_textsize_larger">
+        Plus grand
+    </string>
+    <string name="setting_summary_textsize_largest">
+        Le plus grand
     </string>
 </resources>
