@@ -1769,9 +1769,9 @@ public class BrowserActivity extends Activity implements BrowserController {
             action.open(false);
             String url = ((NinjaWebView) currentAlbumController).getUrl();
             if (action.checkBookmark(url)) {
-                if (array != null && array.length > 2){
+                if (array != null && array.length > 4){
                     String removeBookmark = getResources().getString(R.string.remove_bookmark);
-                    array[1] = removeBookmark;
+                    array[2] = removeBookmark;
                 }
             }
             action.close();

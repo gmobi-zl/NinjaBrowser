@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/main_omnibox"
-        android:layout_above="@+id/rlBottomMenu"
+        android:layout_marginBottom="40dp"
         android:background="@color/white"
         android:focusable="true"
         android:clickable="true"
