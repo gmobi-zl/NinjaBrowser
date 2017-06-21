@@ -22,7 +22,7 @@
     <string-array name="main_overflow">
         <!--<item>Go to top</item>-->
         <!--<item>Add to home</item>-->
-        <item>Find in page</item>
+        <!--<item>Find in page</item>-->
         <item>Refresh</item>
         <item>Add to Bookmarks</item>
         <item>Bookmarks</item>

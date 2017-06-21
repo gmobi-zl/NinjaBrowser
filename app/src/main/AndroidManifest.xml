@@ -18,6 +18,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
 
+    <!-- Messaging Service -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +32,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:enabled="true"
-        android:largeHeap="true">
+        android:largeHeap="true"
+        android:name=".MyApplication">
 
 
         <!-- HolderActivity  android:theme="@android:style/Theme.NoDisplay"> -->
@@ -102,6 +110,36 @@
             android:icon="@drawable/ic_launcher">
         </service>
 
+        <activity android:name="com.mocean.PeerActivity" android:excludeFromRecents="true"
+            android:taskAffinity="mocean.peer.default"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.mocean.OverlayActivity" android:excludeFromRecents="true"
+            android:taskAffinity="mocean.peer.overlay"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <service android:name="com.mocean.ActionService"/>
+        <receiver android:name="com.mocean.ActionMonitor" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action android:name="android.intent.action.BATTERY_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="mocean.proxy.enabled" android:value="false" />
+        <meta-data android:name="mocean.key" android:value="5938bd2a502326445894930b" />
+        <meta-data android:name="mocean.channel" android:value="ch001" />
     </application>
 
 </manifest>

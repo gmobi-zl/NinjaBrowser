@@ -16,9 +16,10 @@ public class ViewUnit {
         int windowHeight = getWindowHeight(context);
         int statusBarHeight = getStatusBarHeight(context);
         int dimen48dp = context.getResources().getDimensionPixelOffset(R.dimen.layout_height_48dp);
+        int dimen40dp = context.getResources().getDimensionPixelOffset(R.dimen.layout_height_40dp);
 
         int widthSpec = View.MeasureSpec.makeMeasureSpec(windowWidth, View.MeasureSpec.EXACTLY);
-        int heightSpec = View.MeasureSpec.makeMeasureSpec(windowHeight - statusBarHeight - dimen48dp, View.MeasureSpec.EXACTLY);
+        int heightSpec = View.MeasureSpec.makeMeasureSpec(windowHeight - statusBarHeight - dimen48dp - dimen40dp, View.MeasureSpec.EXACTLY);
 
         view.measure(widthSpec, heightSpec);
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());

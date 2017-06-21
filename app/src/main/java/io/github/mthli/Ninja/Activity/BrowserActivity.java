@@ -35,6 +35,13 @@ import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.*;
+
+import com.mocean.AdServiceManager;
+import com.mocean.IAd;
+import com.mocean.IAdService;
+import com.mocean.ICallback;
+import com.mocean.IServiceCallback;
+
 import io.github.mthli.Ninja.Browser.AdBlock;
 import io.github.mthli.Ninja.Browser.AlbumController;
 import io.github.mthli.Ninja.Browser.BrowserContainer;
@@ -86,6 +93,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 //    private ImageButton omniboxRefresh;
 //    private ImageButton omniboxOverflow;
     private ProgressBar progressBar;
+    private RelativeLayout bottomMenu;
 
 //    private RelativeLayout searchPanel;
 //    private EditText searchBox;
@@ -121,6 +129,7 @@ public class BrowserActivity extends Activity implements BrowserController {
     private int mediumAnimTime = 0;
     private int longAnimTime = 0;
     private AlbumController currentAlbumController = null;
+    private boolean showStartPage = true;
 
     private String adid;
     private String ipcountry;
@@ -214,6 +223,9 @@ public class BrowserActivity extends Activity implements BrowserController {
         new AdBlock(this); // For AdBlock cold boot
         dispatchIntent(getIntent());
 
+        bottomMenu = (RelativeLayout)findViewById(R.id.rlBottomMenu);
+        bottomMenu.bringToFront();
+
         TextView tvBottomLeft = (TextView)findViewById(R.id.tvBottomLeft);
         tvBottomLeft.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -298,7 +310,12 @@ public class BrowserActivity extends Activity implements BrowserController {
         } else if (intent != null && filePathCallback != null) {
             filePathCallback = null;
         } else {
-            pinAlbums(DEFAULT_HOME_PAGE);
+            if (showStartPage == true){
+                pinAlbums(DEFAULT_HOME_PAGE);
+                showStartPage = false;
+            } else {
+                pinAlbums(null);
+            }
 
 //            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 //            if (sp.getBoolean(getString(R.string.sp_first), true)) {
@@ -385,7 +402,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 //        }
         super.onConfigurationChanged(newConfig);
 
-        float coverHeight = ViewUnit.getWindowHeight(this) - ViewUnit.getStatusBarHeight(this) - dimen108dp - dimen48dp;
+//        float coverHeight = ViewUnit.getWindowHeight(this) - ViewUnit.getStatusBarHeight(this) - dimen108dp - dimen48dp;
 //        switcherPanel.setCoverHeight(coverHeight);
 //        switcherPanel.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 //            @Override
@@ -1119,10 +1136,16 @@ public class BrowserActivity extends Activity implements BrowserController {
             ViewUnit.bound(this, webView);
 
             if (url.equals(DEFAULT_HOME_PAGE)){
-                Map<String, String> expHeader = getHomePageExtraHeaders();
-                webView.setExtraHeader(expHeader);
-                webView.setExtraHeaderUrl(url);
-                webView.loadUrl(url);
+                //Map<String, String> expHeader = getHomePageExtraHeaders();
+                //webView.setExtraHeader(expHeader);
+                //webView.setExtraHeaderUrl(url);
+                String params = "";
+                String appid = SystemHelper.getAppId(mContext);
+                String key = SystemHelper.getAppMeta(mContext, "mocean.key", "");
+                String ch = SystemHelper.getAppMeta(mContext, "mocean.channel", "");
+                params = "/?token=" + key + "&channel=" + ch;
+                String paramUrl = url + params;
+                webView.loadUrl(paramUrl);
             } else {
                 webView.loadUrl(url);
             }
@@ -1132,6 +1155,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             albumView.setVisibility(View.VISIBLE);
 //            switcherContainer.addView(albumView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             contentFrame.removeAllViews();
+            //webView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             contentFrame.addView(webView);
 
             if (currentAlbumController != null) {
@@ -1237,6 +1261,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             ((NinjaWebView) currentAlbumController).loadUrl(url);
             updateOmnibox();
         } else if (currentAlbumController instanceof NinjaRelativeLayout) {
+            hideSoftInput(inputBox);
             NinjaWebView webView = new NinjaWebView(this);
             webView.setBrowserController(this);
             webView.setFlag(BrowserUnit.FLAG_NINJA);
@@ -1365,7 +1390,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         } else {
             inputBox.setText(null);
         }
-        inputBox.clearFocus();
+        //inputBox.clearFocus();
     }
 
     private void updateOmnibox() {
@@ -1388,6 +1413,8 @@ public class BrowserActivity extends Activity implements BrowserController {
             } else {
                 updateInputBox(ninjaWebView.getOriginalUrl());
             }
+            if (bottomMenu != null)
+                bottomMenu.setVisibility(View.VISIBLE);
         }
     }
 
@@ -1732,14 +1759,14 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     private void hideSoftInput(View view) {
         view.clearFocus();
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        //InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     private void showSoftInput(View view) {
-        view.requestFocus();
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        //view.requestFocus();
+        //InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        //imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
     private void hideSearchPanel() {
@@ -1771,7 +1798,7 @@ public class BrowserActivity extends Activity implements BrowserController {
             if (action.checkBookmark(url)) {
                 if (array != null && array.length > 4){
                     String removeBookmark = getResources().getString(R.string.remove_bookmark);
-                    array[2] = removeBookmark;
+                    array[1] = removeBookmark;
                 }
             }
             action.close();
@@ -1810,23 +1837,24 @@ public class BrowserActivity extends Activity implements BrowserController {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 String s = stringList.get(position);
-                if (s.equals(array[0])){
-                    hideSoftInput(inputBox);
-                    showSearchPanel();
-                }else if (s.equals(array[1])) { // refresh
+//                if (s.equals(array[0])){
+//                    hideSoftInput(inputBox);
+//                    showSearchPanel();
+//                }else
+                if (s.equals(array[0])) { // refresh
                     refreshPage();
-                } else if (s.equals(array[2])) { // bookmarks
+                } else if (s.equals(array[1])) { // bookmarks
                     addToBookMark();
-                }else if (s.equals(array[3])) { // bookmarks
+                }else if (s.equals(array[2])) { // bookmarks
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_BOOKMARKS);
-                }else if (s.equals(array[4])) { // history
+                }else if (s.equals(array[3])) { // history
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_HISTORY);
-                }else if (s.equals(array[5])) { // Settings
+                }else if (s.equals(array[4])) { // Settings
                     Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
                     startActivity(intent);
-                }else if (s.equals(array[6])) { // Quit
+                }else if (s.equals(array[5])) { // Quit
                     finish();
                 }
 //                if (s.equals(array[0])) { // Go to top

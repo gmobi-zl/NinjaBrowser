@@ -109,12 +109,12 @@ public class NinjaWebViewClient extends WebViewClient {
 
         white = adBlock.isWhite(url);
 
-        if (extraHeaderUrl != null && url.startsWith(extraHeaderUrl)){
-            view.loadUrl(url, extraHeader);
-            return true;
-        } else {
+//        if (extraHeaderUrl != null && url.equals(extraHeaderUrl)){
+//            view.loadUrl(url, extraHeader);
+//            return true;
+//        } else {
             return super.shouldOverrideUrlLoading(view, url);
-        }
+//        }
     }
 
     @Deprecated

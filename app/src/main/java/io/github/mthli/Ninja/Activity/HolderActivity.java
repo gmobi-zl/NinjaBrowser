@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
@@ -42,15 +43,22 @@ public class HolderActivity extends Activity {
         first.setURL(getIntent().getData().toString());
         first.setTime(System.currentTimeMillis());
 
+        Log.e("HolderActivity", "url = " + getIntent().getData().toString());
+
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                if (first != null && second == null) {
-                    Intent toService = new Intent(HolderActivity.this, HolderService.class);
-                    RecordUnit.setHolder(first);
-                    startService(toService);
-                    background = true;
-                }
+//                if (first != null && second == null) {
+//                    Intent toService = new Intent(HolderActivity.this, HolderService.class);
+//                    RecordUnit.setHolder(first);
+//                    startService(toService);
+//                    background = true;
+//                }
+
+                Intent toActivity = new Intent(HolderActivity.this, BrowserActivity.class);
+                toActivity.putExtra(IntentUnit.OPEN, first.getURL());
+                startActivity(toActivity);
+
                 HolderActivity.this.finish();
             }
         };
@@ -74,15 +82,19 @@ public class HolderActivity extends Activity {
         second.setURL(intent.getData().toString());
         second.setTime(System.currentTimeMillis());
 
-        if (first.getURL().equals(second.getURL())) {
-            showHolderDialog();
-        } else {
-            Intent toService = new Intent(HolderActivity.this, HolderService.class);
-            RecordUnit.setHolder(second);
-            startService(toService);
-            background = true;
-            finish();
-        }
+        Intent toActivity = new Intent(HolderActivity.this, BrowserActivity.class);
+        toActivity.putExtra(IntentUnit.OPEN, second.getURL());
+        startActivity(toActivity);
+        finish();
+//        if (first.getURL().equals(second.getURL())) {
+//            showHolderDialog();
+//        } else {
+//            Intent toService = new Intent(HolderActivity.this, HolderService.class);
+//            RecordUnit.setHolder(second);
+//            startService(toService);
+//            background = true;
+//            finish();
+//        }
     }
 
     @Override

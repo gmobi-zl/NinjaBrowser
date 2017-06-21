@@ -22,7 +22,7 @@
     <string-array name="main_overflow">
         <!--<item>Haut de page</item>-->
         <!--<item>Ajouter à l\'accueil</item>-->
-        <item>Trouver dans la page</item>
+        <!--<item>Trouver dans la page</item>-->
         <item>Rafraîchir</item>
         <item>Ajouter aux favoris</item>
         <item>Signets</item>
