@@ -50,54 +50,61 @@
         </ProgressBar>
     </RelativeLayout>
 
-    <FrameLayout android:id="@+id/main_content"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/main_omnibox"
-        android:layout_marginBottom="40dp"
-        android:background="@color/white"
-        android:focusable="true"
-        android:clickable="true"
-        android:focusableInTouchMode="true">
-    </FrameLayout>
+        android:background="@color/white">
 
-    <RelativeLayout
-        android:id="@+id/rlBottomMenu"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/background_dark"
-        android:focusable="false">
-        <TextView
-            android:id="@+id/tvBottomLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="@string/bottom_menu"
-            android:textSize="22sp"
-            android:textColor="@color/white" />
+        <FrameLayout android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rlBottomMenu"
+            android:background="@color/white"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true">
+        </FrameLayout>
 
-        <TextView
-            android:id="@+id/tvBottomCenter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/bottom_ok"
-            android:textSize="22sp"
-            android:textColor="@color/white"
-            android:visibility="gone"/>
+        <RelativeLayout
+            android:id="@+id/rlBottomMenu"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/background_dark"
+            android:focusable="false">
+            <TextView
+                android:id="@+id/tvBottomLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/bottom_menu"
+                android:textSize="22sp"
+                android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/tvBottomRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:text="@string/bottom_back"
-            android:textSize="22sp"
-            android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/tvBottomCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/bottom_ok"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tvBottomRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="@string/bottom_back"
+                android:textSize="22sp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
     </RelativeLayout>
+
 </RelativeLayout>

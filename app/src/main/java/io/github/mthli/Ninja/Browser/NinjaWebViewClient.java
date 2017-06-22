@@ -61,7 +61,13 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        super.onPageStarted(view, url, favicon);
+
+        if (extraHeaderUrl != null && url.equals(extraHeaderUrl)){
+            view.loadUrl(url, extraHeader);
+            extraHeaderUrl = null;
+        } else {
+            super.onPageStarted(view, url, favicon);
+        }
 
         if (view.getTitle() == null || view.getTitle().isEmpty()) {
             ninjaWebView.update(context.getString(R.string.album_untitled), url);
@@ -109,12 +115,12 @@ public class NinjaWebViewClient extends WebViewClient {
 
         white = adBlock.isWhite(url);
 
-//        if (extraHeaderUrl != null && url.equals(extraHeaderUrl)){
-//            view.loadUrl(url, extraHeader);
-//            return true;
-//        } else {
+        if (extraHeaderUrl != null && url.equals(extraHeaderUrl)){
+            view.loadUrl(url, extraHeader);
+            return true;
+        } else {
             return super.shouldOverrideUrlLoading(view, url);
-//        }
+        }
     }
 
     @Deprecated

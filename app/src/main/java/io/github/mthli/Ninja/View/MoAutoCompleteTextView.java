@@ -65,6 +65,7 @@ public class MoAutoCompleteTextView extends AutoCompleteTextView{
         if (KeyEvent.KEYCODE_DPAD_CENTER == keyCode && isShowingPopup == true && selectListIndex >= 0){
             if (this.listKeyBoardClickedListener != null)
                 this.listKeyBoardClickedListener.onClicked(selectListIndex);
+            //this.dismissDropDown();
         }
         boolean ret = super.onKeyUp(keyCode, event);
 

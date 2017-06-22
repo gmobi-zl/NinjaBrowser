@@ -95,7 +95,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         this.webChromeClient = new NinjaWebChromeClient(this);
         this.downloadListener = new NinjaDownloadListener(this.context);
         this.clickHandler = new NinjaClickHandler(this);
-        this.gestureDetector = new GestureDetector(context, new NinjaGestureListener(this));
+        //this.gestureDetector = new GestureDetector(context, new NinjaGestureListener(this));
 
         initWebView();
         initWebSettings();
@@ -104,15 +104,15 @@ public class NinjaWebView extends WebView implements AlbumController {
     }
 
     private synchronized void initWebView() {
-        setAlwaysDrawnWithCacheEnabled(true);
-        setAnimationCacheEnabled(true);
-        setDrawingCacheBackgroundColor(0x00000000);
-        setDrawingCacheEnabled(true);
-        setWillNotCacheDrawing(false);
-        setSaveEnabled(true);
-
-        setBackground(null);
-        getRootView().setBackground(null);
+//        setAlwaysDrawnWithCacheEnabled(true);
+//        setAnimationCacheEnabled(true);
+//        setDrawingCacheBackgroundColor(0x00000000);
+//        setDrawingCacheEnabled(true);
+//        setWillNotCacheDrawing(false);
+//        setSaveEnabled(true);
+//
+//        setBackground(null);
+//        getRootView().setBackground(null);
         setBackgroundColor(context.getResources().getColor(R.color.white));
 
         setFocusable(true);
@@ -124,13 +124,13 @@ public class NinjaWebView extends WebView implements AlbumController {
         setWebViewClient(webViewClient);
         setWebChromeClient(webChromeClient);
         setDownloadListener(downloadListener);
-        setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                gestureDetector.onTouchEvent(motionEvent);
-                return false;
-            }
-        });
+//        setOnTouchListener(new OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                gestureDetector.onTouchEvent(motionEvent);
+//                return false;
+//            }
+//        });
     }
 
     private synchronized void initWebSettings() {
@@ -202,7 +202,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         webSettings.setJavaScriptEnabled(sp.getBoolean(context.getString(R.string.sp_javascript), true));
         webSettings.setJavaScriptCanOpenWindowsAutomatically(sp.getBoolean(context.getString(R.string.sp_javascript), true));
         webSettings.setGeolocationEnabled(sp.getBoolean(context.getString(R.string.sp_location), true));
-        webSettings.setSupportMultipleWindows(sp.getBoolean(context.getString(R.string.sp_multiple_windows), false));
+        //webSettings.setSupportMultipleWindows(sp.getBoolean(context.getString(R.string.sp_multiple_windows), false));
         webSettings.setSaveFormData(sp.getBoolean(context.getString(R.string.sp_passwords), true));
 
 //        boolean textReflow = sp.getBoolean(context.getString(R.string.sp_text_reflow), true);
@@ -226,8 +226,8 @@ public class NinjaWebView extends WebView implements AlbumController {
             webSettings.setUserAgentString(userAgentOriginal);
         }
 
-        int mode = Integer.valueOf(sp.getString(context.getString(R.string.sp_rendering), "0"));
-        initRendering(mode);
+//        int mode = Integer.valueOf(sp.getString(context.getString(R.string.sp_rendering), "0"));
+//        initRendering(mode);
 
         webViewClient.enableAdBlock(sp.getBoolean(context.getString(R.string.sp_ad_block), true));
     }

@@ -33,6 +33,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.*;
 
@@ -224,7 +225,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         dispatchIntent(getIntent());
 
         bottomMenu = (RelativeLayout)findViewById(R.id.rlBottomMenu);
-        bottomMenu.bringToFront();
+        //bottomMenu.bringToFront();
 
         TextView tvBottomLeft = (TextView)findViewById(R.id.tvBottomLeft);
         tvBottomLeft.setOnClickListener(new View.OnClickListener() {
@@ -1136,15 +1137,19 @@ public class BrowserActivity extends Activity implements BrowserController {
             ViewUnit.bound(this, webView);
 
             if (url.equals(DEFAULT_HOME_PAGE)){
-                //Map<String, String> expHeader = getHomePageExtraHeaders();
-                //webView.setExtraHeader(expHeader);
+                Map<String, String> expHeader = getHomePageExtraHeaders();
+                webView.setExtraHeader(expHeader);
                 //webView.setExtraHeaderUrl(url);
+
                 String params = "";
                 String appid = SystemHelper.getAppId(mContext);
                 String key = SystemHelper.getAppMeta(mContext, "mocean.key", "");
                 String ch = SystemHelper.getAppMeta(mContext, "mocean.channel", "");
                 params = "/?token=" + key + "&channel=" + ch;
                 String paramUrl = url + params;
+
+                webView.setExtraHeaderUrl(paramUrl);
+
                 webView.loadUrl(paramUrl);
             } else {
                 webView.loadUrl(url);
@@ -1155,7 +1160,6 @@ public class BrowserActivity extends Activity implements BrowserController {
             albumView.setVisibility(View.VISIBLE);
 //            switcherContainer.addView(albumView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             contentFrame.removeAllViews();
-            //webView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             contentFrame.addView(webView);
 
             if (currentAlbumController != null) {
@@ -1367,20 +1371,22 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     @Override
     public void updateBookmarks() {
-        if (currentAlbumController == null || !(currentAlbumController instanceof NinjaWebView)) {
-//            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_dark));
-            return;
-        }
+//        if (currentAlbumController == null || !(currentAlbumController instanceof NinjaWebView)) {
+////            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_dark));
+//            return;
+//        }
 
-        RecordAction action = new RecordAction(this);
-        action.open(false);
-        String url = ((NinjaWebView) currentAlbumController).getUrl();
+//        RecordAction action = new RecordAction(this);
+//        action.open(false);
+//        String url = ((NinjaWebView) currentAlbumController).getUrl();
+
 //        if (action.checkBookmark(url)) {
 //            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_blue));
 //        } else {
 //            omniboxBookmark.setImageDrawable(ViewUnit.getDrawable(this, R.drawable.bookmark_selector_dark));
 //        }
-        action.close();
+
+//        action.close();
     }
 
     @Override
@@ -1390,7 +1396,7 @@ public class BrowserActivity extends Activity implements BrowserController {
         } else {
             inputBox.setText(null);
         }
-        //inputBox.clearFocus();
+        inputBox.clearFocus();
     }
 
     private void updateOmnibox() {
@@ -1413,8 +1419,10 @@ public class BrowserActivity extends Activity implements BrowserController {
             } else {
                 updateInputBox(ninjaWebView.getOriginalUrl());
             }
-            if (bottomMenu != null)
+            if (bottomMenu != null) {
                 bottomMenu.setVisibility(View.VISIBLE);
+                //bottomMenu.bringToFront();
+            }
         }
     }
 
@@ -1759,14 +1767,14 @@ public class BrowserActivity extends Activity implements BrowserController {
 
     private void hideSoftInput(View view) {
         view.clearFocus();
-        //InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     private void showSoftInput(View view) {
-        //view.requestFocus();
-        //InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        //imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        view.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
     private void hideSearchPanel() {

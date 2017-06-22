@@ -6,6 +6,7 @@ import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import io.github.mthli.Ninja.R;
@@ -20,9 +21,22 @@ public class ViewUnit {
 
         int widthSpec = View.MeasureSpec.makeMeasureSpec(windowWidth, View.MeasureSpec.EXACTLY);
         int heightSpec = View.MeasureSpec.makeMeasureSpec(windowHeight - statusBarHeight - dimen48dp - dimen40dp, View.MeasureSpec.EXACTLY);
+//        Log.i("com.viebrowser.lite", "windowWidth = " + windowWidth);
+//        Log.i("com.viebrowser.lite", "widthSpec = " + widthSpec);
+//
+//        Log.i("com.viebrowser.lite", "windowHeight = " + windowHeight);
+//        Log.i("com.viebrowser.lite", "statusBarHeight = " + statusBarHeight);
+//        Log.i("com.viebrowser.lite", "dimen48dp = " + dimen48dp);
+//        Log.i("com.viebrowser.lite", "dimen40dp = " + dimen40dp);
+//        Log.i("com.viebrowser.lite", "heightSpec = " + heightSpec);
+
+        int measuredW = view.getMeasuredWidth();
+        int measuredH = view.getMeasuredHeight();
+//        Log.i("com.viebrowser.lite", "getMeasuredWidth = " + measuredW);
+//        Log.i("com.viebrowser.lite", "getMeasuredHeight = " + measuredH);
 
         view.measure(widthSpec, heightSpec);
-        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+        view.layout(0, 0, measuredW, measuredH);
     }
 
     public static Bitmap capture(View view, float width, float height, boolean scroll, Bitmap.Config config) {
