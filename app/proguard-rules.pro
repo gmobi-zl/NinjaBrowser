@@ -23,3 +23,25 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep public class android.content.pm.* {
+    public protected *;
+}
+
+-keep public class com.mocean.* {
+    public protected *;
+}
+
+-keep public class com.mocean.widget.* {
+    public protected *;
+}
+
+-keepclassmembers public class * extends com.mocean.IService {
+    public <init>(...);
+}
+
+-keepclassmembers public class * extends com.mocean.IActivity {
+    public <init>(...);
+}
+
+-keep public class * extends com.mocean.IService
