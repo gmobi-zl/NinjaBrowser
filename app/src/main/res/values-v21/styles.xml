@@ -30,7 +30,7 @@
         <item name="android:textColor">@color/text</item>
         <item name="android:textColorSecondary">@color/text_secondary</item>
         <item name="android:textColorHighlight">@color/blue_200</item>
-        <item name="android:windowBackground">@color/white</item>
+        <!--<item name="android:windowBackground">@color/white</item>-->
         <item name="android:drawSelectorOnTop">false</item>
         <item name="android:alertDialogTheme">@style/AlertDialogStyle</item>
     </style>
@@ -72,7 +72,7 @@
 
     <style name="AlertDialogStyle" parent="android:Theme.Material.Light.Dialog.Alert">
         <item name="android:colorAccent">@color/blue_500</item>
-        <item name="android:background">@color/white</item>
+        <!--<item name="android:background">@color/white</item>-->
     </style>
 
 </resources>

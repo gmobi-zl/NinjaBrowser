@@ -19,7 +19,7 @@
     <style name="SettingActivityTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:textColor">@color/text</item>
         <item name="android:textColorHighlight">@color/blue_200</item>
-        <item name="android:windowBackground">@color/white</item>
+        <!--<item name="android:windowBackground">@color/white</item>-->
         <item name="android:drawSelectorOnTop">false</item>
     </style>
 
