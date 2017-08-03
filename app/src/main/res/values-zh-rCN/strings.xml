@@ -101,8 +101,6 @@
         - 无偿的，这意味着捐赠者不能命令或强迫开发者做捐赠者想做的任何事。\n
         - 归开发者所有。\n
         - 捐赠者同意上述所有观点。\n\n
-        支付宝：\n
-        matthewlee0725@gmail.com
     </string>
     <string name="dialog_content_upload">
         由于某些原因我们无法在Android 4.X中上传文件，但这项功能在Android 5.X中可以正常工作。这是多么遗憾的一件事啊！
@@ -328,7 +326,7 @@
         导入白名单
     </string>
     <string name="whilelist_filename">
-        Ninja白名单
+        Vie白名单
     </string>
     <!-- Readability setting -->
     <string name="setting_title_readability">

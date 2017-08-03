@@ -4,55 +4,55 @@
 
     <!-- AndroidAgo -->
     <string name="android_ago_just_now">
-        剛剛
+        ตอนนี้
     </string>
 
     <!-- Album -->
     <string name="album_title_bookmarks">
-        書簽
+        ที่คั่น
     </string>
     <string name="album_title_history">
-        曆史
+        ประวัติศาสตร์
     </string>
     <string name="album_title_home">
-        首頁
+        บ้าน
     </string>
     <string name="album_untitled">
-        無標題
+        ไม่ได้ตั้งชื่อ
     </string>
 
     <!-- Clear -->
     <string name="clear_label">
-        清空
+        ชัดเจน
     </string>
     <string name="clear_menu_done_all">
-        完成
+        ทำทั้งหมด
     </string>
     <string name="clear_title_quit">
-        退出時清空選擇項
+        ล้างเมื่อแอพพลิเคชันออก
     </string>
     <string name="clear_title_bookmarks">
-        清空書簽
+        ล้างที่คั่นหน้าเว็บ
     </string>
     <string name="clear_title_cache">
-        清空緩存
+        ล้างแคช
     </string>
     <string name="clear_title_cookie">
-        清空Cookie
+        ล้างคุกกี้
     </string>
     <string name="clear_title_form_data">
-        清空表單數據
+        ล้างข้อมูลฟอร์ม
     </string>
     <string name="clear_title_history">
-        清空曆史
+        ล้างประวัติ
     </string>
     <string name="clear_title_passwords">
-        清空密碼
+        ล้างรหัสผ่าน
     </string>
 
     <!-- Dialog -->
     <string name="dialog_title_hint">
-        輸入標題
+        ใส่ชื่อ
     </string>
     <string name="dialog_se_hint">
         https://www.google.com/search?q=
@@ -61,71 +61,71 @@
         Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36
     </string>
     <string name="dialog_sign_in_username">
-        用戶名
+        ชื่อผู้ใช้
     </string>
     <string name="dialog_sign_in_password">
-        密碼
+        รหัสผ่าน
     </string>
     <string name="dialog_button_positive">
-        確認
+        ตกลง
     </string>
     <string name="dialog_button_negative">
-        取消
+        ยกเลิก
     </string>
     <string name="dialog_button_custom">
-        自定義
+        กำหนดเอง
     </string>
     <string name="dialog_title_download">
-        下載
+        คุณต้องการดาวน์โหลดไฟล์?
     </string>
     <string name="dialog_title_resubmission">
-        重新提交
+        ส่งอีกครั้ง
     </string>
     <string name="dialog_title_warning">
-        警告
+        การเตือน
     </string>
     <string name="dialog_title_sign_in">
-        登入
+        ลงชื่อเข้าใช้
     </string>
     <string name="dialog_content_resubmission">
-        你想要重新提交你的數據嗎？
+        คุณต้องการส่งข้อมูลของคุณอีกครั้ง?
     </string>
     <string name="dialog_content_ssl_error">
-        當前站點的證書是不可信任的，需要繼續浏覽嗎？
+        ใบรับรองของไซต์ไม่น่าเชื่อถือ. ดำเนินการต่อ?
     </string>
     <string name="dialog_content_donation">
-        捐贈所得將會被用于：\n
-        - 提升開發環境配置。\n
-        - 提升開發者積極性。\n\n
-        所有的捐贈都會被認爲：\n
-        - 無償的，這意味著捐贈者不能命令或強迫開發者做捐贈者想做的任何事。\n
-        - 歸開發者所有。\n
-        - 捐贈者同意上述所有觀點。\n\n
+        The income from donations will be used to:\n
+        - Improve the development environment.\n
+        - Improve the developer\'s enthusiasm.\n\n
+        All donations will be considered:\n
+        - Unpaid which mains the donor can not command or force the developer to do anything the donor want.\n
+        - Owned by the developer.\n
+        - The donor have agreed all above points.\n\n
     </string>
     <string name="dialog_content_upload">
-        由于某些原因我們無法在Android 4.X中上傳文件，但這項功能在Android 5.X中可以正常工作。這是多麽遺憾的一件事啊！
+        ปัจจุบัน, การอัปโหลดไฟล์สามารถใช้ได้กับ Android 5.0 และ ข้างบน เท่านั้น.
     </string>
 
     <!-- List -->
     <string name="list_empty">
-        當前列表爲空
+        รายการปัจจุบันว่างเปล่า
     </string>
 
     <!-- Main -->
     <string name="main_menu_new_tab">
-        新建標簽
+        แท็บใหม่
     </string>
     <string name="main_menu_copy_link">
-        拷貝鏈接
+        คัดลอกลิงค์
     </string>
     <string name="main_menu_save">
-        保存
+        บันทึก
     </string>
     <string name="main_omnibox_input_hint">
-        搜索或輸入網址
+        ค้นหาหรือพิมพ์ URL
     </string>
     <string name="main_relayout_ok">
-        確定
+        ตกลง
     </string>
     <string name="main_about_blank">
         about:blank
@@ -133,39 +133,39 @@
 
     <!-- Notification -->
     <string name="notification_content_holder">
-        點擊前往浏覽網頁
+        คลิกเพื่อดูหน้า
     </string>
 
     <!-- Readability -->
     <string name="readability_label">
-        閱讀模式
+        การอ่าน
     </string>
     <string name="readability_menu_background">
-        背景
+        พื้นหลัง
     </string>
     <string name="readability_menu_share">
-        分享
+        หุ้น
     </string>
     <string name="readability_empty">
-        閱讀模式加載失敗，原因可能是網絡連接問題，Readability令牌錯誤或者鏈接錯誤
+        ไม่สามารถโหลด การอ่าน, โปรดตรวจสอบการเชื่อมต่อเครือข่ายของคุณ.
     </string>
 
     <!-- Search -->
     <string name="search_hint">
-        搜索
+        ค้นหา
     </string>
 
-    <!-- Setting -->
+    <!-- Settings -->
     <string name="setting_label">
-        設置
+        การตั้งค่า
     </string>
     <!-- Browser setting -->
     <string name="setting_title_browser">
-        浏覽
+        การตั้งค่าเบราเซอร์
     </string>
     <!-- Search engine -->
     <string name="setting_title_search_engine">
-        搜索引擎
+        เครื่องมือค้นหา
     </string>
     <string name="setting_summary_search_engine_google">
         Google
@@ -174,7 +174,7 @@
         DuckDuckGo
     </string>
     <string name="setting_summary_search_engine_startpage">
-        Startpage
+        StartPage
     </string>
     <string name="setting_summary_search_engine_bing">
         Bing
@@ -183,387 +183,387 @@
         Baidu
     </string>
     <string name="setting_summary_search_engine_custom">
-        自定義
+        Custom
     </string>
     <!-- Notification -->
     <string name="setting_title_notification_priority">
-        通知欄優先級
+        ความสำคัญของการแจ้งเตือน
     </string>
     <string name="setting_summary_notification_priority_default">
-        默認
+        ค่าเริ่มต้น
     </string>
     <string name="setting_summary_notification_priority_high">
-        高
+        สูง
     </string>
     <string name="setting_summary_notification_priority_low">
-        低
+        ต่ำ
     </string>
     <!-- Omnibox position -->
     <string name="setting_title_omnibox_position">
-        地址欄位置
+        ตำแหน่งแถบอเนกประสงค์
     </string>
     <string name="setting_summary_omnibox_position_top">
-        頂部
+        ด้านบน
     </string>
     <string name="setting_summary_omnibox_position_bottom">
-        底部
+        ด้านล่าง
     </string>
     <!-- Omnibox control -->
     <string name="setting_title_omnibox_control">
-        地址欄控制
+        ตัวควบคุมแถบอเนกประสงค์
     </string>
     <string name="setting_summary_omnibox_control">
-        允許左右滑動地址欄切換標簽頁
+        กวาดแถบอเนกประสงค์ไปทางซ้าย/สิทธิ์ในการเปลี่ยนแท็บ
     </string>
     <!-- Volume key scroll -->
     <string name="setting_title_volume_control">
-        音量鍵控制
+        การควบคุมระดับเสียง
     </string>
     <string name="setting_summary_vc_switch_tabs">
-        切換標簽頁
+        เปลี่ยนแท็บ
     </string>
     <string name="setting_summary_vc_scroll_webpage">
-        滾動網頁
+        เลื่อนหน้าเว็บ
     </string>
     <string name="setting_summary_vc_system_default">
-        系統默認
+        ค่าดีฟอลต์ของระบบ
     </string>
     <!-- Images -->
     <string name="setting_title_images">
-        圖片
+        ภาพ
     </string>
     <string name="setting_summary_images">
-        允許網頁加載圖片
+        เปิดใช้งานภาพเครือข่าย
     </string>
-    <!-- Cookie -->
+    <!-- Cookies -->
     <string name="setting_title_cookie">
-        Cookie
+        คุ้กกี้
     </string>
     <string name="setting_summary_cookie">
-        允許浏覽器接收Cookie
+        เปิดใช้คุกกี้
     </string>
     <!-- JavaScript -->
     <string name="setting_title_javascript">
         JavaScript
     </string>
     <string name="setting_summary_javascript">
-        允許浏覽器運行JavaScript
+        ทำให้สามารถ JavaScript
     </string>
     <!-- Location -->
     <string name="setting_title_location">
-        地理位置
+        ที่ตั้ง
     </string>
     <string name="setting_summary_location">
-        允許網頁獲取地理位置
+        อนุญาตให้เว็บไซต์เข้าถึงตำแหน่งของคุณ
     </string>
     <!-- Multiple windows -->
     <string name="setting_title_multiple_windows">
-        多標簽頁
+        หลาย Windows
     </string>
     <string name="setting_summary_multiple_windows">
-        允許網頁自動新建標簽頁
+        เปิดใช้งานหลายรายการ windows
     </string>
     <!-- Scroll bar -->
     <string name="setting_title_scroll_bar">
-        滾動條
+        แถบเลื่อน
     </string>
     <string name="setting_summary_scroll_bar">
-        允許在網頁中顯示滾動條
+        แสดง / ซ่อนแถบเลื่อนบนหน้าเว็บ
     </string>
     <!-- Text reflow -->
     <string name="setting_title_text_reflow">
-        文本重排
+        Reflow ข้อความ
     </string>
     <string name="setting_summary_text_reflow">
-        允許浏覽器對網頁文本進行調整
+        เปิดใช้งานการเลื่อนข้อความ
     </string>
     <!-- User Agent -->
     <string name="setting_title_user_agent">
-        浏覽器標識
+        สภาพแวดล้อมของผู้ใช้
     </string>
     <string name="setting_summary_user_agent_default">
-        默認
+        ค่าเริ่มต้น
     </string>
     <string name="setting_summary_user_agent_desktop">
-        桌面
+        เดสก์ทอป
     </string>
     <string name="setting_summary_user_agent_custom">
-        自定義
+        กำหนดเอง
     </string>
     <!-- Rendering -->
     <string name="setting_title_rendering">
-        渲染模式
+        การแสดงผล
     </string>
     <string name="setting_summary_rendering_default">
-        默認
+        ค่าเริ่มต้น
     </string>
     <string name="setting_summary_rendering_grayscale">
-        灰度
+        โทนสีเทา
     </string>
     <string name="setting_summary_rendering_inverted">
-        反轉
+        Inverted
     </string>
     <string name="setting_summary_rendering_inverted_grayscale">
-        反轉灰度
+        Inverted โทนสีเทา
+    </string>
+    <string name="setting_title_textsize">
+        ขนาดตัวอักษร
+    </string>
+    <string name="setting_summary_textsize_normal">
+        ปกติ
+    </string>
+    <string name="setting_summary_textsize_smallest">
+        น้อยที่สุด
+    </string>
+    <string name="setting_summary_textsize_smaller">
+        ที่มีขนาดเล็ก
+    </string>
+    <string name="setting_summary_textsize_larger">
+        ขนาดใหญ่ที่สุด
+    </string>
+    <string name="setting_summary_textsize_largest">
+        ใหญ่ที่สุด
     </string>
     <!-- AdBlock setting -->
     <string name="setting_title_adblock">
         AdBlock
     </string>
     <string name="setting_summary_adblock">
-        允許運行AdBlock
+        ทำให้สามารถ AdBlock
     </string>
     <string name="setting_title_whitelist">
-        白名單
+        รายการที่อนุญาต
     </string>
     <string name="setting_summary_whitelist">
-        允許某些站點顯示廣告
+        อนุญาตให้ไซต์เหล่านี้แสดงโฆษณา
     </string>
     <string name="setting_title_export_whilelist">
-        導出白名單
+        ส่งออกรายการที่อนุญาตพิเศษ
     </string>
     <string name="setting_title_import_whilelist">
-        導入白名單
+        นำเข้ารายการที่อนุญาตพิเศษ
     </string>
     <string name="whilelist_filename">
-        Vie 白名單
+        Vie รายการที่อนุญาต
     </string>
     <!-- Readability setting -->
     <string name="setting_title_readability">
-        閱讀模式
+        การอ่าน
     </string>
     <string name="setting_title_token">
-        令牌
+        เหรียญ
     </string>
     <string name="setting_summary_readability">
-        允許使用閱讀模式
+        เปิดใช้งานการอ่านง่าย
     </string>
     <string name="setting_summary_token">
-        設置Readability令牌
+        กำหนดโทเค็นการอ่านข้อมูลได้
     </string>
     <!-- Data setting -->
     <string name="setting_title_data">
-        數據
+        ข้อมูล
     </string>
     <!-- Passwords -->
     <string name="setting_title_passwords">
-        密碼
+        รหัสผ่าน
     </string>
     <string name="setting_summary_passwords">
-        保存密碼
+        บันทึกรหัสผ่าน
     </string>
     <!-- Bookmarks -->
     <string name="setting_title_export_bookmarks">
-        導出書簽
+        ส่งออกบุ๊กมาร์ก
     </string>
     <string name="setting_title_import_bookmarks">
-        導入書簽
+        นำเข้าบุ๊กมาร์ก
     </string>
     <string name="bookmarks_filename">
-        書簽
+        บุ๊ก
     </string>
     <!-- Clear -->
     <string name="setting_title_clear_control">
-        清空數據
+        ล้างการควบคุม
     </string>
     <string name="setting_title_clear_action">
-        清空數據
+        ชัดเจน
     </string>
     <!-- Others setting -->
     <string name="setting_title_others">
-        其他
+        คนอื่น ๆ
     </string>
     <!-- Version -->
     <string name="setting_title_version">
-        版本號
+        รุ่น
     </string>
     <!-- License -->
     <string name="setting_title_license">
-        協議
+        การอนุญาต
     </string>
     <!-- Contact -->
     <string name="setting_title_donation">
-        捐贈
+        บริจาค
     </string>
 
     <!-- Toast -->
     <string name="toast_add_bookmark_successful">
-        添加書簽成功
+        เพิ่มบุ๊กมาร์กเรียบร้อยแล้ว
     </string>
     <string name="toast_add_bookmark_failed">
-        無法將此頁面添加到書簽
+        ไม่สามารถเพิ่มหน้านี้ลงในบุ๊กมาร์กได้
     </string>
     <string name="toast_add_to_home_successful">
-        添加撥號成功
+        เพิ่มไปที่หน้าแรกเรียบร้อยแล้ว
     </string>
     <string name="toast_add_to_home_failed">
-        添加撥號失敗
+        ไม่สามารถเพิ่มลงในหน้าแรก
     </string>
     <string name="toast_add_token_successful">
-        添加Readability令牌成功
+        เพิ่มการอ่านได้สำเร็จแล้ว API
     </string>
     <string name="toast_add_whitelist_successful">
-        添加域名成功
+        เพิ่มโดเมนเรียบร้อยแล้ว
     </string>
     <string name="toast_already_at_the_front">
-        已經是最前面了
+        อยู่ด้านหน้า
     </string>
     <string name="toast_already_exist_in_home">
-        首頁中已存在該網址
+        มีอยู่แล้วในบ้าน
     </string>
     <string name="toast_clear_successful">
-        清空成功
+        ล้างเรียบร้อยแล้ว
     </string>
     <string name="toast_clear_failed">
-        清空失敗
+        ไม่สามารถล้าง
     </string>
     <string name="toast_copy_successful">
-        拷貝成功
+        คัดลอกเรียบร้อยแล้ว
     </string>
     <string name="toast_delete_bookmark_successful">
-        刪除書簽成功
+        นำออกที่คั่นหน้าเรียบร้อยแล้ว
     </string>
     <string name="toast_delete_successful">
-        刪除成功
+        ลบเรียบร้อยแล้ว
     </string>
     <string name="toast_domain_already_exists">
-        域名已經存在了
+        โดเมนมีอยู่แล้ว
     </string>
     <string name="toast_double_taps_quit">
-        再點擊一下退出
+        กดอีกครั้งเพื่อออก
     </string>
     <string name="toast_emoji">
         (๑•̀ㅂ•́)و✧
     </string>
     <string name="toast_export_bookmarks_successful">
-        導出的書簽文件位于：
+        ส่งออกไฟล์บุ๊กมาร์กที่:&#160;
     </string>
     <string name="toast_export_bookmarks_failed">
-        導出書簽失敗
+        ไม่สามารถส่งออกบุ๊กมาร์ก
     </string>
     <string name="toast_export_whitelist_successful">
-        導出的白名單文件位于：
+        ส่งออกไฟล์ที่อนุญาตพิเศษที่:&#160;
     </string>
     <string name="toast_export_whitelist_failed">
-        導出白名單失敗
+        ไม่สามารถส่งออกรายการที่อนุญาตพิเศษ
     </string>
     <string name="toast_import_bookmarks_successful">
-        導入的書簽數量：
+        บุ๊กมาร์กที่นำเข้านับ:&#160;
     </string>
     <string name="toast_import_bookmarks_failed">
-        導入書簽失敗
+        ไม่สามารถนำเข้าที่คั่นหน้าได้
     </string>
     <string name="toast_import_whitelist_successful">
-        導入的域名數量：
+        นับโดเมนที่นำเข้า:&#160;
     </string>
     <string name="toast_import_whitelist_failed">
-        導入白名單失敗
+        ไม่สามารถนำเข้ารายการที่อนุญาตพิเศษ
     </string>
     <string name="toast_input_empty">
-        你還沒有輸入任何東西
+        คุณยังไม่ได้ป้อนข้อมูลใด ๆ
     </string>
     <string name="toast_invalid_domain">
-        無效的域名
+        โดเมนไม่ถูกต้อง
     </string>
     <string name="toast_load_error">
-        無法加載此網址
+        ไม่สามารถโหลด URL นี้ได้
     </string>
     <string name="toast_load_in_background">
-        正在後台加載
+        กำลังโหลดในพื้นหลัง
     </string>
     <string name="toast_need_restart">
-        重啓浏覽器生效
+        โปรดรีสตาร์ทแอ็พพลิเคชันเพื่อให้การเปลี่ยนแปลงมีผล
     </string>
     <string name="toast_new_tab_successful">
-        新建標簽成功
+        เปิดแท็บใหม่เรียบร้อยแล้ว
     </string>
     <string name="toast_open_file_manager_failed">
-        打開文件管理器失敗
+        ไม่สามารถเปิดตัวจัดการไฟล์
     </string>
     <string name="toast_refresh_failed">
-        無法刷新此頁面
+        ไม่สามารถรีเฟรชหน้านี้
     </string>
     <string name="toast_relayout_successful">
-        排版成功
+        ประสบความสำเร็จในการส่งต่อ
     </string>
     <string name="toast_screenshot_successful">
-        保存的截圖位于：
+        บันทึกภาพหน้าจอที่:&#160;
     </string>
     <string name="toast_screenshot_failed">
-        截圖失敗
+        ไม่สามารถจับภาพหน้าจอได้
     </string>
     <string name="toast_share_failed">
-        無法分享此頁面
+        ไม่สามารถแบ่งปันหน้านี้
     </string>
     <string name="toast_start_download">
-        開始下載
+        กำลังเริ่มดาวน์โหลด
     </string>
     <string name="toast_token_empty">
-        請設置Readability令牌
+        โปรดตั้งค่าโทเค็นการอ่านข้อมูล
     </string>
     <string name="toast_wait_a_minute">
-        稍等片刻
+        โปรดรอสักครู่
     </string>
 
     <!-- Token -->
     <string name="token_label">
-        令牌
+        เหรียญ
     </string>
     <string name="token_edit_hint">
-        Readability令牌
+        การอ่าน เหรียญ
     </string>
     <string name="token_add">
-        添加
+        เพิ่ม
     </string>
     <string name="token_desc">
-        前往https://www.readability.com/developers/api獲取你自己的Readability令牌
+       ไปที่ https://www.readability.com/developers/api เพื่อรับโทเค็นการอ่านข้อมูลของคุณเอง
     </string>
 
     <!-- Whitelist -->
     <string name="whitelist_label">
-        白名單
+        รายการที่อนุญาต
     </string>
     <string name="whitelist_menu_clear">
-        清空
+        ชัดเจน
     </string>
     <string name="whitelist_edit_hint">
-        域名
+        โดเมน
     </string>
     <string name="whitelist_add">
-        添加
+        เพิ่ม
     </string>
 
     <string name="bottom_ok">
-        確定
+        ตกลง
     </string>
     <string name="bottom_back">
-        返回
+        กลับ
     </string>
     <string name="bottom_menu">
-        選項
+        เมนู
     </string>
     <string name="bottom_clear">
-        清除
+        ชัดเจน
     </string>
     <string name="remove_bookmark">
-        書籤中移除
-    </string>
-    <string name="setting_title_textsize">
-        字體大小
-    </string>
-    <string name="setting_summary_textsize_normal">
-        正常
-    </string>
-    <string name="setting_summary_textsize_smallest">
-        極小
-    </string>
-    <string name="setting_summary_textsize_smaller">
-        小
-    </string>
-    <string name="setting_summary_textsize_larger">
-        大
-    </string>
-    <string name="setting_summary_textsize_largest">
-        極大
+        นำออกจากบุ๊กมาร์ก
     </string>
 </resources>

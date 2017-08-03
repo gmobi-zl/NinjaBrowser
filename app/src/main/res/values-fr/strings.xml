@@ -101,8 +101,6 @@
         - Ne seront pas des rémunérations, personne ne peut donc forcer le développeur.\n
         - Seront acquis par le développeur.\n
         - Témoignent que le donateur accepte tous les points précédents.\n\n
-        Alipay :\n
-        matthewlee0725@gmail.com
     </string>
     <string name="dialog_content_upload">
         Actuellement, l\'envoi de fichier n\'est pas supporté par Android 5.0 et suivant.
@@ -328,7 +326,7 @@
         Importer la liste blanche
     </string>
     <string name="whilelist_filename">
-        Liste blanche Ninja
+        Liste blanche Vie
     </string>
     <!-- Readability setting -->
     <string name="setting_title_readability">

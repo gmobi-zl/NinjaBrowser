@@ -101,8 +101,6 @@
         - Unpaid which mains the donor can not command or force the developer to do anything the donor want.\n
         - Owned by the developer.\n
         - The donor have agreed all above points.\n\n
-        Alipay:\n
-        matthewlee0725@gmail.com
     </string>
     <string name="dialog_content_upload">
         Currently, File upload is only supported on Android 5.0 and Above.
@@ -346,7 +344,7 @@
         Import whilelist
     </string>
     <string name="whilelist_filename">
-        NinjaWhitelist
+        VieWhitelist
     </string>
     <!-- Readability setting -->
     <string name="setting_title_readability">
