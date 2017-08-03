@@ -10,7 +10,7 @@
         <item name="android:textColorSecondary">@color/text_secondary</item>
         <item name="android:textColorHighlight">@color/blue_200</item>
         <item name="android:windowBackground">@color/background_dark</item>
-        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:drawSelectorOnTop">false</item>
         <item name="android:alertDialogTheme">@style/AlertDialogStyle</item>
         <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewStyle</item>
     </style>
@@ -21,7 +21,7 @@
         <item name="android:textColorSecondary">@color/text_secondary</item>
         <item name="android:textColorHighlight">@color/blue_200</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:drawSelectorOnTop">false</item>
         <item name="android:alertDialogTheme">@style/AlertDialogStyle</item>
     </style>
 
@@ -31,7 +31,7 @@
         <item name="android:textColorSecondary">@color/text_secondary</item>
         <item name="android:textColorHighlight">@color/blue_200</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:drawSelectorOnTop">false</item>
         <item name="android:alertDialogTheme">@style/AlertDialogStyle</item>
     </style>
 
@@ -41,7 +41,7 @@
         <item name="android:textColorSecondary">@color/text</item>
         <item name="android:textColorHighlight">@color/blue_200</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:drawSelectorOnTop">false</item>
         <item name="android:alertDialogTheme">@style/AlertDialogStyle</item>
     </style>
 
@@ -51,7 +51,7 @@
         <item name="android:textColorSecondary">@color/text</item>
         <item name="android:textColorHighlight">@color/blue_200</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:drawSelectorOnTop">false</item>
         <item name="android:alertDialogTheme">@style/AlertDialogStyle</item>
     </style>
 
@@ -61,7 +61,7 @@
         <item name="android:textColorSecondary">@color/text_secondary</item>
         <item name="android:textColorHighlight">@color/blue_200</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:drawSelectorOnTop">false</item>
         <item name="android:alertDialogTheme">@style/AlertDialogStyle</item>
     </style>
 

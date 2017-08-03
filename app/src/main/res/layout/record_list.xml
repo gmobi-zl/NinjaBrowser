@@ -4,15 +4,23 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        >
 
     <ListView android:id="@+id/record_list"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:drawSelectorOnTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/dividers"
+        android:dividerHeight="@dimen/divider_height_1dp"
+        android:drawSelectorOnTop="false"
+        android:background="@drawable/round_corner_shape_light"
+        >
+
+        <!--
+        android:background="@color/white"
+
         android:focusable="true"
         android:clickable="true"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"  -->
     </ListView>
 
     <TextView android:id="@+id/record_list_empty"

@@ -9,7 +9,7 @@
               android:layout_height="wrap_content"
               android:divider="@color/dividers"
               android:dividerHeight="@dimen/divider_height_1dp"
-              android:drawSelectorOnTop="true"
+              android:drawSelectorOnTop="false"
               android:background="@drawable/round_corner_shape_light">
     </ListView>
 

@@ -21,19 +21,26 @@ android {
         applicationId "com.viebrowser.lite"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 108
-        versionName "1.0.8"
+        versionCode 110
+        versionName "1.1.0"
         //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
     }
 
     signingConfigs {
-        gmobiKey {
-            keyAlias 'gmobi'
-            keyPassword '4gmobi2admin'
-            storeFile file('../release.keystore')
-            storePassword '4gmobi2admin'
+//        gmobiKey {
+//            keyAlias 'gmobi'
+//            keyPassword '4gmobi2admin'
+//            storeFile file('../release.keystore')
+//            storePassword '4gmobi2admin'
+//        }
+
+        vieKey {
+            keyAlias 'vieKey'
+            keyPassword 'viepassword'
+            storeFile file('../buildRelease.jks')
+            storePassword 'viepassword'
         }
     }
 
@@ -42,7 +49,7 @@ android {
             zipAlignEnabled true
             minifyEnabled true
             shrinkResources true
-            signingConfig signingConfigs.gmobiKey
+            signingConfig signingConfigs.vieKey
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

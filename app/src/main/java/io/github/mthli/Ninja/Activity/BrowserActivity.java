@@ -525,6 +525,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 //        omniboxRefresh = (ImageButton) findViewById(R.id.main_omnibox_refresh);
 //        omniboxOverflow = (ImageButton) findViewById(R.id.main_omnibox_overflow);
         progressBar = (ProgressBar) findViewById(R.id.main_progress_bar);
+        ImageButton btnGoto = (ImageButton)findViewById(R.id.btn_goto);
 
         omnibox.setEnabled(true);
 //        inputBox.setOnTouchListener(new SwipeToBoundListener(omnibox, new SwipeToBoundListener.BoundCallback() {
@@ -588,6 +589,19 @@ public class BrowserActivity extends Activity implements BrowserController {
         });
 
         inputBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = inputBox.getText().toString().trim();
+                if (query.isEmpty()) {
+                    NinjaToast.show(BrowserActivity.this, R.string.toast_input_empty);
+                } else {
+                    updateAlbum(query);
+                    hideSoftInput(inputBox);
+                }
+            }
+        });
+
+        btnGoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String query = inputBox.getText().toString().trim();
@@ -799,15 +813,15 @@ public class BrowserActivity extends Activity implements BrowserController {
         adapter.notifyDataSetChanged();
 
         /* Wait for adapter.notifyDataSetChanged() */
-        if (update) {
-            listView.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    layout.setAlbumCover(ViewUnit.capture(layout, dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
-                    updateProgress(BrowserUnit.PROGRESS_MAX);
-                }
-            }, shortAnimTime);
-        }
+//        if (update) {
+//            listView.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    layout.setAlbumCover(ViewUnit.capture(layout, dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
+//                    updateProgress(BrowserUnit.PROGRESS_MAX);
+//                }
+//            }, shortAnimTime);
+//        }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
