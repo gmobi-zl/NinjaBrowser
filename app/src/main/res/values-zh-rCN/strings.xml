@@ -182,6 +182,9 @@
     <string name="setting_summary_search_engine_baidu">
         Baidu
     </string>
+    <string name="setting_summary_search_engine_yahoo">
+        Yahoo
+    </string>
     <string name="setting_summary_search_engine_custom">
         自定义
     </string>

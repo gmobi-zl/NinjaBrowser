@@ -182,8 +182,11 @@
     <string name="setting_summary_search_engine_baidu">
         Baidu
     </string>
+    <string name="setting_summary_search_engine_yahoo">
+        Yahoo
+    </string>
     <string name="setting_summary_search_engine_custom">
-        Custom
+        กำหนดเอง
     </string>
     <!-- Notification -->
     <string name="setting_title_notification_priority">

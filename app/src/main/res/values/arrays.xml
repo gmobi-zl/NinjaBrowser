@@ -42,6 +42,8 @@
         <item>@string/setting_summary_search_engine_startpage</item>
         <item>@string/setting_summary_search_engine_bing</item>
         <item>@string/setting_summary_search_engine_baidu</item>
+        <item>@string/setting_summary_search_engine_yahoo</item>
+        <item>@string/setting_summary_search_engine_custom</item>
     </string-array>
     <string-array name="setting_values_search_engine">
         <item>0</item>
@@ -49,6 +51,8 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
 
     <!-- Notification -->

@@ -82,13 +82,32 @@ public class SearchEngineListPreference extends ListPreference {
                     NinjaToast.show(getContext(), R.string.toast_invalid_domain);
                     return true;
                 } else {
-                    sp.edit().putString(getContext().getString(R.string.sp_search_engine), "5").commit();
+                    sp.edit().putString(getContext().getString(R.string.sp_search_engine), "6").commit();
                     sp.edit().putString(getContext().getString(R.string.sp_search_engine_custom), domain).commit();
 
                     hideSoftInput(editText);
                     dialog.hide();
                     dialog.dismiss();
                     return false;
+                }
+            }
+        });
+
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String domain = editText.getText().toString().trim();
+                if (domain.isEmpty()) {
+                    NinjaToast.show(getContext(), R.string.toast_input_empty);
+                } else if (!BrowserUnit.isURL(domain)) {
+                    NinjaToast.show(getContext(), R.string.toast_invalid_domain);
+                } else {
+                    sp.edit().putString(getContext().getString(R.string.sp_search_engine), "6").commit();
+                    sp.edit().putString(getContext().getString(R.string.sp_search_engine_custom), domain).commit();
+
+                    hideSoftInput(editText);
+                    dialog.hide();
+                    dialog.dismiss();
                 }
             }
         });

@@ -130,7 +130,7 @@ public class BrowserActivity extends Activity implements BrowserController {
     private int mediumAnimTime = 0;
     private int longAnimTime = 0;
     private AlbumController currentAlbumController = null;
-    private boolean showStartPage = true;
+    private boolean showStartPage = false;
 
     private String adid;
     private String ipcountry;
@@ -150,27 +150,30 @@ public class BrowserActivity extends Activity implements BrowserController {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    adid = AdvertisingIdClient.getAdvertisingIdInfo(mContext).getId();
-                } catch (Exception e) {
-                    Log.e("error", e.toString());
-                }
 
-                try{
-                    HttpHelper.Response resp = HttpHelper.doGet(URL_IP_LOCATION, null);
-                    if (resp != null && resp.getBody() != null){
-                        JSONObject jo = JsonHelper.parse(resp.getBody());
-                        ipcountry = jo.optString("country", null);
-                        ipcity = jo.optString("city", null);
+        if (showStartPage == true){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        adid = AdvertisingIdClient.getAdvertisingIdInfo(mContext).getId();
+                    } catch (Exception e) {
+                        Log.e("error", e.toString());
                     }
-                }catch(Exception e){
-                    Log.e("error", e.toString());
+
+                    try{
+                        HttpHelper.Response resp = HttpHelper.doGet(URL_IP_LOCATION, null);
+                        if (resp != null && resp.getBody() != null){
+                            JSONObject jo = JsonHelper.parse(resp.getBody());
+                            ipcountry = jo.optString("country", null);
+                            ipcity = jo.optString("city", null);
+                        }
+                    }catch(Exception e){
+                        Log.e("error", e.toString());
+                    }
                 }
-            }
-        }).start();
+            }).start();
+        }
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -1120,9 +1123,10 @@ public class BrowserActivity extends Activity implements BrowserController {
             controller.deactivate();
         }
 
-        if (BrowserContainer.size() < 1 && url == null) {
-            addAlbum(BrowserUnit.FLAG_HOME);
-        } else if (BrowserContainer.size() >= 1 && url == null) {
+//        if (BrowserContainer.size() < 1 && url == null) {
+//            addAlbum(BrowserUnit.FLAG_HOME);
+//        } else
+        if (BrowserContainer.size() >= 1 && url == null) {
             if (currentAlbumController != null) {
                 currentAlbumController.activate();
                 return;
@@ -1150,23 +1154,25 @@ public class BrowserActivity extends Activity implements BrowserController {
             webView.setAlbumTitle(getString(R.string.album_untitled));
             ViewUnit.bound(this, webView);
 
-            if (url.equals(DEFAULT_HOME_PAGE)){
-                Map<String, String> expHeader = getHomePageExtraHeaders();
-                webView.setExtraHeader(expHeader);
-                //webView.setExtraHeaderUrl(url);
+            if (url != null){
+                if (url.equals(DEFAULT_HOME_PAGE)){
+                    Map<String, String> expHeader = getHomePageExtraHeaders();
+                    webView.setExtraHeader(expHeader);
+                    //webView.setExtraHeaderUrl(url);
 
-                String params = "";
-                String appid = SystemHelper.getAppId(mContext);
-                String key = SystemHelper.getAppMeta(mContext, "mocean.key", "");
-                String ch = SystemHelper.getAppMeta(mContext, "mocean.channel", "");
-                params = "/?token=" + key + "&channel=" + ch;
-                String paramUrl = url + params;
+                    String params = "";
+                    String appid = SystemHelper.getAppId(mContext);
+                    String key = SystemHelper.getAppMeta(mContext, "mocean.key", "");
+                    String ch = SystemHelper.getAppMeta(mContext, "mocean.channel", "");
+                    params = "/?token=" + key + "&channel=" + ch;
+                    String paramUrl = url + params;
 
-                webView.setExtraHeaderUrl(paramUrl);
+                    webView.setExtraHeaderUrl(paramUrl);
 
-                webView.loadUrl(paramUrl);
-            } else {
-                webView.loadUrl(url);
+                    webView.loadUrl(paramUrl);
+                } else {
+                    webView.loadUrl(url);
+                }
             }
 
             BrowserContainer.add(webView);
@@ -1190,6 +1196,13 @@ public class BrowserActivity extends Activity implements BrowserController {
                     currentAlbumController.setAlbumCover(ViewUnit.capture(((View) currentAlbumController), dimen144dp, dimen108dp, false, Bitmap.Config.RGB_565));
                 }
             }, shortAnimTime);
+
+            if (url == null) {
+                inputBox.setFocusable(true);
+                inputBox.setFocusableInTouchMode(true);
+                inputBox.requestFocus();
+                inputBox.requestFocusFromTouch();
+            }
         }
     }
 

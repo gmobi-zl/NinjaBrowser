@@ -13,6 +13,7 @@ import io.github.mthli.Ninja.Browser.AdBlock;
 import io.github.mthli.Ninja.Database.Record;
 import io.github.mthli.Ninja.Database.RecordAction;
 import io.github.mthli.Ninja.R;
+import io.github.mthli.Ninja.Utils.SystemHelper;
 import io.github.mthli.Ninja.View.NinjaToast;
 
 import java.io.*;
@@ -44,6 +45,7 @@ public class BrowserUnit {
     public static final String INTRODUCTION_EN = "ninja_introduction_en.html";
     public static final String INTRODUCTION_ZH = "ninja_introduction_zh.html";
 
+    public static final String SEARCH_ENGINE_YAHOO = "http://search.viebrowser.com/api/search?keywords=";
     public static final String SEARCH_ENGINE_GOOGLE = "https://www.google.com/search?q=";
     public static final String SEARCH_ENGINE_DUCKDUCKGO = "https://duckduckgo.com/?q=";
     public static final String SEARCH_ENGINE_STARTPAGE = "https://startpage.com/do/search?query=";
@@ -122,8 +124,8 @@ public class BrowserUnit {
         } catch (UnsupportedEncodingException u) {}
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        String custom = sp.getString(context.getString(R.string.sp_search_engine_custom), SEARCH_ENGINE_GOOGLE);
-        final int i = Integer.valueOf(sp.getString(context.getString(R.string.sp_search_engine), "0"));
+        String custom = sp.getString(context.getString(R.string.sp_search_engine_custom), SEARCH_ENGINE_YAHOO);
+        final int i = Integer.valueOf(sp.getString(context.getString(R.string.sp_search_engine), "5"));
         switch (i) {
             case 0:
                 return SEARCH_ENGINE_GOOGLE + query;
@@ -136,10 +138,20 @@ public class BrowserUnit {
             case 4:
                 return SEARCH_ENGINE_BAIDU + query;
             case 5:
+                return getDefauleSearchUrl(context, query);
+            case 6:
                 return custom + query;
             default:
-                return SEARCH_ENGINE_GOOGLE + query;
+                return getDefauleSearchUrl(context, query);
         }
+    }
+
+    public static String getDefauleSearchUrl(Context context, String query){
+        String searchUrl = SEARCH_ENGINE_YAHOO + query;
+        String key = SystemHelper.getAppMeta(context, "mocean.key", "");
+        String ch = SystemHelper.getAppMeta(context, "mocean.channel", "");
+        String params = "&token=" + key + "&channel=" + ch;
+        return searchUrl + params;
     }
 
     public static String urlWrapper(String url) {

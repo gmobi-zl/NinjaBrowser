@@ -71,8 +71,8 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
 
         seEntries = getResources().getStringArray(R.array.setting_entries_search_engine);
         searchEngine = (ListPreference) findPreference(getString(R.string.sp_search_engine));
-        int num = Integer.valueOf(sp.getString(getString(R.string.sp_search_engine), "0"));
-        if (0 <= num && num <= 4) {
+        int num = Integer.valueOf(sp.getString(getString(R.string.sp_search_engine), "5"));
+        if (0 <= num && num <= 5) {
             summary = seEntries[num];
             searchEngine.setSummary(summary);
         } else {
@@ -175,11 +175,11 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
     public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
         spChange = true;
         if (key.equals(getString(R.string.sp_search_engine))) {
-            int num = Integer.valueOf(sp.getString(key, "0"));
-            if (0 <= num && num <= 4) {
+            int num = Integer.valueOf(sp.getString(key, "5"));
+            if (0 <= num && num <= 5) {
                 searchEngine.setSummary(seEntries[num]);
             } else {
-                searchEngine.setValue("5");
+                searchEngine.setValue("6");
                 searchEngine.setSummary(R.string.setting_summary_search_engine_custom);
             }
         } else if (key.equals(getString(R.string.sp_notification_priority))) {
