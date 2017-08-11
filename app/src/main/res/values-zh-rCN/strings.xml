@@ -569,4 +569,16 @@
     <string name="setting_summary_textsize_largest">
         极大
     </string>
+    <string name="mouse_mode_on">
+        开启鼠标模式
+    </string>
+    <string name="mouse_mode_off">
+        关闭鼠标模式
+    </string>
+    <string name="action_successful">
+        成功
+    </string>
+    <string name="app_name">
+        浏览器
+    </string>
 </resources>

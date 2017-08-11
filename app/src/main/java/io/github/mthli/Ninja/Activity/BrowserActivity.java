@@ -1816,6 +1816,26 @@ public class BrowserActivity extends Activity implements BrowserController {
 //        searchPanel.setVisibility(View.VISIBLE);
 //        showSoftInput(searchBox);
     }
+    private boolean demoMouseMode = true;
+    private boolean getDeviceMouseMode(){
+        return demoMouseMode;
+    }
+
+    private void switchMouseMode(){
+        boolean mode = getDeviceMouseMode();
+        if (mode == true){
+
+            demoMouseMode = false;
+            String toastStr = getResources().getString(R.string.mouse_mode_off) + " : " + getResources().getString(R.string.action_successful);
+            NinjaToast.show(BrowserActivity.this, toastStr);
+
+        } else {
+
+            demoMouseMode = true;
+            String toastStr = getResources().getString(R.string.mouse_mode_on) + " : " + getResources().getString(R.string.action_successful);
+            NinjaToast.show(BrowserActivity.this, toastStr);
+        }
+    }
 
     private boolean showOverflow() {
         final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -1838,6 +1858,18 @@ public class BrowserActivity extends Activity implements BrowserController {
             }
             action.close();
         }
+
+        if (array != null && array.length > 4){
+            boolean mouseMode = getDeviceMouseMode();
+            if (mouseMode == true){
+                String offMode = getResources().getString(R.string.mouse_mode_off);
+                array[2] = offMode;
+            } else {
+                String onMode = getResources().getString(R.string.mouse_mode_on);
+                array[2] = onMode;
+            }
+        }
+
 
         final List<String> stringList = new ArrayList<>();
         stringList.addAll(Arrays.asList(array));
@@ -1878,18 +1910,20 @@ public class BrowserActivity extends Activity implements BrowserController {
 //                }else
                 if (s.equals(array[0])) { // refresh
                     refreshPage();
-                } else if (s.equals(array[1])) { // bookmarks
+                } else if (s.equals(array[1])) { // add/remove bookmarks
                     addToBookMark();
-                }else if (s.equals(array[2])) { // bookmarks
+                } else if (s.equals(array[2])) { // mouse mode
+                    switchMouseMode();
+                } else if (s.equals(array[3])) { // bookmarks
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_BOOKMARKS);
-                }else if (s.equals(array[3])) { // history
+                }else if (s.equals(array[4])) { // history
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_HISTORY);
-                }else if (s.equals(array[4])) { // Settings
+                }else if (s.equals(array[5])) { // Settings
                     Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
                     startActivity(intent);
-                }else if (s.equals(array[5])) { // Quit
+                }else if (s.equals(array[6])) { // Quit
                     finish();
                 }
 //                if (s.equals(array[0])) { // Go to top

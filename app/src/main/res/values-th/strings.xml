@@ -569,4 +569,16 @@
     <string name="remove_bookmark">
         นำออกจากบุ๊กมาร์ก
     </string>
+    <string name="mouse_mode_on">
+        เปิดโหมดเมาส์
+    </string>
+    <string name="mouse_mode_off">
+        ปิดโหมดเมาส์
+    </string>
+    <string name="action_successful">
+        ความสำเร็จ
+    </string>
+    <string name="app_name">
+        เบราว์เซอร์
+    </string>
 </resources>

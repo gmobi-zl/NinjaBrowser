@@ -569,4 +569,13 @@
     <string name="remove_bookmark">
         Remove from bookmarks
     </string>
+    <string name="mouse_mode_on">
+        Turn ON Mouse Mode
+    </string>
+    <string name="mouse_mode_off">
+        Turn OFF Mouse Mode
+    </string>
+    <string name="action_successful">
+        Success
+    </string>
 </resources>

@@ -570,4 +570,16 @@
     <string name="setting_summary_textsize_largest">
         Le plus grand
     </string>
+    <string name="mouse_mode_on">
+        Activez le mode souris
+    </string>
+    <string name="mouse_mode_off">
+        Éteignez le mode de la souris
+    </string>
+    <string name="action_successful">
+        Succès
+    </string>
+    <string name="app_name">
+        Navigateur
+    </string>
 </resources>
