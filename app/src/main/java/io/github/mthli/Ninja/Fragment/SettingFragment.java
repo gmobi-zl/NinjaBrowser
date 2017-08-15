@@ -157,7 +157,7 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
                 getActivity().startActivityForResult(clearControl, IntentUnit.REQUEST_CLEAR);
                 break;
             case R.string.setting_title_version:
-                NinjaToast.show(getActivity(), R.string.toast_emoji);
+                //NinjaToast.show(getActivity(), R.string.toast_emoji);
                 break;
             case R.string.setting_title_license:
                 showLicenseDialog();

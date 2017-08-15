@@ -6,6 +6,8 @@ import com.mocean.AdServiceManager;
 import com.mocean.IAdService;
 import com.mocean.IServiceCallback;
 
+import io.github.mthli.Ninja.Utils.MouseModeCtrl;
+
 /**
  * Created by zl on 2017/6/21.
  */
@@ -20,5 +22,8 @@ public class MyApplication extends Application {
             public void call(IAdService service) {
             }
         });
+
+        MouseModeCtrl mmCtrl = MouseModeCtrl.getInstance(this);
+        mmCtrl.firstStartAction();
     }
 }

@@ -502,7 +502,7 @@
         Failed to open File Manager
     </string>
     <string name="toast_refresh_failed">
-        Can\'t refresh this page
+        Can not refresh this page
     </string>
     <string name="toast_relayout_successful">
         Successfully Relayout
@@ -514,7 +514,7 @@
         Failed to capture Screenshot
     </string>
     <string name="toast_share_failed">
-        Can\'t share this page
+        Can not share this page
     </string>
     <string name="toast_start_download">
         Starting download

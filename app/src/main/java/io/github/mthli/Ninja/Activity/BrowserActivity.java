@@ -57,6 +57,7 @@ import io.github.mthli.Ninja.Unit.BrowserUnit;
 import io.github.mthli.Ninja.Unit.IntentUnit;
 import io.github.mthli.Ninja.Utils.HttpHelper;
 import io.github.mthli.Ninja.Utils.JsonHelper;
+import io.github.mthli.Ninja.Utils.MouseModeCtrl;
 import io.github.mthli.Ninja.Utils.SystemHelper;
 import io.github.mthli.Ninja.Unit.ViewUnit;
 import io.github.mthli.Ninja.View.*;
@@ -1816,22 +1817,24 @@ public class BrowserActivity extends Activity implements BrowserController {
 //        searchPanel.setVisibility(View.VISIBLE);
 //        showSoftInput(searchBox);
     }
-    private boolean demoMouseMode = true;
+    private boolean demoMouseMode = false;
     private boolean getDeviceMouseMode(){
+        MouseModeCtrl mmCtrl = MouseModeCtrl.getInstance(this);
+        demoMouseMode = mmCtrl.getMouseMode();
         return demoMouseMode;
     }
 
     private void switchMouseMode(){
         boolean mode = getDeviceMouseMode();
+        MouseModeCtrl mmCtrl = MouseModeCtrl.getInstance(this);
         if (mode == true){
-
             demoMouseMode = false;
+            mmCtrl.setMouseMode(demoMouseMode);
             String toastStr = getResources().getString(R.string.mouse_mode_off) + " : " + getResources().getString(R.string.action_successful);
             NinjaToast.show(BrowserActivity.this, toastStr);
-
         } else {
-
             demoMouseMode = true;
+            mmCtrl.setMouseMode(demoMouseMode);
             String toastStr = getResources().getString(R.string.mouse_mode_on) + " : " + getResources().getString(R.string.action_successful);
             NinjaToast.show(BrowserActivity.this, toastStr);
         }
