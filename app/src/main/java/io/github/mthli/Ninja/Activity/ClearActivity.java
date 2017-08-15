@@ -19,7 +19,7 @@ import io.github.mthli.Ninja.R;
 import io.github.mthli.Ninja.Unit.BrowserUnit;
 import io.github.mthli.Ninja.View.NinjaToast;
 
-public class ClearActivity extends Activity {
+public class ClearActivity extends BaseActivity {
     public static final String DB_CHANGE = "DB_CHANGE";
     private boolean dbChange = false;
 

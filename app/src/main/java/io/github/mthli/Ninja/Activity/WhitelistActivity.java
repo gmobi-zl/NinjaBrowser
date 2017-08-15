@@ -19,7 +19,7 @@ import io.github.mthli.Ninja.View.WhitelistAdapter;
 
 import java.util.List;
 
-public class WhitelistActivity extends Activity {
+public class WhitelistActivity extends BaseActivity {
     private WhitelistAdapter adapter;
     private List<String> list;
 

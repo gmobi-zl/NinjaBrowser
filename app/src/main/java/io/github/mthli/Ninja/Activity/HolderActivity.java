@@ -22,7 +22,7 @@ import io.github.mthli.Ninja.View.NinjaToast;
 
 import java.util.*;
 
-public class HolderActivity extends Activity {
+public class HolderActivity extends BaseActivity {
     private static final int TIMER_SCHEDULE_DEFAULT = 512;
 
     private Record first = null;

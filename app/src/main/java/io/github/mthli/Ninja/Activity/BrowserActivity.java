@@ -66,7 +66,7 @@ import org.json.JSONObject;
 
 import java.util.*;
 
-public class BrowserActivity extends Activity implements BrowserController {
+public class BrowserActivity extends BaseActivity implements BrowserController {
     // Sync with NinjaToast.show() 2000ms delay
     private static final int DOUBLE_TAPS_QUIT_DEFAULT = 2000;
 
@@ -1743,7 +1743,7 @@ public class BrowserActivity extends Activity implements BrowserController {
 //            switcherPanel.expanded();
 //        } else
         if (currentAlbumController == null) {
-            finish();
+            safelyFinish();
         } else if (currentAlbumController instanceof NinjaWebView) {
             NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
             if (ninjaWebView.canGoBack()) {
@@ -1765,11 +1765,11 @@ public class BrowserActivity extends Activity implements BrowserController {
                     }
                     break;
                 default:
-                    finish();
+                    safelyFinish();
                     break;
             }
         } else {
-            finish();
+            safelyFinish();
         }
 
         return true;
@@ -1788,9 +1788,20 @@ public class BrowserActivity extends Activity implements BrowserController {
                 }
             }, DOUBLE_TAPS_QUIT_DEFAULT);
         } else {
+            exitTurnOffMouseMode();
             timer.cancel();
-            finish();
+            safelyFinish();
         }
+    }
+
+    private void safelyFinish(){
+        exitTurnOffMouseMode();
+        finish();
+    }
+
+    private void exitTurnOffMouseMode(){
+        MouseModeCtrl mmCtrl = MouseModeCtrl.getInstance(this);
+        mmCtrl.closeMouseModeWhenBGOrExit();
     }
 
     private void hideSoftInput(View view) {
@@ -1927,7 +1938,7 @@ public class BrowserActivity extends Activity implements BrowserController {
                     Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
                     startActivity(intent);
                 }else if (s.equals(array[6])) { // Quit
-                    finish();
+                    safelyFinish();
                 }
 //                if (s.equals(array[0])) { // Go to top
 //                    NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;

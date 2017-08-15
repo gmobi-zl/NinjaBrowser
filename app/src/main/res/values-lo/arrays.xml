@@ -6,16 +6,16 @@
     <string-array name="holder_menu">
         <item>Foreground</item>
         <item>Copy link</item>
-        <item>Share</item>
+        <item>ແບ່ງປັນ</item>
     </string-array>
 
     <!-- List -->
     <string-array name="list_menu">
-        <item>New tab</item>
+        <item>ແຖບ​ໃຫມ່</item>
         <item>Copy link</item>
-        <item>Share</item>
-        <item>Edit</item>
-        <item>Delete</item>
+        <item>ແບ່ງປັນ</item>
+        <item>ແກ້ໄຂ</item>
+        <item>ລົບ</item>
     </string-array>
 
     <!-- Main -->
@@ -23,17 +23,17 @@
         <!--<item>Go to top</item>-->
         <!--<item>Add to home</item>-->
         <!--<item>Find in page</item>-->
-        <item>Refresh</item>
+        <item>ປັບປຸງໃຫມ່</item>
         <item>Add to Bookmarks</item>
         <item>Mouse Mode</item>
         <item>Bookmarks</item>
-        <item>History</item>
+        <item>ປະວັດສາດ</item>
         <item>Settings</item>
         <!--<item>Screenshot</item>-->
         <!--<item>Readability</item>-->
         <!--<item>Share</item>-->
         <!--<item>Relayout</item>-->
-        <item>Quit</item>
+        <item>ອອກຈາກຫ້ອງ</item>
     </string-array>
 
     <!-- Search engine -->

@@ -4,7 +4,7 @@
 
     <!-- AndroidAgo -->
     <string name="android_ago_just_now">
-        Just now
+        ດຽວ​ນີ້
     </string>
 
     <!-- Album -->
@@ -12,10 +12,10 @@
         Bookmarks
     </string>
     <string name="album_title_history">
-        History
+        ປະວັດສາດ
     </string>
     <string name="album_title_home">
-        Home
+        ຫນ້າທໍາອິດ
     </string>
     <string name="album_untitled">
         Untitled
@@ -26,10 +26,10 @@
         Clear
     </string>
     <string name="clear_menu_done_all">
-        Done all
+        ເຮັດແລ້ວທັງຫມົດ
     </string>
     <string name="clear_title_quit">
-        Clear when application exits
+        ລຶບເມື່ອຄໍາຮ້ອງສະຫມັກອອກຈາກ
     </string>
     <string name="clear_title_bookmarks">
         Clear Bookmarks
@@ -41,18 +41,18 @@
         Clear Cookies
     </string>
     <string name="clear_title_form_data">
-        Clear Form data
+        ລ້າງຂໍ້ມູນແບບຟອມ
     </string>
     <string name="clear_title_history">
         Clear History
     </string>
     <string name="clear_title_passwords">
-        Clear Passwords
+        ລຶບລະຫັດຜ່ານ
     </string>
 
     <!-- Dialog -->
     <string name="dialog_title_hint">
-        Input Title
+        Title input
     </string>
     <string name="dialog_se_hint">
         https://www.google.com/search?q=
@@ -61,37 +61,37 @@
         Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36
     </string>
     <string name="dialog_sign_in_username">
-        Username
+        ຊື່ຜູ້ໃຊ້
     </string>
     <string name="dialog_sign_in_password">
-        Password
+        ລະຫັດຜ່ານ
     </string>
     <string name="dialog_button_positive">
-        OK
+        ຕົກ​ລົງ
     </string>
     <string name="dialog_button_negative">
-        Cancel
+        ຍົກເລີກ
     </string>
     <string name="dialog_button_custom">
         Custom
     </string>
     <string name="dialog_title_download">
-        Do you want to download the file?
+        ທ່ານຕ້ອງການດາວໂຫລດໄຟລ໌?
     </string>
     <string name="dialog_title_resubmission">
-        Resubmit
+        ສົ່ງຄືນ
     </string>
     <string name="dialog_title_warning">
-        Warning
+        ຄໍາເຕືອນ
     </string>
     <string name="dialog_title_sign_in">
-        Sign in
+        ເຂົ້າ​ສູ່​ລະ​ບົບ
     </string>
     <string name="dialog_content_resubmission">
-        Would you like to resubmit your data?
+        ທ່ານຢາກສົ່ງຂໍ້ມູນຂອງທ່ານຄືນໃຫມ່ບໍ?
     </string>
     <string name="dialog_content_ssl_error">
-        The certificate of the site is not trusted. Proceed anyway?
+        ໃບຢັ້ງຢືນຂອງເວັບໄຊທ໌ແມ່ນບໍ່ເຊື່ອຖື. ດໍາເນີນການຢ່າງໃດ?
     </string>
     <string name="dialog_content_donation">
         The income from donations will be used to:\n
@@ -103,29 +103,29 @@
         - The donor have agreed all above points.\n\n
     </string>
     <string name="dialog_content_upload">
-        Currently, File upload is only supported on Android 5.0 and Above.
+        ໃນປະຈຸບັນ, ການອັບໂຫຼດໄຟລ໌ແມ່ນພຽງແຕ່ສະຫນັບສະຫນູນໃນ Android 5.0 ແລະຂ້າງເທິງ.
     </string>
 
     <!-- List -->
     <string name="list_empty">
-        Current list is empty
+        ລາຍະການປັດຈຸບັນຫວ່າງເປົ່າ
     </string>
 
     <!-- Main -->
     <string name="main_menu_new_tab">
-        New tab
+        ແຖບ​ໃຫມ່
     </string>
     <string name="main_menu_copy_link">
         Copy link
     </string>
     <string name="main_menu_save">
-        Save
+        ບັນທຶກ
     </string>
     <string name="main_omnibox_input_hint">
-        Search or type URL
+        ຄົ້ນຫາຫຼືພິມ URL
     </string>
     <string name="main_relayout_ok">
-        OK
+        ຕົກ​ລົງ
     </string>
     <string name="main_about_blank">
         about:blank
@@ -133,26 +133,26 @@
 
     <!-- Notification -->
     <string name="notification_content_holder">
-        Click to View Pages
+        ຄລິກເພື່ອເບິ່ງຫນ້າ
     </string>
 
     <!-- Readability -->
     <string name="readability_label">
-        Readability
+        ຄວາມສາມາດອ່ານໄດ້
     </string>
     <string name="readability_menu_background">
-        Background
+        ພື້ນຫລັງ
     </string>
     <string name="readability_menu_share">
-        Share
+        ແບ່ງປັນ
     </string>
     <string name="readability_empty">
-        Failed to load Readability, Please check your network connection.
+        ບໍ່ສາມາດໂຫລດ Readability ໄດ້, ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ເຄືອຂ່າຍຂອງທ່ານ.
     </string>
 
     <!-- Search -->
     <string name="search_hint">
-        Search
+        ຄົ້ນຫາ
     </string>
 
     <!-- Settings -->
@@ -161,7 +161,7 @@
     </string>
     <!-- Browser setting -->
     <string name="setting_title_browser">
-        Browser Settings
+        ການຕັ້ງຄ່າເບົາເຊີ
     </string>
     <!-- Search engine -->
     <string name="setting_title_search_engine">
@@ -196,68 +196,68 @@
         Default
     </string>
     <string name="setting_summary_notification_priority_high">
-        High
+        ສູງ
     </string>
     <string name="setting_summary_notification_priority_low">
-        Low
+        ຕ່ໍາ
     </string>
     <!-- Omnibox position -->
     <string name="setting_title_omnibox_position">
-        Omnibox Position
+        Omnibox ຕໍາແຫນ່ງ
     </string>
     <string name="setting_summary_omnibox_position_top">
-        Top
+        ທາງເທີງ
     </string>
     <string name="setting_summary_omnibox_position_bottom">
-        Bottom
+        ດ້ານລຸ່ມ
     </string>
     <!-- Omnibox control -->
     <string name="setting_title_omnibox_control">
         Omnibox Control
     </string>
     <string name="setting_summary_omnibox_control">
-        Swipe omnibox left/right to switch tabs
+        ລາກ omnibox ຊ້າຍ / ຂວາເພື່ອປ່ຽນແຖບ
     </string>
     <!-- Volume key scroll -->
     <string name="setting_title_volume_control">
-        Volume Control
+        ການຄວບຄຸມລະດັບສຽງ
     </string>
     <string name="setting_summary_vc_switch_tabs">
-        Switch Tabs
+        ປ່ຽນແທໍບ
     </string>
     <string name="setting_summary_vc_scroll_webpage">
-        Scroll Webpage
+        ເລື່ອນເວັບໄຊທ໌
     </string>
     <string name="setting_summary_vc_system_default">
         System Default
     </string>
     <!-- Images -->
     <string name="setting_title_images">
-        Images
+        ຮູບພາບຕ່າງໆ
     </string>
     <string name="setting_summary_images">
-        Enable Network images
+        ເປີດຮູບພາບເຄືອຂ່າຍ
     </string>
     <!-- Cookies -->
     <string name="setting_title_cookie">
         Cookies
     </string>
     <string name="setting_summary_cookie">
-        Enable Cookies
+        ເປີດໃຊ້ງານ Cookies
     </string>
     <!-- JavaScript -->
     <string name="setting_title_javascript">
         JavaScript
     </string>
     <string name="setting_summary_javascript">
-        Enable JavaScript
+        ເປີດໃຊ້ງານ JavaScript
     </string>
     <!-- Location -->
     <string name="setting_title_location">
-        Location
+        ສະຖານທີ່
     </string>
     <string name="setting_summary_location">
-        Allow websites to access your location
+        ອະນຸຍາດໃຫ້ເວັບໄຊທ໌ເຂົ້າຫາສະຖານທີ່ຂອງທ່ານ
     </string>
     <!-- Multiple windows -->
     <string name="setting_title_multiple_windows">
@@ -268,21 +268,21 @@
     </string>
     <!-- Scroll bar -->
     <string name="setting_title_scroll_bar">
-        Scroll Bar
+        ແຖບເລື່ອນ
     </string>
     <string name="setting_summary_scroll_bar">
-        Show/Hide scroll bar on webpages
+        ສະແດງ / ເຊື່ອງແຖບເລື່ອນເທິງຫນ້າເວັບໄຊຕ໌
     </string>
     <!-- Text reflow -->
     <string name="setting_title_text_reflow">
         Text Reflow
     </string>
     <string name="setting_summary_text_reflow">
-        Enable text reflow
+        ເປີດຕົວຂໍ້ຄວາມ reflow
     </string>
     <!-- User Agent -->
     <string name="setting_title_user_agent">
-        User Environment
+        ສະພາບແວດລ້ອມຂອງຜູ້ໃຊ້
     </string>
     <string name="setting_summary_user_agent_default">
         Default
@@ -304,74 +304,74 @@
         Grayscale
     </string>
     <string name="setting_summary_rendering_inverted">
-        Inverted
+        ໂຢຊວຍ
     </string>
     <string name="setting_summary_rendering_inverted_grayscale">
         Inverted Grayscale
     </string>
     <string name="setting_title_textsize">
-        Font Size
+        ຂະ​ຫນາດ​ຕົວ​ອັກ​ສອນ
     </string>
     <string name="setting_summary_textsize_normal">
         Normal
     </string>
     <string name="setting_summary_textsize_smallest">
-        Smallest
+        ນ້ອຍທີ່ສຸດ
     </string>
     <string name="setting_summary_textsize_smaller">
-        Smaller
+        ນ້ອຍກວ່າ
     </string>
     <string name="setting_summary_textsize_larger">
-        Larger
+        ຂະຫນາດໃຫຍ່
     </string>
     <string name="setting_summary_textsize_largest">
-        Largest
+        ທີ່ໃຫຍ່ທີ່ສຸດ
     </string>
     <!-- AdBlock setting -->
     <string name="setting_title_adblock">
         AdBlock
     </string>
     <string name="setting_summary_adblock">
-        Enable AdBlock
+        ເປີດໃຊ້ງານ AdBlock
     </string>
     <string name="setting_title_whitelist">
         Whitelist
     </string>
     <string name="setting_summary_whitelist">
-        Allow these sites show ads
+        ໃຫ້ສະຖານທີ່ເຫຼົ່ານີ້ສະແດງໂຄສະນາ
     </string>
     <string name="setting_title_export_whilelist">
-        Export whitelist
+        ສົ່ງອອກ whitelist
     </string>
     <string name="setting_title_import_whilelist">
         Import whilelist
     </string>
     <string name="whilelist_filename">
-        VieWhitelist
+        Whitelist
     </string>
     <!-- Readability setting -->
     <string name="setting_title_readability">
-        Readability
+        ຄວາມສາມາດອ່ານໄດ້
     </string>
     <string name="setting_title_token">
         Token
     </string>
     <string name="setting_summary_readability">
-        Enable Readability
+        ເປີດໃຊ້ Readability
     </string>
     <string name="setting_summary_token">
         Set Readability Token
     </string>
     <!-- Data setting -->
     <string name="setting_title_data">
-        Data
+        ຂໍ້ມູນ
     </string>
     <!-- Passwords -->
     <string name="setting_title_passwords">
-        Passwords
+        ລະຫັດຜ່ານ
     </string>
     <string name="setting_summary_passwords">
-        Save Passwords
+        ບັນທຶກລະຫັດຜ່ານ
     </string>
     <!-- Bookmarks -->
     <string name="setting_title_export_bookmarks">
@@ -392,15 +392,15 @@
     </string>
     <!-- Others setting -->
     <string name="setting_title_others">
-        Others
+        ອື່ນໆ
     </string>
     <!-- Version -->
     <string name="setting_title_version">
-        Version
+        ຮຸ່ນ
     </string>
     <!-- License -->
     <string name="setting_title_license">
-        License
+        ໃບອະນຸຍາດ
     </string>
     <!-- Contact -->
     <string name="setting_title_donation">
@@ -412,118 +412,118 @@
         Bookmark Successfully Added
     </string>
     <string name="toast_add_bookmark_failed">
-        Can\'t add this page to bookmark
+        ບໍ່ສາມາດເພີ່ມຫນ້ານີ້ໃຫ້ບຸ໊ກມາກໄດ້
     </string>
     <string name="toast_add_to_home_successful">
-        Successfully added to Home
+        ໄດ້ຮັບການເພີ່ມເຂົ້າຫນ້າທໍາອິດ
     </string>
     <string name="toast_add_to_home_failed">
-        Failed to add to Home
+        ບໍ່ສາມາດເພີ່ມຫນ້າທໍາອິດ
     </string>
     <string name="toast_add_token_successful">
-        Successfully added Readability API
+        ໄດ້ເພີ່ມປະສົບຄວາມສໍາເລັດ API Readability
     </string>
     <string name="toast_add_whitelist_successful">
-        Successfully added Domain
+        ໂດເມນທີ່ປະສົບຜົນສໍາເລັດແລ້ວ
     </string>
     <string name="toast_already_at_the_front">
-        Already at the front
+        ແລ້ວຢູ່ທາງຫນ້າ
     </string>
     <string name="toast_already_exist_in_home">
-        Already exist in home
+        ມີຢູ່ແລ້ວຢູ່ເຮືອນ
     </string>
     <string name="toast_clear_successful">
         Successfully Cleared
     </string>
     <string name="toast_clear_failed">
-        Failed to Clear
+        ລົ້ມເຫລວໃນການລ້າງ
     </string>
     <string name="toast_copy_successful">
-        Successfully Copied
+        ຖືກຄັດລອກສົບຜົນສໍາເລັດ
     </string>
     <string name="toast_delete_bookmark_successful">
-        Successfully Deleted Bookmark
+        Bookmark Successfully Deleted
     </string>
     <string name="toast_delete_successful">
         Successfully Deleted
     </string>
     <string name="toast_domain_already_exists">
-        Domain already exists
+        ໂດນມີຢູ່ແລ້ວ
     </string>
     <string name="toast_double_taps_quit">
-        Press again to exit
+        ກົດອີກເທື່ອຫນຶ່ງເພື່ອອອກຈາກຫ້ອງ
     </string>
     <string name="toast_emoji">
-        (๑•̀ㅂ•́)و✧
+
     </string>
     <string name="toast_export_bookmarks_successful">
-        Exported bookmarks file at:&#160;
+        ໄຟລ໌ຫມາຍເຫດທີ່ສົ່ງອອກຢູ່:&#160;
     </string>
     <string name="toast_export_bookmarks_failed">
         Failed to export Bookmarks
     </string>
     <string name="toast_export_whitelist_successful">
-        Exported whitelist file at:&#160;
+        ສົ່ງໄຟລ໌ whitelist ທີ່ສົ່ງອອກຢູ່:&#160;
     </string>
     <string name="toast_export_whitelist_failed">
-        Failed to export Whitelist
+        ບໍ່ສາມາດສົ່ງອອກ Whitelist
     </string>
     <string name="toast_import_bookmarks_successful">
-        Imported bookmarks count:&#160;
+        ບັນທຶກຫມາຍເຫດທີ່ນໍາເຂົ້າ:&#160;
     </string>
     <string name="toast_import_bookmarks_failed">
-        Failed to import Bookmarks
+        ບໍ່ສາມາດນໍາເຂົ້າ Bookmarks
     </string>
     <string name="toast_import_whitelist_successful">
-        Imported domains count:&#160;
+        ໂດເມນນໍາເຂົ້ານັບ:&#160;
     </string>
     <string name="toast_import_whitelist_failed">
-        Failed to import Whitelist
+        ບໍ່ສາມາດນໍາເຂົ້າ Whitelist
     </string>
     <string name="toast_input_empty">
-        You haven\'t input anything
+        ທ່ານບໍ່ໄດ້ໃສ່ສິ່ງໃດ
     </string>
     <string name="toast_invalid_domain">
-        Invalid domain
+        ໂດເມນບໍ່ຖືກຕ້ອງ
     </string>
     <string name="toast_load_error">
-        Can\'t load this URL
+        ບໍ່ສາມາດໂຫລດ URL ນີ້
     </string>
     <string name="toast_load_in_background">
         Loading in background
     </string>
     <string name="toast_need_restart">
-        Please restart the application for changes to take effect
+        ກະລຸນາລີເຊັດຄໍາຮ້ອງສະຫມັກໃຫມ່ເພື່ອປ່ຽນແປງຜົນກະທົບ
     </string>
     <string name="toast_new_tab_successful">
-        Successfully opened in a new tab
+        ເປີດສົບຜົນສໍາເລັດໃນແຖບໃຫມ່
     </string>
     <string name="toast_open_file_manager_failed">
-        Failed to open File Manager
+        ບໍ່ສາມາດເປີດ File Manager
     </string>
     <string name="toast_refresh_failed">
-        Can\'t refresh this page
+        ບໍ່ສາມາດຟື້ນຟູຫນ້ານີ້ໄດ້
     </string>
     <string name="toast_relayout_successful">
         Successfully Relayout
     </string>
     <string name="toast_screenshot_successful">
-        Saved screenshot at:&#160;
+        ບັນທຶກພາບຫນ້າຈໍຢູ່:&#160;
     </string>
     <string name="toast_screenshot_failed">
-        Failed to capture Screenshot
+        ບໍ່ສາມາດຈັບພາບຫນ້າຈໍ
     </string>
     <string name="toast_share_failed">
-        Can\'t share this page
+        ບໍ່ສາມາດແບ່ງປັນຫນ້ານີ້
     </string>
     <string name="toast_start_download">
-        Starting download
+        ເລີ່ມດາວໂຫລດ
     </string>
     <string name="toast_token_empty">
-        Please set Readability token
+        ກະລຸນາຕັ້ງລະຫັດອ່ານ Readability
     </string>
     <string name="toast_wait_a_minute">
-        Please wait for a moment
+        ກະລຸນາລໍສັກຄູ່
     </string>
 
     <!-- Token -->
@@ -531,7 +531,7 @@
         Token
     </string>
     <string name="token_edit_hint">
-        Readability token
+        ຫມາຍເຫດການອ່ານ
     </string>
     <string name="token_add">
         Add
@@ -555,27 +555,31 @@
     </string>
 
     <string name="bottom_ok">
-        OK
+        ຕົກ​ລົງ
     </string>
     <string name="bottom_back">
-        Back
+        ກັບຄືນໄປບ່ອນ
     </string>
     <string name="bottom_menu">
-        Options
+        ຕົວເລືອກ
     </string>
     <string name="bottom_clear">
         Clear
     </string>
     <string name="remove_bookmark">
-        Remove from bookmarks
+        ດຶງອອກຈາກບຸ໊ກມາກ
     </string>
     <string name="mouse_mode_on">
-        Turn ON Mouse Mode
+        ເປີດໂຫມດຫນູ
     </string>
     <string name="mouse_mode_off">
-        Turn OFF Mouse Mode
+        ປິດ OFF ໂຫມດຫນູ
     </string>
     <string name="action_successful">
-        Success
+        ຄວາມ​ສໍາ​ເລັດ
+    </string>
+
+    <string name="app_name">
+        Browser
     </string>
 </resources>

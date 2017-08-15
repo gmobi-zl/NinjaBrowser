@@ -20,7 +20,7 @@ import io.github.mthli.Ninja.Unit.IntentUnit;
 
 import java.io.File;
 
-public class SettingActivity extends Activity {
+public class SettingActivity extends BaseActivity {
     private SettingFragment fragment;
 
     @Override

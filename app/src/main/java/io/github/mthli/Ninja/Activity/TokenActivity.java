@@ -14,7 +14,7 @@ import android.widget.EditText;
 import io.github.mthli.Ninja.R;
 import io.github.mthli.Ninja.View.NinjaToast;
 
-public class TokenActivity extends Activity {
+public class TokenActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

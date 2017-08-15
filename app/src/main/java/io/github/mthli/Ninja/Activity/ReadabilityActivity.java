@@ -20,7 +20,7 @@ import io.github.mthli.Ninja.Unit.BrowserUnit;
 import io.github.mthli.Ninja.Unit.IntentUnit;
 import org.json.JSONObject;
 
-public class ReadabilityActivity extends Activity {
+public class ReadabilityActivity extends BaseActivity {
     private static final String HEADER = "<link rel=\"stylesheet\" href=\"./typo.css\" />\n"
             + "<meta name=\"viewport\" content=\"width=device-width\">\n"
             + "<style>\n"

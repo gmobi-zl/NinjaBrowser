@@ -4,18 +4,18 @@
 
     <!-- Holder -->
     <string-array name="holder_menu">
-        <item>Foreground</item>
-        <item>Copy link</item>
-        <item>Share</item>
+        <item>foreground</item>
+        <item>Copy ကူး link ကို</item>
+        <item>ဝေစု</item>
     </string-array>
 
     <!-- List -->
     <string-array name="list_menu">
-        <item>New tab</item>
-        <item>Copy link</item>
-        <item>Share</item>
-        <item>Edit</item>
-        <item>Delete</item>
+        <item>နယူး tab ကို</item>
+        <item>Copy ကူး link က</item>
+        <item>ဝေစု</item>
+        <item>Edit ကို</item>
+        <item>ဖျက်ပစ်ပါ</item>
     </string-array>
 
     <!-- Main -->
@@ -23,17 +23,17 @@
         <!--<item>Go to top</item>-->
         <!--<item>Add to home</item>-->
         <!--<item>Find in page</item>-->
-        <item>Refresh</item>
-        <item>Add to Bookmarks</item>
-        <item>Mouse Mode</item>
+        <item>အားဖြည့့််</item>
+        <item>Bookmarks မှ Add</item>
+        <item>mouse Mode ကို</item>
         <item>Bookmarks</item>
-        <item>History</item>
-        <item>Settings</item>
+        <item>သမိုင်း</item>
+        <item>Settings များ</item>
         <!--<item>Screenshot</item>-->
         <!--<item>Readability</item>-->
         <!--<item>Share</item>-->
         <!--<item>Relayout</item>-->
-        <item>Quit</item>
+        <item>ထွက်သွား</item>
     </string-array>
 
     <!-- Search engine -->
