@@ -53,7 +53,13 @@ public class RecordAdapter extends ArrayAdapter<Record> {
 
         Record record = list.get(position);
         holder.title.setText(record.getTitle());
-        holder.time.setReferenceTime(record.getTime());
+        if (record.getTime() == 0){
+            holder.time.setVisibility(View.INVISIBLE);
+        } else {
+            holder.time.setVisibility(View.VISIBLE);
+            holder.time.setReferenceTime(record.getTime());
+        }
+
         holder.url.setText(record.getURL());
 
         try{

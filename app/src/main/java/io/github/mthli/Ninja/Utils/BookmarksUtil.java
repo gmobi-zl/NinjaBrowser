@@ -50,56 +50,56 @@ public class BookmarksUtil {
         Record r1 = new Record();
         r1.setTitle("TrueMoveH");
         r1.setURL("http://www.truemove-h.com/");
-        r1.setTime(System.currentTimeMillis());
+        r1.setTime(0);
         r1.setFaviconResId(R.drawable.truemove_h);
         defBookmarkList.add(r1);
 
         Record r2 = new Record();
         r2.setTitle("True iService");
         r2.setURL("http://www.truemove-h.com/iservice");
-        r2.setTime(System.currentTimeMillis());
+        r2.setTime(0);
         r2.setFaviconResId(R.drawable.truemove_h);
         defBookmarkList.add(r2);
 
         Record r3 = new Record();
         r3.setTitle("TrueOnline");
         r3.setURL("http://trueonline.truecorp.co.th/");
-        r3.setTime(System.currentTimeMillis());
+        r3.setTime(0);
         r3.setFaviconResId(R.drawable.trueonline_truecorp_co_th);
         defBookmarkList.add(r3);
 
         Record r4 = new Record();
         r4.setTitle("TrueVisions");
         r4.setURL("http://truevisionsgroup.truecorp.co.th/");
-        r4.setTime(System.currentTimeMillis());
+        r4.setTime(0);
         r4.setFaviconResId(R.drawable.truevisionsgroup_truecorp_co_th);
         defBookmarkList.add(r4);
 
         Record r5 = new Record();
         r5.setTitle("TrueLife Plus");
         r5.setURL("http://truelifeplus.truecorp.co.th/");
-        r5.setTime(System.currentTimeMillis());
+        r5.setTime(0);
         r5.setFaviconResId(R.drawable.truelifeplus_truecorp_co_th);
         defBookmarkList.add(r5);
 
         Record r6 = new Record();
         r6.setTitle("True You");
         r6.setURL("http://trueyou.truecorp.co.th/");
-        r6.setTime(System.currentTimeMillis());
+        r6.setTime(0);
         r6.setFaviconResId(R.drawable.trueyou_truecorp_co_th);
         defBookmarkList.add(r6);
 
         Record r7 = new Record();
         r7.setTitle("TrueLife");
         r7.setURL("http://www.truelife.com/");
-        r7.setTime(System.currentTimeMillis());
+        r7.setTime(0);
         r7.setFaviconResId(R.drawable.www_truelife_com);
         defBookmarkList.add(r7);
 
         Record r8 = new Record();
         r8.setTitle("TrueMoney");
         r8.setURL("http://www.truemoney.com/");
-        r8.setTime(System.currentTimeMillis());
+        r8.setTime(0);
         r8.setFaviconResId(R.drawable.www_truemoney_com);
         defBookmarkList.add(r8);
     }
