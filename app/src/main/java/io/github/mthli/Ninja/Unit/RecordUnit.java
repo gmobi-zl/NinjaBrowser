@@ -15,6 +15,9 @@ public class RecordUnit {
     public static final String COLUMN_FILENAME = "FILENAME";
     public static final String COLUMN_ORDINAL = "ORDINAL";
 
+    public static final String COLUMN_FAVICONS_FILE = "FAVICOFILE";
+    public static final String COLUMN_FAVICONS_ID = "FAVICOID";
+
     public static final String CREATE_HISTORY = "CREATE TABLE "
             + TABLE_HISTORY
             + " ("

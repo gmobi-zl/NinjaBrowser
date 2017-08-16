@@ -22,6 +22,7 @@ import io.github.mthli.Ninja.R;
 import io.github.mthli.Ninja.Unit.BrowserUnit;
 import io.github.mthli.Ninja.Unit.IntentUnit;
 import io.github.mthli.Ninja.Unit.ViewUnit;
+import io.github.mthli.Ninja.Utils.BookmarksUtil;
 
 import java.net.URISyntaxException;
 import java.util.Map;
@@ -151,6 +152,7 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         webSettings.setSupportZoom(true);
         //webSettings.setBuiltInZoomControls(true);
+        //webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         //webSettings.setDisplayZoomControls(true);
 
         webSettings.setDefaultTextEncodingName(BrowserUnit.URL_ENCODING);
@@ -390,7 +392,12 @@ public class NinjaWebView extends WebView implements AlbumController {
             if (prepareRecord()) {
                 RecordAction action = new RecordAction(context);
                 action.open(true);
-                action.addHistory(new Record(getTitle(), getUrl(), System.currentTimeMillis()));
+
+                String url = getUrl();
+                BookmarksUtil bkUtil = BookmarksUtil.getInstance(context);
+                String favFile = bkUtil.getFaviconsIconFile(url);
+
+                action.addHistory(new Record(getTitle(), url, System.currentTimeMillis(), favFile, 0));
                 action.close();
                 browserController.updateAutoComplete();
             }

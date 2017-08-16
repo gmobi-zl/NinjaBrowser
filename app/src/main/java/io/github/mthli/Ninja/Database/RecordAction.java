@@ -4,7 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import org.json.JSONObject;
+
 import io.github.mthli.Ninja.Unit.RecordUnit;
+import io.github.mthli.Ninja.Utils.JsonHelper;
 import io.github.mthli.Ninja.View.GridItem;
 
 import java.util.ArrayList;
@@ -31,6 +35,48 @@ public class RecordAction {
         helper.close();
     }
 
+    private String buildTitleJson(Record record){
+        if (record == null) return "";
+        String jsonData = "";
+        try {
+            JSONObject obj = new JSONObject();
+            obj.put(RecordUnit.COLUMN_TITLE, record.getTitle().trim());
+            obj.put(RecordUnit.COLUMN_FAVICONS_FILE, record.getFaviconFile());
+            obj.put(RecordUnit.COLUMN_FAVICONS_ID, record.getFaviconResId());
+            jsonData = obj.toString();
+        } catch (Exception e){
+            return record.getTitle().trim();
+        }
+
+        return jsonData;
+    }
+
+    private Record buildRecordByTitleJson(Record record, String jsData){
+        if (record == null || jsData == null) return record;
+        try {
+            if (jsData.startsWith("{") && jsData.endsWith("}")){
+                JSONObject obj = JsonHelper.parse(jsData);
+                if (obj.has(RecordUnit.COLUMN_TITLE)){
+                    record.setTitle(obj.getString(RecordUnit.COLUMN_TITLE));
+                }
+
+                if (obj.has(RecordUnit.COLUMN_FAVICONS_FILE)){
+                    record.setFaviconFile(obj.getString(RecordUnit.COLUMN_FAVICONS_FILE));
+                }
+
+                if (obj.has(RecordUnit.COLUMN_FAVICONS_ID)){
+                    record.setFaviconResId(obj.getInt(RecordUnit.COLUMN_FAVICONS_ID));
+                }
+            } else {
+                record.setTitle(jsData);
+            }
+        } catch (Exception e){
+            return record;
+        }
+
+        return record;
+    }
+
     public boolean addBookmark(Record record) {
         if (record == null
                 || record.getTitle() == null
@@ -41,8 +87,10 @@ public class RecordAction {
             return false;
         }
 
+        String titleStr = buildTitleJson(record);
+
         ContentValues values = new ContentValues();
-        values.put(RecordUnit.COLUMN_TITLE, record.getTitle().trim());
+        values.put(RecordUnit.COLUMN_TITLE, titleStr);
         values.put(RecordUnit.COLUMN_URL, record.getURL().trim());
         values.put(RecordUnit.COLUMN_TIME, record.getTime());
         database.insert(RecordUnit.TABLE_BOOKMARKS, null, values);
@@ -60,8 +108,10 @@ public class RecordAction {
             return false;
         }
 
+        String titleStr = buildTitleJson(record);
+
         ContentValues values = new ContentValues();
-        values.put(RecordUnit.COLUMN_TITLE, record.getTitle().trim());
+        values.put(RecordUnit.COLUMN_TITLE, titleStr);
         values.put(RecordUnit.COLUMN_URL, record.getURL().trim());
         values.put(RecordUnit.COLUMN_TIME, record.getTime());
         database.insert(RecordUnit.TABLE_HISTORY, null, values);
@@ -113,8 +163,10 @@ public class RecordAction {
             return false;
         }
 
+        String titleStr = buildTitleJson(record);
+
         ContentValues values = new ContentValues();
-        values.put(RecordUnit.COLUMN_TITLE, record.getTitle().trim());
+        values.put(RecordUnit.COLUMN_TITLE, titleStr);
         values.put(RecordUnit.COLUMN_URL, record.getURL().trim());
         values.put(RecordUnit.COLUMN_TIME, record.getTime());
         database.update(RecordUnit.TABLE_BOOKMARKS, values, RecordUnit.COLUMN_TIME + "=?", new String[] {String.valueOf(record.getTime())});
@@ -356,7 +408,10 @@ public class RecordAction {
 
     private Record getRecord(Cursor cursor) {
         Record record = new Record();
-        record.setTitle(cursor.getString(0));
+
+        String titleStr = cursor.getString(0);
+        buildRecordByTitleJson(record, titleStr);
+        //record.setTitle(cursor.getString(0));
         record.setURL(cursor.getString(1));
         record.setTime(cursor.getLong(2));
 

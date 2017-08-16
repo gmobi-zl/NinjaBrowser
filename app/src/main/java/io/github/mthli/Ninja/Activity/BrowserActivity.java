@@ -55,6 +55,7 @@ import io.github.mthli.Ninja.Service.HolderService;
 import io.github.mthli.Ninja.Utils.AdvertisingIdClient;
 import io.github.mthli.Ninja.Unit.BrowserUnit;
 import io.github.mthli.Ninja.Unit.IntentUnit;
+import io.github.mthli.Ninja.Utils.BookmarksUtil;
 import io.github.mthli.Ninja.Utils.HttpHelper;
 import io.github.mthli.Ninja.Utils.JsonHelper;
 import io.github.mthli.Ninja.Utils.MouseModeCtrl;
@@ -79,6 +80,7 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     private float dimen48dp;
 
     private static final String DEFAULT_HOME_PAGE = "http://search.viebrowser.com";
+    private boolean showStartPage = false;
     Map<String, String> extraHeaders = null;
 
 //    private HorizontalScrollView switcherScroller;
@@ -131,7 +133,7 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     private int mediumAnimTime = 0;
     private int longAnimTime = 0;
     private AlbumController currentAlbumController = null;
-    private boolean showStartPage = false;
+
 
     private String adid;
     private String ipcountry;
@@ -694,14 +696,18 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         NinjaWebView ninjaWebView = (NinjaWebView) currentAlbumController;
         String title = ninjaWebView.getTitle();
         String url = ninjaWebView.getUrl();
+        BookmarksUtil bkUtil = BookmarksUtil.getInstance(this);
 
         RecordAction action = new RecordAction(BrowserActivity.this);
         action.open(true);
         if (action.checkBookmark(url)) {
-            action.deleteBookmark(url);
-            NinjaToast.show(BrowserActivity.this, R.string.toast_delete_bookmark_successful);
+           if (!bkUtil.isDefBookmark(url)){
+               action.deleteBookmark(url);
+               NinjaToast.show(BrowserActivity.this, R.string.toast_delete_bookmark_successful);
+            }
         } else {
-            action.addBookmark(new Record(title, url, System.currentTimeMillis()));
+            String favFile = bkUtil.getFaviconsIconFile(url);
+            action.addBookmark(new Record(title, url, System.currentTimeMillis(), favFile, 0));
             NinjaToast.show(BrowserActivity.this, R.string.toast_add_bookmark_successful);
         }
         action.close();
@@ -1864,7 +1870,8 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
             RecordAction action = new RecordAction(this);
             action.open(false);
             String url = ((NinjaWebView) currentAlbumController).getUrl();
-            if (action.checkBookmark(url)) {
+            BookmarksUtil bkUtil = BookmarksUtil.getInstance(this);
+            if (action.checkBookmark(url) && !bkUtil.isDefBookmark(url)) {
                 if (array != null && array.length > 4){
                     String removeBookmark = getResources().getString(R.string.remove_bookmark);
                     array[1] = removeBookmark;

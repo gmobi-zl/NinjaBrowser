@@ -299,10 +299,10 @@ public class HttpHelper {
                         case RETRYING:
                             delta = (System.currentTimeMillis() - start) / 1000;
                             if (connecting.get() && connTimeout > 0 && delta > connTimeout){
-                                Log.d("debug", url + ": connecting time out ! (" + delta + "s)");
+                                //Log.d("debug", url + ": connecting time out ! (" + delta + "s)");
                                 stop.set(true);
                             }
-                            Log.d("debug", url + ":" + info.getState() + " " + info.getDelay() + " (" + delta + "s)");
+                            //Log.d("debug", url + ":" + info.getState() + " " + info.getDelay() + " (" + delta + "s)");
                             break;
                         case DOWNLOADING:
                             speedInfo.step(info.getCount());
@@ -311,7 +311,7 @@ public class HttpHelper {
                                 last = now;
                                 float p = info.getCount() / (float) info.getLength();
 
-                                Log.d("debug", url + ":" + (int)(p * 100) + "% (" + formatSpeed(speedInfo.getCurrentSpeed()) + "/" + formatSpeed(speedInfo.getAverageSpeed()) + ")");
+                                //Log.d("debug", url + ":" + (int)(p * 100) + "% (" + formatSpeed(speedInfo.getCurrentSpeed()) + "/" + formatSpeed(speedInfo.getAverageSpeed()) + ")");
                             }
                             break;
                         default:
@@ -321,7 +321,7 @@ public class HttpHelper {
             };
             info.extract(stop, notify);
             if (info.getLength() == null || info.getLength() <= 0) return -1;
-            info.enableMultipart();
+            //info.enableMultipart();
             if (file.exists())
                 file.delete();
             WGet w = new WGet(info, file);

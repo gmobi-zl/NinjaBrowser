@@ -257,4 +257,17 @@ public class FileHelper {
 
         return (file.exists() && file.isFile() ? file.length() : -1);
     }
+
+	public static boolean fileIsExists(String strFile)
+	{
+		try {
+			File f = new File(strFile);
+			if(!f.exists()) {
+				return false;
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 }

@@ -6,6 +6,7 @@ import com.mocean.AdServiceManager;
 import com.mocean.IAdService;
 import com.mocean.IServiceCallback;
 
+import io.github.mthli.Ninja.Utils.BookmarksUtil;
 import io.github.mthli.Ninja.Utils.MouseModeCtrl;
 
 /**
@@ -25,5 +26,6 @@ public class MyApplication extends Application {
 
         MouseModeCtrl mmCtrl = MouseModeCtrl.getInstance(this);
         mmCtrl.firstStartAction();
+        BookmarksUtil.getInstance(this).checkDefBKInUserBookmark();
     }
 }
