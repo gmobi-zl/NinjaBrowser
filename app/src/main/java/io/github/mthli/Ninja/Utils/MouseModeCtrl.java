@@ -38,9 +38,20 @@ public class MouseModeCtrl {
         }
     }
 
+    public void appOpenMouseModeAction(){
+        if (mouseMode == true){
+            Log.d("[Mouse]", "app start : re-turn on");
+            Intent intent = new Intent(FP_BROADCAST_MOUSE_MODE_ON);
+            mContext.sendBroadcast(intent);
+        }
+    }
+
     private void saveMouseModeSP(boolean status){
-        if (sp != null)
-            sp.edit().putBoolean(FP_MOUSEMODE_KEY, status);
+        if (sp != null) {
+            SharedPreferences.Editor spEditor = sp.edit();
+            spEditor.putBoolean(FP_MOUSEMODE_KEY, status);
+            spEditor.commit();
+        }
     }
 
     public void setMouseMode(boolean flag){
@@ -69,7 +80,9 @@ public class MouseModeCtrl {
             boolean first = sp.getBoolean(FP_MOUSEMODE_FIRST_KEY, true);
             if (first == true){
                 Log.d("[Mouse]", "first start");
-                sp.edit().putBoolean(FP_MOUSEMODE_FIRST_KEY, false);
+                SharedPreferences.Editor spEditor = sp.edit();
+                spEditor.putBoolean(FP_MOUSEMODE_FIRST_KEY, false);
+                spEditor.commit();
                 setMouseMode(false);
             }
         }

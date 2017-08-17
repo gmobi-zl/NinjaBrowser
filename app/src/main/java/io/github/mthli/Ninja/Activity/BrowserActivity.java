@@ -256,6 +256,9 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
                 onTouchBack();
             }
         });
+
+        MouseModeCtrl mmCtrl = MouseModeCtrl.getInstance(this);
+        mmCtrl.appOpenMouseModeAction();
     }
 
     public void onTouchBack(){
