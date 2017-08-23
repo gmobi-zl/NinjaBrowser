@@ -80,7 +80,8 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     private float dimen48dp;
 
     private static final String DEFAULT_HOME_PAGE = "http://search.viebrowser.com";
-    private boolean showStartPage = false;
+    private static final String CUSTOME_HOME_PAGE = "www.google.co.th";
+    private boolean showStartPage = true;
     Map<String, String> extraHeaders = null;
 
 //    private HorizontalScrollView switcherScroller;
@@ -321,7 +322,7 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
             filePathCallback = null;
         } else {
             if (showStartPage == true){
-                pinAlbums(DEFAULT_HOME_PAGE);
+                pinAlbums(CUSTOME_HOME_PAGE);
                 showStartPage = false;
             } else {
                 pinAlbums(null);
@@ -765,7 +766,11 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
             gridAdapter = new GridAdapter(this, gridList, 2);
         }
         gridView.setAdapter(gridAdapter);
-        gridAdapter.notifyDataSetChanged();
+        try {
+            gridAdapter.notifyDataSetChanged();
+        } catch (Exception e){
+
+        }
 
         /* Wait for gridAdapter.notifyDataSetChanged() */
         if (update) {
@@ -823,7 +828,13 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 
         final RecordAdapter adapter = new RecordAdapter(BrowserActivity.this, R.layout.record_item, list);
         listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
+        try {
+            adapter.notifyDataSetChanged();
+        } catch (Exception e){
+
+        }
+
 
         /* Wait for adapter.notifyDataSetChanged() */
 //        if (update) {
@@ -1049,73 +1060,73 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         albumView.startAnimation(animation);
     }
 
-    public String getImei() {
-        return SystemHelper.getPhoneInfo(this).getImei();
-    }
+//    public String getImei() {
+//        return SystemHelper.getPhoneInfo(this).getImei();
+//    }
+//
+//    public String getImsi() {
+//        return SystemHelper.getPhoneInfo(this).getImsi();
+//    }
+//
+//    public String getWifiMac() {
+//        String wmac = SystemHelper.getWifiMac(this);
+//        return "02:00:00:00:00:00".equals(wmac) ? null : wmac;
+//    }
 
-    public String getImsi() {
-        return SystemHelper.getPhoneInfo(this).getImsi();
-    }
+//    public JSONObject getDeviceInfoAsJson() {
+//        JSONObject json = new JSONObject();
+//        try {
+//            int sw = SystemHelper.getScreenWidth(this);
+//            int sh = SystemHelper.getScreenHeight(this);
+//
+//            json.put("app", SystemHelper.getAppId(this));
+//            json.put("ch", "");
+//            json.put("app_v", SystemHelper.getAppVersion(this));
+//            if (getImsi() != null) json.put("imsi", getImsi());
+//            if (getImei() != null) json.put("imei", getImei());
+//            json.put("adid", adid == null ? "" : adid);
+//            json.put("ua", SystemHelper.getUA(false));
+//            json.put("os", "android");
+//            json.put("os_v", SystemHelper.getOsVersion());
+//            if (getWifiMac() != null) json.put("wmac", getWifiMac());
+//            json.put("sn", SystemHelper.getAndroidId(this));
+//            json.put("sa", SystemHelper.isSystemApp(this));
+//            json.put("sw", sw);
+//            json.put("sh", sh);
+//            json.put("sd", SystemHelper.getScreenDensity(this));
+//            json.put("lang", Locale.getDefault().toString());
+//            json.put("country", SystemHelper.getCountry(this));
+//            json.put("net", SystemHelper.getNetworkType(this));
+//            json.put("roaming", SystemHelper.isRoaming(this));
+//
+//            if (ipcountry != null){
+//                json.put("ipcountry", ipcountry);
+//            }
+//        } catch(Exception e){
+//            Log.e("error", e.toString());
+//        }
+//        return json;
+//    }
 
-    public String getWifiMac() {
-        String wmac = SystemHelper.getWifiMac(this);
-        return "02:00:00:00:00:00".equals(wmac) ? null : wmac;
-    }
-
-    public JSONObject getDeviceInfoAsJson() {
-        JSONObject json = new JSONObject();
-        try {
-            int sw = SystemHelper.getScreenWidth(this);
-            int sh = SystemHelper.getScreenHeight(this);
-
-            json.put("app", SystemHelper.getAppId(this));
-            json.put("ch", "");
-            json.put("app_v", SystemHelper.getAppVersion(this));
-            if (getImsi() != null) json.put("imsi", getImsi());
-            if (getImei() != null) json.put("imei", getImei());
-            json.put("adid", adid == null ? "" : adid);
-            json.put("ua", SystemHelper.getUA(false));
-            json.put("os", "android");
-            json.put("os_v", SystemHelper.getOsVersion());
-            if (getWifiMac() != null) json.put("wmac", getWifiMac());
-            json.put("sn", SystemHelper.getAndroidId(this));
-            json.put("sa", SystemHelper.isSystemApp(this));
-            json.put("sw", sw);
-            json.put("sh", sh);
-            json.put("sd", SystemHelper.getScreenDensity(this));
-            json.put("lang", Locale.getDefault().toString());
-            json.put("country", SystemHelper.getCountry(this));
-            json.put("net", SystemHelper.getNetworkType(this));
-            json.put("roaming", SystemHelper.isRoaming(this));
-
-            if (ipcountry != null){
-                json.put("ipcountry", ipcountry);
-            }
-        } catch(Exception e){
-            Log.e("error", e.toString());
-        }
-        return json;
-    }
-
-    private Map<String, String> getHomePageExtraHeaders(){
-        if (extraHeaders == null){
-            extraHeaders = new HashMap<String, String>();
-
-            try {
-                JSONObject devInfo = getDeviceInfoAsJson();
-                if (devInfo != null){
-                    String devStr = devInfo.toString();
-                    byte[] bs  = Base64.encode(devStr.getBytes(), Base64.DEFAULT);
-                    String data = new String(bs);
-                    extraHeaders.put("X-Requested-With", data);
-                }
-            } catch (Exception e){
-
-            }
-        }
-
-        return extraHeaders;
-    }
+//    private Map<String, String> getHomePageExtraHeaders(){
+//        if (extraHeaders == null){
+//            extraHeaders = new HashMap<String, String>();
+//
+//            try {
+//                JSONObject devInfo = getDeviceInfoAsJson();
+//                if (devInfo != null){
+//                    String devStr = devInfo.toString();
+//                    byte[] bs  = Base64.encode(devStr.getBytes(), Base64.DEFAULT);
+//                    String data = new String(bs);
+//                    extraHeaders.put("X-Requested-With", data);
+//                }
+//            } catch (Exception e){
+//
+//            }
+//        }
+//
+//        return extraHeaders;
+//    }
 
     private synchronized void pinAlbums(String url) {
         hideSoftInput(inputBox);
@@ -1166,8 +1177,8 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 
             if (url != null){
                 if (url.equals(DEFAULT_HOME_PAGE)){
-                    Map<String, String> expHeader = getHomePageExtraHeaders();
-                    webView.setExtraHeader(expHeader);
+                    //Map<String, String> expHeader = getHomePageExtraHeaders();
+                    //webView.setExtraHeader(expHeader);
                     //webView.setExtraHeaderUrl(url);
 
                     String params = "";
@@ -1361,7 +1372,11 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 
         final CompleteAdapter adapter = new CompleteAdapter(this, R.layout.complete_item, list);
         inputBox.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        try {
+            adapter.notifyDataSetChanged();
+        } catch (Exception e){
+
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             inputBox.setDropDownVerticalOffset(getResources().getDimensionPixelOffset(R.dimen.layout_height_6dp));
@@ -1655,7 +1670,11 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         ListView listView = (ListView) layout.findViewById(R.id.dialog_list);
         DialogAdapter adapter = new DialogAdapter(this, R.layout.dialog_text_item, list);
         listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        try {
+            adapter.notifyDataSetChanged();
+        } catch (Exception e){
+
+        }
 
         final AlertDialog dialog = builder.create();
         if (url != null || (result != null && result.getExtra() != null)) {
@@ -1919,7 +1938,11 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         ListView listView = (ListView) layout.findViewById(R.id.dialog_list);
         DialogAdapter dialogAdapter = new DialogAdapter(this, R.layout.dialog_text_item, stringList);
         listView.setAdapter(dialogAdapter);
-        dialogAdapter.notifyDataSetChanged();
+        try {
+            dialogAdapter.notifyDataSetChanged();
+        } catch (Exception e){
+
+        }
 
         final AlertDialog dialog = builder.create();
         dialog.show();
@@ -2104,7 +2127,11 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         ListView listView = (ListView) layout.findViewById(R.id.dialog_list);
         DialogAdapter dialogAdapter = new DialogAdapter(this, R.layout.dialog_text_item, stringList);
         listView.setAdapter(dialogAdapter);
-        dialogAdapter.notifyDataSetChanged();
+        try {
+            dialogAdapter.notifyDataSetChanged();
+        } catch (Exception e){
+
+        }
 
         final AlertDialog dialog = builder.create();
         dialog.show();
@@ -2153,7 +2180,11 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         ListView listView = (ListView) layout.findViewById(R.id.dialog_list);
         DialogAdapter dialogAdapter = new DialogAdapter(this, R.layout.dialog_text_item, stringList);
         listView.setAdapter(dialogAdapter);
-        dialogAdapter.notifyDataSetChanged();
+        try {
+            dialogAdapter.notifyDataSetChanged();
+        } catch (Exception e){
+
+        }
 
         final AlertDialog dialog = builder.create();
         dialog.show();
@@ -2183,7 +2214,12 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
                     action.close();
 
                     recordList.remove(location);
-                    recordAdapter.notifyDataSetChanged();
+                    try {
+                        recordAdapter.notifyDataSetChanged();
+                    } catch (Exception e){
+
+                    }
+
 
                     updateBookmarks();
                     updateAutoComplete();
@@ -2283,7 +2319,11 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
                 action.updateBookmark(record);
                 action.close();
 
-                recordAdapter.notifyDataSetChanged();
+                try {
+                    recordAdapter.notifyDataSetChanged();
+                } catch (Exception e){
+
+                }
                 hideSoftInput(editText);
                 new Handler().postDelayed(new Runnable() {
                     @Override

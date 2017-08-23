@@ -13,10 +13,13 @@ import android.os.Build;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.webkit.*;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import io.github.mthli.Ninja.Activity.BaseActivity;
 import io.github.mthli.Ninja.R;
 import io.github.mthli.Ninja.Unit.BrowserUnit;
 import io.github.mthli.Ninja.Unit.IntentUnit;
@@ -74,6 +77,8 @@ public class NinjaWebViewClient extends WebViewClient {
         } else {
             ninjaWebView.update(view.getTitle(), url);
         }
+
+        Log.d(BaseActivity.LOG_TAG, "load url page start : " + url);
     }
 
     @Override
@@ -95,10 +100,13 @@ public class NinjaWebViewClient extends WebViewClient {
         } else {
             ninjaWebView.postInvalidate();
         }
+
+        Log.d(BaseActivity.LOG_TAG, "load url page finish : " + url);
     }
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        Log.d(BaseActivity.LOG_TAG, "shouldOverrideUrlLoading : " + url);
         if (url.startsWith(BrowserUnit.URL_SCHEME_MAIL_TO)) {
             Intent intent = IntentUnit.getEmailIntent(MailTo.parse(url));
             context.startActivity(intent);
@@ -127,13 +135,14 @@ public class NinjaWebViewClient extends WebViewClient {
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
         if (enable && !white && adBlock.isAd(url)) {
+            Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest block : " + url);
             return new WebResourceResponse(
                     BrowserUnit.MIME_TYPE_TEXT_PLAIN,
                     BrowserUnit.URL_ENCODING,
                     new ByteArrayInputStream("".getBytes())
             );
         }
-
+        Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest super : " + url);
         return super.shouldInterceptRequest(view, url);
     }
 
@@ -141,6 +150,7 @@ public class NinjaWebViewClient extends WebViewClient {
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (enable && !white && adBlock.isAd(request.getUrl().toString())) {
+                Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest adblock : ");
                 return new WebResourceResponse(
                         BrowserUnit.MIME_TYPE_TEXT_PLAIN,
                         BrowserUnit.URL_ENCODING,
@@ -148,7 +158,7 @@ public class NinjaWebViewClient extends WebViewClient {
                 );
             }
         }
-
+        Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest super : ");
         return super.shouldInterceptRequest(view, request);
     }
 
@@ -181,6 +191,8 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public void onReceivedSslError(WebView view, @NonNull final SslErrorHandler handler, SslError error) {
+        Log.d(BaseActivity.LOG_TAG, "onReceivedSslError : " + error);
+
         Context holder = IntentUnit.getContext();
         if (holder == null || !(holder instanceof Activity)) {
             return;

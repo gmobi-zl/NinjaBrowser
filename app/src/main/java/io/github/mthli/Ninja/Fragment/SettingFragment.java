@@ -32,7 +32,7 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
 //    private ListPreference volumeControl;
     private ListPreference userAgent;
     private ListPreference rendering;
-    private ListPreference fontSize;
+//    private ListPreference fontSize;
 
     private String[] seEntries;
     private String[] npEntries;
@@ -113,8 +113,8 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
 
         fsEntries = getResources().getStringArray(R.array.setting_entries_textsize);
         summary = fsEntries[Integer.valueOf(sp.getString(getString(R.string.sp_text_size), "2"))];
-        fontSize = (ListPreference) findPreference(getString(R.string.sp_text_size));
-        fontSize.setSummary(summary);
+//        fontSize = (ListPreference) findPreference(getString(R.string.sp_text_size));
+//        fontSize.setSummary(summary);
     }
 
     @Override
@@ -208,7 +208,7 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
             manager.setAcceptCookie(sp.getBoolean(getString(R.string.sp_cookies), true));
         } else if (key.equals(getString(R.string.sp_text_size))) {
             String summary = fsEntries[Integer.valueOf(sp.getString(key, "2"))];
-            fontSize.setSummary(summary);
+//            fontSize.setSummary(summary);
         }
     }
 

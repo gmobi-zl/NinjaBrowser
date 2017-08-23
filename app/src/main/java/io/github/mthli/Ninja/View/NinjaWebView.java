@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.view.*;
+import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import io.github.mthli.Ninja.Browser.*;
@@ -122,6 +123,8 @@ public class NinjaWebView extends WebView implements AlbumController {
         setVerticalScrollBarEnabled(false);
         setScrollbarFadingEnabled(true);
 
+        //setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+
         setWebViewClient(webViewClient);
         setWebChromeClient(webChromeClient);
         setDownloadListener(downloadListener);
@@ -147,11 +150,23 @@ public class NinjaWebView extends WebView implements AlbumController {
         webSettings.setAppCachePath(context.getCacheDir().toString());
         webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
         webSettings.setDatabaseEnabled(true);
+        webSettings.setSaveFormData(true);
         webSettings.setDomStorageEnabled(true);
         webSettings.setGeolocationDatabasePath(context.getFilesDir().toString());
+        webSettings.setSupportMultipleWindows(true);
 
         webSettings.setSupportZoom(true);
-        //webSettings.setBuiltInZoomControls(true);
+
+        //webSettings.setJavaScriptEnabled(true);
+        //webSettings.setPluginState(WebSettings.PluginState.ON);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+            CookieManager.getInstance().setAcceptThirdPartyCookies(this, true);
+            CookieManager.getInstance().setAcceptCookie(true);
+        }
+
+        webSettings.setBuiltInZoomControls(true);
         //webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         //webSettings.setDisplayZoomControls(true);
 
@@ -167,9 +182,9 @@ public class NinjaWebView extends WebView implements AlbumController {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         WebSettings webSettings = getSettings();
 
-        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setLoadWithOverviewMode(true);  // youku must set to false.
         // font size
-        int fontSize = Integer.valueOf(sp.getString(context.getString(R.string.sp_text_size), "2"));
+        int fontSize = 2;//Integer.valueOf(sp.getString(context.getString(R.string.sp_text_size), "2"));
         switch(fontSize){
             case 0:
                 //webSettings.setTextSize(WebSettings.TextSize.SMALLEST);

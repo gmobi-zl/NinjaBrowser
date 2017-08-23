@@ -16,6 +16,8 @@ import io.github.mthli.Ninja.Utils.MouseModeCtrl;
 
 public class BaseActivity extends Activity{
 
+    public static final String LOG_TAG = "VieBrowser";
+
     boolean isActive = true;
 
     @Override
