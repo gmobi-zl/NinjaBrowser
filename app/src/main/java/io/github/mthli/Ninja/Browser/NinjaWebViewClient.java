@@ -135,14 +135,14 @@ public class NinjaWebViewClient extends WebViewClient {
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
         if (enable && !white && adBlock.isAd(url)) {
-            Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest block : " + url);
+            Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest 1 block : " + url);
             return new WebResourceResponse(
                     BrowserUnit.MIME_TYPE_TEXT_PLAIN,
                     BrowserUnit.URL_ENCODING,
                     new ByteArrayInputStream("".getBytes())
             );
         }
-        Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest super : " + url);
+        Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest 1 super : " + url);
         return super.shouldInterceptRequest(view, url);
     }
 
@@ -150,7 +150,7 @@ public class NinjaWebViewClient extends WebViewClient {
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (enable && !white && adBlock.isAd(request.getUrl().toString())) {
-                Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest adblock : ");
+                Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest 2 adblock : ");
                 return new WebResourceResponse(
                         BrowserUnit.MIME_TYPE_TEXT_PLAIN,
                         BrowserUnit.URL_ENCODING,
@@ -158,7 +158,7 @@ public class NinjaWebViewClient extends WebViewClient {
                 );
             }
         }
-        Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest super : ");
+        Log.d(BaseActivity.LOG_TAG, "shouldInterceptRequest 2 super : ");
         return super.shouldInterceptRequest(view, request);
     }
 

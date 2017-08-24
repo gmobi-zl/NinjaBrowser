@@ -27,5 +27,8 @@ public class MyApplication extends Application {
         MouseModeCtrl mmCtrl = MouseModeCtrl.getInstance(this);
         mmCtrl.firstStartAction();
         BookmarksUtil.getInstance(this).checkDefBKInUserBookmark();
+
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(getApplicationContext());
     }
 }

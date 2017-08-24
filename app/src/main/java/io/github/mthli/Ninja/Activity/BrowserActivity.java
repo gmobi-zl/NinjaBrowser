@@ -433,13 +433,14 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            // When video fullscreen, just control the sound
-            return !(fullscreenHolder != null || customView != null || videoView != null) && onKeyCodeVolumeUp();
-        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-            // When video fullscreen, just control the sound
-            return !(fullscreenHolder != null || customView != null || videoView != null) && onKeyCodeVolumeDown();
-        } else if (keyCode == KeyEvent.KEYCODE_MENU) {
+//        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+//            // When video fullscreen, just control the sound
+//            return !(fullscreenHolder != null || customView != null || videoView != null) && onKeyCodeVolumeUp();
+//        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+//            // When video fullscreen, just control the sound
+//            return !(fullscreenHolder != null || customView != null || videoView != null) && onKeyCodeVolumeDown();
+//        } else
+        if (keyCode == KeyEvent.KEYCODE_MENU) {
             //return showOverflow();
         } else if (keyCode == KeyEvent.KEYCODE_BACK) {
             // When video fullscreen, first close it
@@ -465,15 +466,15 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         }
 
         // When video fullscreen, just control the sound
-        if (fullscreenHolder != null || customView != null || videoView != null) {
-            if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-                int vc = Integer.valueOf(sp.getString(getString(R.string.sp_volume), "1"));
-                if (vc != 2) {
-                    return true;
-                }
-            }
-        }
+//        if (fullscreenHolder != null || customView != null || videoView != null) {
+//            if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+//                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+//                int vc = Integer.valueOf(sp.getString(getString(R.string.sp_volume), "1"));
+//                if (vc != 2) {
+//                    return true;
+//                }
+//            }
+//        }
 
 //        View rootview = this.getWindow().getDecorView();
 //        View focusView = rootview.findFocus();
