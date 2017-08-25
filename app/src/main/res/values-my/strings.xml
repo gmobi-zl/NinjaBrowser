@@ -9,7 +9,7 @@
 
     <!-- Album -->
     <string name="album_title_bookmarks">
-        bookmarks
+        အနှစ်သက်ဆုံး
     </string>
     <string name="album_title_history">
         သမိုင်း
@@ -26,28 +26,28 @@
         ရှင်းလင်းသော
     </string>
     <string name="clear_menu_done_all">
-        အားလုံး Done
+        အားလုံး ပြည့်စုံသော
     </string>
     <string name="clear_title_quit">
-        Clear ကိုရသောအခါလျှောက်လွှာထွက်ပေါက်
+        ရှင်းလင်းသော ကိုရသောအခါလျှောက်လွှာထွက်ပေါက်
     </string>
     <string name="clear_title_bookmarks">
-        Clear ကို Bookmarks
+        ရှင်းလင်းသော အနှစ်သက်ဆုံး
     </string>
     <string name="clear_title_cache">
-        Clear Cache
+        ရှင်းလင်းသော ယာယီဖိုင်များကို
     </string>
     <string name="clear_title_cookie">
-        Clear ကိုကွတ်ကီး
+        ရှင်းလင်းသော ကိုကွတ်ကီး
     </string>
     <string name="clear_title_form_data">
-        Clear ကို Form ကိုဒေတာ
+        ရှင်းလင်းသောို ကိုဒေတာ
     </string>
     <string name="clear_title_history">
-        Clear ကိုသမိုင်း
+        ရှင်းလင်းသော ကိုသမိုင်း
     </string>
     <string name="clear_title_passwords">
-        Clear ကို Passwords များကို
+        ရှင်းလင်းသောို Passwords များကို
     </string>
 
     <!-- Dialog -->
@@ -70,7 +70,7 @@
         အိုကေ
     </string>
     <string name="dialog_button_negative">
-        Cancel
+        ဖျက်သိမ်း
     </string>
     <string name="dialog_button_custom">
         ထုံးစံဓလေ့
@@ -116,10 +116,10 @@
         နယူး tab ကို
     </string>
     <string name="main_menu_copy_link">
-        Copy ကူး link ကို
+        မိတ္တူ ဆိုက်ကိုို
     </string>
     <string name="main_menu_save">
-        ကြော်ငြာကို Save လုပ်ရန်
+        ကြော်ငြာကို မှတ်ဉာဏ် လုပ်ရန်
     </string>
     <string name="main_omnibox_input_hint">
         ရှာရန်သို့မဟုတ် type ကို URL ကို
@@ -157,7 +157,7 @@
 
     <!-- Settings -->
     <string name="setting_label">
-        Settings များ
+        အစုံ များ
     </string>
     <!-- Browser setting -->
     <string name="setting_title_browser">
@@ -216,7 +216,7 @@
         Omnibox ထိန်းချုပ်ရေး
     </string>
     <string name="setting_summary_omnibox_control">
-        tabs များပြောင်းလဲ omnibox left / ညာဘက်ကိုပွတ်ဆွဲပါ
+        များပြောင်းလဲ omnibox လက်ဝဲ / ညာဘက်ကိုပွတ်ဆွဲပါ
     </string>
     <!-- Volume key scroll -->
     <string name="setting_title_volume_control">
@@ -375,10 +375,10 @@
     </string>
     <!-- Bookmarks -->
     <string name="setting_title_export_bookmarks">
-        ပို့ကုန် Bookmarks
+        ပို့ကုန် အနှစ်သက်ဆုံး
     </string>
     <string name="setting_title_import_bookmarks">
-        သွင်းကုန် Bookmarks
+        သွင်းကုန် အနှစ်သက်ဆုံး
     </string>
     <string name="bookmarks_filename">
         Bookmarks
@@ -409,10 +409,10 @@
 
     <!-- Toast -->
     <string name="toast_add_bookmark_successful">
-        အောင်မြင်စွာ Added Bookmarks
+        အောင်မြင်စွာ Added အနှစ်သက်ဆုံး
     </string>
     <string name="toast_add_bookmark_failed">
-        bookmark ကိုဤစာမကျြနှာမထည့်နိုင်ပါ
+        အနှစ်သက်ဆုံး ကိုဤစာမကျြနှာမထည့်နိုင်ပါ
     </string>
     <string name="toast_add_to_home_successful">
         မူလစာမျက်နှာမှအောင်မြင်စွာကဆက်ပြောသည်
@@ -442,7 +442,7 @@
         အောင်မြင်စွာကူးယူ
     </string>
     <string name="toast_delete_bookmark_successful">
-        အောင်မြင်စွာ Deleted Bookmark
+        အောင်မြင်စွာ Deleted အနှစ်သက်ဆုံး
     </string>
     <string name="toast_delete_successful">
         အောင်မြင်စွာ Deleted
@@ -457,10 +457,10 @@
 
     </string>
     <string name="toast_export_bookmarks_successful">
-        တင်ပို့ bookmarks ကိုမှာ file:&#160;
+        တင်ပို့ အနှစ်သက်ဆုံး ကိုမှာ ဖိုင်မှတ်တမ်း:&#160;
     </string>
     <string name="toast_export_bookmarks_failed">
-        Bookmarks တင်ပို့ရန်မအောင်မြင်ခဲ့ပါ
+        အနှစ်သက်ဆုံး တင်ပို့ရန်မအောင်မြင်ခဲ့ပါ
     </string>
     <string name="toast_export_whitelist_successful">
         မှာတင်ပို့ whitelist ထဲတွင်ဖိုင်:&#160;
@@ -469,10 +469,10 @@
         Whitelist တင်ပို့ရန်မအောင်မြင်ခဲ့ပါ
     </string>
     <string name="toast_import_bookmarks_successful">
-        တင်သွင်း bookmarks ကိုရေတွက်:&#160;
+        တင်သွင်း အနှစ်သက်ဆုံး ကိုရေတွက်:&#160;
     </string>
     <string name="toast_import_bookmarks_failed">
-        Bookmarks တင်သွင်းရန်မအောင်မြင်ခဲ့ပါ
+        အနှစ်သက်ဆုံး တင်သွင်းရန်မအောင်မြင်ခဲ့ပါ
     </string>
     <string name="toast_import_whitelist_successful">
         တင်သွင်း domains များရေတွက်:&#160;
@@ -511,7 +511,7 @@
         မှာကယ်တင်ခြင်းသို့ရောက်ရ၏စခရင်ပုံ:&#160;
     </string>
     <string name="toast_screenshot_failed">
-        Screenshot ဖမ်းရန်မအောင်မြင်ခဲ့ပါ
+        မျက်နှာပြင်ရုပ်ပုံများ ဖမ်းရန်မအောင်မြင်ခဲ့ပါ
     </string>
     <string name="toast_share_failed">
         ဒီစာမျက်နှာဝေမျှလို့မရပါ
@@ -561,19 +561,19 @@
         ပြန်.
     </string>
     <string name="bottom_menu">
-        options ကို
+        ရွေးချယ်မှုများ
     </string>
     <string name="bottom_clear">
         ရှင်းလင်းသော
     </string>
     <string name="remove_bookmark">
-        bookmarks ကိုမှဖယ်ရှားရန်
+        အကြိုက်ဆုံးမှဖယ်ရှားရန်
     </string>
     <string name="mouse_mode_on">
-        ကြွက် Mode ကို ON Turn
+        ဖွင့်လှစ် ကြွက်
     </string>
     <string name="mouse_mode_off">
-        ကြွက် Mode ကိုပိတ်ပါ
+        ပိတ် ကြွက်
     </string>
     <string name="action_successful">
         အောင်မြင်ခြင်း
