@@ -17,6 +17,8 @@ public class AdBlock {
     private static final List<String> whitelist = new ArrayList<>();
     private static final Locale locale = Locale.getDefault();
 
+    private static final String YOUKU_WHITE = "youku.com";
+
     private static void loadHosts(final Context context) {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -77,6 +79,11 @@ public class AdBlock {
                 return true;
             }
         }
+
+        if (url != null && url.toLowerCase().contains(YOUKU_WHITE)){
+            return true;
+        }
+
         return false;
     }
 

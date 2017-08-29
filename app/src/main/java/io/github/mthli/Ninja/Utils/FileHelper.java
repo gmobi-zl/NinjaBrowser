@@ -18,6 +18,7 @@ package io.github.mthli.Ninja.Utils;
 import static android.os.Environment.getExternalStorageDirectory;
 import static android.os.Environment.getExternalStorageState;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,14 +27,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
+
+import io.github.mthli.Ninja.R;
 
 public class FileHelper {
 	public static void writeText(File file, String text) throws IOException{
@@ -269,5 +278,62 @@ public class FileHelper {
 			return false;
 		}
 		return true;
+	}
+
+	public static Uri savePicture(Context context, Bitmap bitmap, int maxSize) {
+
+		int cropWidth = bitmap.getWidth();
+		int cropHeight = bitmap.getHeight();
+
+		if (cropWidth > maxSize) {
+			cropHeight = cropHeight * maxSize / cropWidth;
+			cropWidth = maxSize;
+
+		}
+
+		if (cropHeight > maxSize) {
+			cropWidth = cropWidth * maxSize / cropHeight;
+			cropHeight = maxSize;
+
+		}
+
+		bitmap = ThumbnailUtils.extractThumbnail(bitmap, cropWidth, cropHeight, ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
+
+		File mediaStorageDir = new File(
+				Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+				context.getString(R.string.app_name)
+		);
+
+		if (!mediaStorageDir.exists()) {
+			if (!mediaStorageDir.mkdirs()) {
+				return null;
+			}
+		}
+
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		File mediaFile = new File(
+				mediaStorageDir.getPath() + File.separator + "IMG_" + timeStamp + ".jpg"
+		);
+
+		// Saving the bitmap
+		try {
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 80, out);
+
+			FileOutputStream stream = new FileOutputStream(mediaFile);
+			stream.write(out.toByteArray());
+			stream.close();
+
+		} catch (IOException exception) {
+			exception.printStackTrace();
+		}
+
+		// Mediascanner need to scan for the image saved
+		Intent mediaScannerIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+		Uri fileContentUri = Uri.fromFile(mediaFile);
+		mediaScannerIntent.setData(fileContentUri);
+		context.sendBroadcast(mediaScannerIntent);
+
+		return fileContentUri;
 	}
 }

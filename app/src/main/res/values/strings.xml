@@ -103,7 +103,7 @@
         - The donor have agreed all above points.\n\n
     </string>
     <string name="dialog_content_upload">
-        Currently, File upload is only supported on Android 5.0 and Above.
+        Select the uploaded file
     </string>
 
     <!-- List -->

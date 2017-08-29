@@ -45,3 +45,7 @@
 }
 
 -keep public class * extends com.mocean.IService
+
+-keepclassmembers class * extends android.webkit.WebChromeClient{
+       public void openFileChooser(...);
+}

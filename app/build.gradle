@@ -21,8 +21,8 @@ android {
         applicationId "com.viebrowser.lite"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1111
-        versionName "1.1.11"
+        versionCode 1112
+        versionName "1.1.12"
         //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true

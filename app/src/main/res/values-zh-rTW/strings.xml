@@ -103,7 +103,7 @@
         - 捐贈者同意上述所有觀點。\n\n
     </string>
     <string name="dialog_content_upload">
-        由于某些原因我們無法在Android 4.X中上傳文件，但這項功能在Android 5.X中可以正常工作。這是多麽遺憾的一件事啊！
+        選擇要上傳的文件
     </string>
 
     <!-- List -->

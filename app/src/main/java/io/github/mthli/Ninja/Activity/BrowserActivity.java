@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -56,6 +57,7 @@ import io.github.mthli.Ninja.Utils.AdvertisingIdClient;
 import io.github.mthli.Ninja.Unit.BrowserUnit;
 import io.github.mthli.Ninja.Unit.IntentUnit;
 import io.github.mthli.Ninja.Utils.BookmarksUtil;
+import io.github.mthli.Ninja.Utils.FileHelper;
 import io.github.mthli.Ninja.Utils.HttpHelper;
 import io.github.mthli.Ninja.Utils.JsonHelper;
 import io.github.mthli.Ninja.Utils.MouseModeCtrl;
@@ -65,6 +67,7 @@ import io.github.mthli.Ninja.View.*;
 import org.askerov.dynamicgrid.DynamicGridView;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.*;
 
 public class BrowserActivity extends BaseActivity implements BrowserController {
@@ -143,10 +146,30 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     private Context mContext;
     final static String URL_IP_LOCATION = "http://ip.mocean.cc/s";
 
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        //Log.i(BaseActivity.LOG_TAG, "========== onActivityResult ================ ");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             filePathCallback.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, intent));
+        } else {
+            //Log.i(BaseActivity.LOG_TAG, "========== requestCode = " + requestCode);
+            //Log.i(BaseActivity.LOG_TAG, "========== resultCode = " + resultCode);
+            if (requestCode == IntentUnit.REQUEST_FILE_16){
+                if (null == this.uploadMsg) return;
+                Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
+                try {
+                    //Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), intent.getData());
+                    //Uri result = intent == null ? null : FileHelper.savePicture(this, bitmap, 1400);
+                    Log.d(BaseActivity.LOG_TAG, "========== result = " + result);
+                    this.uploadMsg.onReceiveValue(result);
+                    this.uploadMsg = null;
+                } catch (Exception e){
+                    Log.d(BaseActivity.LOG_TAG, "========== e = " + e.toString());
+                }
+            }
         }
     }
 
@@ -1511,6 +1534,13 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 //        }
     }
 
+    private void openImageChooserActivity() {
+        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+        i.addCategory(Intent.CATEGORY_OPENABLE);
+        i.setType("*/*");
+        startActivityForResult(Intent.createChooser(i, getString(R.string.dialog_content_upload)), IntentUnit.REQUEST_FILE_16);
+    }
+
     @Override
     public void openFileChooser(ValueCallback<Uri> uploadMsg) {
         // Because Activity launchMode is singleInstance,
@@ -1522,17 +1552,20 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         // intent.addCategory(Intent.CATEGORY_OPENABLE);
         // intent.setType("*/*");
         // startActivityForResult(Intent.createChooser(intent, getString(R.string.main_file_chooser)), IntentUnit.REQUEST_FILE_16);
-        uploadMsg.onReceiveValue(null);
+        this.uploadMsg = uploadMsg;
+        openImageChooserActivity();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-
-        FrameLayout layout = (FrameLayout) getLayoutInflater().inflate(R.layout.dialog_desc, null, false);
-        TextView textView = (TextView) layout.findViewById(R.id.dialog_desc);
-        textView.setText(R.string.dialog_content_upload);
-
-        builder.setView(layout);
-        builder.create().show();
+//        uploadMsg.onReceiveValue(null);
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setCancelable(true);
+//
+//        FrameLayout layout = (FrameLayout) getLayoutInflater().inflate(R.layout.dialog_desc, null, false);
+//        TextView textView = (TextView) layout.findViewById(R.id.dialog_desc);
+//        textView.setText(R.string.dialog_content_upload);
+//
+//        builder.setView(layout);
+//        builder.create().show();
     }
 
     @Override

@@ -103,7 +103,7 @@
         - Témoignent que le donateur accepte tous les points précédents.\n\n
     </string>
     <string name="dialog_content_upload">
-        Actuellement, l\'envoi de fichier n\'est pas supporté par Android 5.0 et suivant.
+        Sélection du fichier
     </string>
 
     <!-- List -->
