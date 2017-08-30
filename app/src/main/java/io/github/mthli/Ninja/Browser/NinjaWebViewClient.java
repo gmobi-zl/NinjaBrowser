@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.MailTo;
@@ -26,6 +27,7 @@ import io.github.mthli.Ninja.Unit.IntentUnit;
 import io.github.mthli.Ninja.View.NinjaWebView;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 import java.util.Map;
 
 public class NinjaWebViewClient extends WebViewClient {
@@ -113,12 +115,29 @@ public class NinjaWebViewClient extends WebViewClient {
             view.reload();
             return true;
         } else if (url.startsWith(BrowserUnit.URL_SCHEME_INTENT)) {
+//            Intent intent;
+//            try {
+//                intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
+//                context.startActivity(intent);
+//                return true;
+//            } catch (Exception e) {} // When intent fail will crash
+
             Intent intent;
             try {
                 intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
-                context.startActivity(intent);
+                intent.addCategory("android.intent.category.BROWSABLE");
+                intent.setComponent(null);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+                    intent.setSelector(null);
+                }
+                List<ResolveInfo> resolves = context.getPackageManager().queryIntentActivities(intent,0);
+                if(resolves.size()>0){
+                    context.startActivity(intent);
+                }
                 return true;
-            } catch (Exception e) {} // When intent fail will crash
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         white = adBlock.isWhite(url);

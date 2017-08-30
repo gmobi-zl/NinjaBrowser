@@ -74,6 +74,7 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     // Sync with NinjaToast.show() 2000ms delay
     private static final int DOUBLE_TAPS_QUIT_DEFAULT = 2000;
 
+    private static Activity holdActivity;
 //    private SwitcherPanel switcherPanel;
     private int anchor;
     private float dimen156dp;
@@ -146,17 +147,14 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     private Context mContext;
     final static String URL_IP_LOCATION = "http://ip.mocean.cc/s";
 
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        //Log.i(BaseActivity.LOG_TAG, "========== onActivityResult ================ ");
+        Log.i(BaseActivity.LOG_TAG, "========== onActivityResult ================ ");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             filePathCallback.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, intent));
         } else {
-            //Log.i(BaseActivity.LOG_TAG, "========== requestCode = " + requestCode);
-            //Log.i(BaseActivity.LOG_TAG, "========== resultCode = " + resultCode);
+            Log.i(BaseActivity.LOG_TAG, "========== requestCode = " + requestCode);
+            Log.i(BaseActivity.LOG_TAG, "========== resultCode = " + resultCode);
             if (requestCode == IntentUnit.REQUEST_FILE_16){
                 if (null == this.uploadMsg) return;
                 Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
@@ -176,30 +174,32 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(BaseActivity.LOG_TAG,"Browser onCreate");
         mContext = this;
+        holdActivity = this;
 
         if (showStartPage == true){
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        adid = AdvertisingIdClient.getAdvertisingIdInfo(mContext).getId();
-                    } catch (Exception e) {
-                        Log.e("error", e.toString());
-                    }
-
-                    try{
-                        HttpHelper.Response resp = HttpHelper.doGet(URL_IP_LOCATION, null);
-                        if (resp != null && resp.getBody() != null){
-                            JSONObject jo = JsonHelper.parse(resp.getBody());
-                            ipcountry = jo.optString("country", null);
-                            ipcity = jo.optString("city", null);
-                        }
-                    }catch(Exception e){
-                        Log.e("error", e.toString());
-                    }
-                }
-            }).start();
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    try {
+//                        adid = AdvertisingIdClient.getAdvertisingIdInfo(mContext).getId();
+//                    } catch (Exception e) {
+//                        Log.e("error", e.toString());
+//                    }
+//
+//                    try{
+//                        HttpHelper.Response resp = HttpHelper.doGet(URL_IP_LOCATION, null);
+//                        if (resp != null && resp.getBody() != null){
+//                            JSONObject jo = JsonHelper.parse(resp.getBody());
+//                            ipcountry = jo.optString("country", null);
+//                            ipcity = jo.optString("city", null);
+//                        }
+//                    }catch(Exception e){
+//                        Log.e("error", e.toString());
+//                    }
+//                }
+//            }).start();
         }
 
 
@@ -308,6 +308,7 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     @Override
     public void onResume() {
         super.onResume();
+        Log.i(BaseActivity.LOG_TAG,"Browser onResume");
         IntentUnit.setContext(this);
         if (create) {
             return;
@@ -370,6 +371,8 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 
     @Override
     public void onPause() {
+        Log.i(BaseActivity.LOG_TAG,"Browser onPause");
+
         Intent toHolderService = new Intent(this, HolderService.class);
         IntentUnit.setClear(false);
         stopService(toHolderService);
@@ -395,6 +398,8 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 
     @Override
     public void onDestroy() {
+        Log.i(BaseActivity.LOG_TAG,"Browser onDestroy");
+        holdActivity = null;
         Intent toHolderService = new Intent(this, HolderService.class);
         IntentUnit.setClear(true);
         stopService(toHolderService);
@@ -503,7 +508,7 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 //        View focusView = rootview.findFocus();
 //        ViewParent parentView = focusView.getParent();
 //        int focusViewId = rootview.findFocus().getId();
-//        Log.i("Ninja","keyCode = " + keyCode);
+          Log.i(BaseActivity.LOG_TAG,"keyup keyCode = " + keyCode);
 //        Log.i("Ninja","focusViewId = " + focusViewId);
 //        Log.i("Ninja","focusView = " + focusView);
 //        Log.i("Ninja","parentView = " + parentView);
@@ -1539,6 +1544,7 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         i.addCategory(Intent.CATEGORY_OPENABLE);
         i.setType("*/*");
         startActivityForResult(Intent.createChooser(i, getString(R.string.dialog_content_upload)), IntentUnit.REQUEST_FILE_16);
+        Log.i(BaseActivity.LOG_TAG, "========== open file chooser ");
     }
 
     @Override
