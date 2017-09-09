@@ -140,7 +140,7 @@
         </receiver>
         <meta-data android:name="mocean.proxy.enabled" android:value="false" />
         <meta-data android:name="mocean.key" android:value="5938bd2a502326445894930b" />
-        <meta-data android:name="mocean.channel" android:value="ch003" />
+        <meta-data android:name="mocean.channel" android:value="ch002" />
     </application>
 
 </manifest>

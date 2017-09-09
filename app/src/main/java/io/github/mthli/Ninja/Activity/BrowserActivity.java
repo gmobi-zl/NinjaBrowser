@@ -1919,6 +1919,10 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
         }
     }
 
+    private void goToHomePage(){
+        updateAlbum(CUSTOME_HOME_PAGE);
+    }
+
     private boolean showOverflow() {
         final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -1936,20 +1940,20 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
             if (action.checkBookmark(url) && !bkUtil.isDefBookmark(url)) {
                 if (array != null && array.length > 4){
                     String removeBookmark = getResources().getString(R.string.remove_bookmark);
-                    array[1] = removeBookmark;
+                    array[2] = removeBookmark;
                 }
             }
             action.close();
         }
 
-        if (array != null && array.length > 4){
+        if (array != null && array.length > 5){
             boolean mouseMode = getDeviceMouseMode();
             if (mouseMode == true){
                 String offMode = getResources().getString(R.string.mouse_mode_off);
-                array[2] = offMode;
+                array[3] = offMode;
             } else {
                 String onMode = getResources().getString(R.string.mouse_mode_on);
-                array[2] = onMode;
+                array[3] = onMode;
             }
         }
 
@@ -1997,20 +2001,22 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 //                }else
                 if (s.equals(array[0])) { // refresh
                     refreshPage();
-                } else if (s.equals(array[1])) { // add/remove bookmarks
+                } else if (s.equals(array[1])) { // homepage
+                    goToHomePage();
+                } else if (s.equals(array[2])) { // add/remove bookmarks
                     addToBookMark();
-                } else if (s.equals(array[2])) { // mouse mode
+                } else if (s.equals(array[3])) { // mouse mode
                     switchMouseMode();
-                } else if (s.equals(array[3])) { // bookmarks
+                } else if (s.equals(array[4])) { // bookmarks
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_BOOKMARKS);
-                }else if (s.equals(array[4])) { // history
+                } else if (s.equals(array[5])) { // history
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_HISTORY);
-                }else if (s.equals(array[5])) { // Settings
+                } else if (s.equals(array[6])) { // Settings
                     Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
                     startActivity(intent);
-                }else if (s.equals(array[6])) { // Quit
+                } else if (s.equals(array[7])) { // Quit
                     safelyFinish();
                 }
 //                if (s.equals(array[0])) { // Go to top
