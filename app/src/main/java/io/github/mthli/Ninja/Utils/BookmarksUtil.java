@@ -43,7 +43,7 @@ public class BookmarksUtil {
         FileHelper.getCacheDir(context, FAVICONS_CACHE_FOLDER);
         downloadUrlList = new HashMap<String, Boolean>();
         defBookmarkList = new ArrayList<Record>();
-        //initDefaultBookmark();
+        initDefaultBookmark();
     }
 
     private void initDefaultBookmark(){
