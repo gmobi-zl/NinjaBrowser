@@ -222,6 +222,8 @@ public class NinjaWebView extends WebView implements AlbumController {
         //webSettings.setSupportMultipleWindows(sp.getBoolean(context.getString(R.string.sp_multiple_windows), false));
         webSettings.setSaveFormData(sp.getBoolean(context.getString(R.string.sp_passwords), true));
 
+        //webSettings.setAppCacheMaxSize(1024*1024*30);
+
 //        boolean textReflow = sp.getBoolean(context.getString(R.string.sp_text_reflow), true);
 //        if (textReflow) {
 //            webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);

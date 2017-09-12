@@ -6,6 +6,7 @@ import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Instrumentation;
 import android.app.SearchManager;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +18,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
@@ -146,6 +148,23 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     private Handler extraHandler = new Handler();
     private Context mContext;
     final static String URL_IP_LOCATION = "http://ip.mocean.cc/s";
+
+
+
+    /**
+     * Add for low memory mode
+     *@{
+     */
+    @Override
+    public void onTrimMemory(int level) {
+        Log.d(BaseActivity.LOG_TAG, "BrowserActivity.onTrimMemory() level = " + level);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        Log.d(BaseActivity.LOG_TAG, "BrowserActivity onLowMemory");
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -1539,46 +1558,213 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
 //        }
     }
 
-    private void openImageChooserActivity() {
+    /***
+     *  file chooer
+     */
+    private Intent createChooserIntent(Intent... intents) {
+        Intent chooser = new Intent(Intent.ACTION_CHOOSER);
+        chooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents);
+        chooser.putExtra(Intent.EXTRA_TITLE,
+                getResources().getString(R.string.dialog_content_upload));
+        return chooser;
+    }
+
+    private Intent createOpenableIntent(String type) {
+        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+        i.addCategory(Intent.CATEGORY_OPENABLE);
+        i.setType(type);
+        return i;
+    }
+
+    private Intent createCameraIntent() {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File externalDataDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DCIM);
+        File cameraDataDir = new File(externalDataDir.getAbsolutePath() +
+                File.separator + "browser-photos");
+        cameraDataDir.mkdirs();
+        String mCameraFilePath = cameraDataDir.getAbsolutePath() + File.separator +
+                System.currentTimeMillis() + ".jpg";
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(mCameraFilePath)));
+        return cameraIntent;
+    }
+
+    private Intent createCamcorderIntent() {
+        return new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+    }
+
+    private Intent createSoundRecorderIntent() {
+        return new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
+    }
+
+    private Intent createDefaultOpenableIntent() {
+        // Create and return a chooser with the default OPENABLE
+        // actions including the camera, camcorder and sound
+        // recorder where available.
         Intent i = new Intent(Intent.ACTION_GET_CONTENT);
         i.addCategory(Intent.CATEGORY_OPENABLE);
         i.setType("*/*");
-        startActivityForResult(Intent.createChooser(i, getString(R.string.dialog_content_upload)), IntentUnit.REQUEST_FILE_16);
+
+        Intent chooser = createChooserIntent(createCameraIntent(), createCamcorderIntent(),
+                createSoundRecorderIntent());
+        chooser.putExtra(Intent.EXTRA_INTENT, i);
+        return chooser;
+    }
+
+    private void openImageChooserActivity() {
+        final String imageMimeType = "image/*";
+        final String videoMimeType = "video/*";
+        final String audioMimeType = "audio/*";
+        final String mediaSourceKey = "capture";
+        final String mediaSourceValueCamera = "camera";
+        final String mediaSourceValueFileSystem = "filesystem";
+        final String mediaSourceValueCamcorder = "camcorder";
+        final String mediaSourceValueMicrophone = "microphone";
+
+        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+        i.addCategory(Intent.CATEGORY_OPENABLE);
+        i.setType("*/*");
+
+//        Intent chooser = createChooserIntent(createCameraIntent(), createCamcorderIntent(),
+//                createSoundRecorderIntent());
+
+        Intent chooser = createChooserIntent(createCameraIntent());
+        chooser.putExtra(Intent.EXTRA_INTENT, createOpenableIntent(imageMimeType));
+
+        //chooser.putExtra(Intent.EXTRA_INTENT, i);
+
+        startActivityForResult(chooser, IntentUnit.REQUEST_FILE_16);
         Log.i(BaseActivity.LOG_TAG, "========== open file chooser ");
     }
 
+
+    private String mCameraFilePath;
     @Override
-    public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+    public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
         // Because Activity launchMode is singleInstance,
         // so we can not get result from onActivityResult when Android 4.X,
         // what a pity
-        //
-        // this.uploadMsg = uploadMsg;
-        // Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        // intent.addCategory(Intent.CATEGORY_OPENABLE);
-        // intent.setType("*/*");
-        // startActivityForResult(Intent.createChooser(intent, getString(R.string.main_file_chooser)), IntentUnit.REQUEST_FILE_16);
-        this.uploadMsg = uploadMsg;
-        openImageChooserActivity();
 
-//        uploadMsg.onReceiveValue(null);
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setCancelable(true);
-//
-//        FrameLayout layout = (FrameLayout) getLayoutInflater().inflate(R.layout.dialog_desc, null, false);
-//        TextView textView = (TextView) layout.findViewById(R.id.dialog_desc);
-//        textView.setText(R.string.dialog_content_upload);
-//
-//        builder.setView(layout);
-//        builder.create().show();
+        final String imageMimeType = "image/*";
+        final String videoMimeType = "video/*";
+        final String audioMimeType = "audio/*";
+        final String mediaSourceKey = "capture";
+        final String mediaSourceValueCamera = "camera";
+        final String mediaSourceValueFileSystem = "filesystem";
+        final String mediaSourceValueCamcorder = "camcorder";
+        final String mediaSourceValueMicrophone = "microphone";
+
+        // According to the spec, media source can be 'filesystem' or 'camera' or 'camcorder'
+        // or 'microphone' and the default value should be 'filesystem'.
+        String mediaSource = mediaSourceValueFileSystem;
+
+//        if (this.uploadMsg != null) {
+//            // Already a file picker operation in progress.
+//            return;
+//        }
+        this.uploadMsg = uploadMsg;
+
+        // Parse the accept type.
+        String params[] = acceptType.split(";");
+        String mimeType = params[0];
+
+        if (capture.length() > 0) {
+            mediaSource = capture;
+        }
+
+        if (capture.equals(mediaSourceValueFileSystem)) {
+            // To maintain backwards compatibility with the previous implementation
+            // of the media capture API, if the value of the 'capture' attribute is
+            // "filesystem", we should examine the accept-type for a MIME type that
+            // may specify a different capture value.
+            for (String p : params) {
+                String[] keyValue = p.split("=");
+                if (keyValue.length == 2) {
+                    // Process key=value parameters.
+                    if (mediaSourceKey.equals(keyValue[0])) {
+                        mediaSource = keyValue[1];
+                    }
+                }
+            }
+        }
+
+        //Ensure it is not still set from a previous upload.
+        mCameraFilePath = null;
+
+        if (mimeType.equals(imageMimeType)) {
+            if (mediaSource.equals(mediaSourceValueCamera)) {
+                // Specified 'image/*' and requested the camera, so go ahead and launch the
+                // camera directly.
+                startActivity(createCameraIntent());
+                return;
+            } else {
+                // Specified just 'image/*', capture=filesystem, or an invalid capture parameter.
+                // In all these cases we show a traditional picker filetered on accept type
+                // so launch an intent for both the Camera and image/* OPENABLE.
+                Intent chooser = createChooserIntent(createCameraIntent());
+                chooser.putExtra(Intent.EXTRA_INTENT, createOpenableIntent(imageMimeType));
+                startFileActivity(chooser);
+                return;
+            }
+        } else if (mimeType.equals(videoMimeType)) {
+            if (mediaSource.equals(mediaSourceValueCamcorder)) {
+                // Specified 'video/*' and requested the camcorder, so go ahead and launch the
+                // camcorder directly.
+                startFileActivity(createCamcorderIntent());
+                return;
+            } else {
+                // Specified just 'video/*', capture=filesystem or an invalid capture parameter.
+                // In all these cases we show an intent for the traditional file picker, filtered
+                // on accept type so launch an intent for both camcorder and video/* OPENABLE.
+                Intent chooser = createChooserIntent(createCamcorderIntent());
+                chooser.putExtra(Intent.EXTRA_INTENT, createOpenableIntent(videoMimeType));
+                startFileActivity(chooser);
+                return;
+            }
+        } else if (mimeType.equals(audioMimeType)) {
+            if (mediaSource.equals(mediaSourceValueMicrophone)) {
+                // Specified 'audio/*' and requested microphone, so go ahead and launch the sound
+                // recorder.
+                startFileActivity(createSoundRecorderIntent());
+                return;
+            } else {
+                // Specified just 'audio/*',  capture=filesystem of an invalid capture parameter.
+                // In all these cases so go ahead and launch an intent for both the sound
+                // recorder and audio/* OPENABLE.
+                Intent chooser = createChooserIntent(createSoundRecorderIntent());
+                chooser.putExtra(Intent.EXTRA_INTENT, createOpenableIntent(audioMimeType));
+                startFileActivity(chooser);
+                return;
+            }
+        }
+
+        // No special handling based on the accept type was necessary, so trigger the default
+        // file upload chooser.
+        startFileActivity(createDefaultOpenableIntent());
+    }
+
+    private void startFileActivity(Intent intent) {
+        Log.i(BaseActivity.LOG_TAG, "========== open file chooser ");
+        try {
+            startActivityForResult(intent, IntentUnit.REQUEST_FILE_16);
+        } catch (ActivityNotFoundException e) {
+            // No installed app was able to handle the intent that
+            // we sent, so fallback to the default file upload control.
+            try {
+                //mCaughtActivityNotFoundException = true;
+                startActivityForResult(createDefaultOpenableIntent(), IntentUnit.REQUEST_FILE_16);
+            } catch (ActivityNotFoundException e2) {
+                // Nothing can return us a file, so file upload is effectively disabled.
+//                Toast.makeText(mContext, R.string.uploads_disabled,
+//                        Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
     public void showFileChooser(ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             this.filePathCallback = filePathCallback;
-
             try {
                 Intent intent = fileChooserParams.createIntent();
                 startActivityForResult(intent, IntentUnit.REQUEST_FILE_21);

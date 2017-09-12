@@ -20,7 +20,7 @@ public interface BrowserController {
 
     void removeAlbum(AlbumController albumController);
 
-    void openFileChooser(ValueCallback<Uri> uploadMsg);
+    void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture);
 
     void showFileChooser(ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams);
 

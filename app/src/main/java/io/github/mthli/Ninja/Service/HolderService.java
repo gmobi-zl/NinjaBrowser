@@ -38,7 +38,7 @@ public class HolderService extends Service implements BrowserController {
     public void removeAlbum(AlbumController albumController) {}
 
     @Override
-    public void openFileChooser(ValueCallback<Uri> uploadMsg) {}
+    public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {}
 
     @Override
     public void showFileChooser(ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {}

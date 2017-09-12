@@ -56,19 +56,19 @@ public class NinjaWebChromeClient extends WebChromeClient {
         super.onHideCustomView();
     }
 
-    /* For 4.1 to 4.4 */
-    public void openFileChooser(ValueCallback<Uri> uploadMsg) {
-        ninjaWebView.getBrowserController().openFileChooser(uploadMsg);
-    }
-
-    /* For 4.1 to 4.4 */
-    public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-        ninjaWebView.getBrowserController().openFileChooser(uploadMsg);
-    }
+//    /* For 4.1 to 4.4 */
+//    public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+//        ninjaWebView.getBrowserController().openFileChooser(uploadMsg);
+//    }
+//
+//    /* For 4.1 to 4.4 */
+//    public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
+//        ninjaWebView.getBrowserController().openFileChooser(uploadMsg, acceptType);
+//    }
 
     /* For 4.1 to 4.4 */
     public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-        ninjaWebView.getBrowserController().openFileChooser(uploadMsg);
+        ninjaWebView.getBrowserController().openFileChooser(uploadMsg, acceptType, capture);
     }
 
     @Override
