@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- AndroidAgo -->
+    <string name="android_ago_just_now">
+        Upravo sada
+    </string>
+
+    <!-- Album -->
+    <string name="album_title_bookmarks">
+        Knjižne oznake
+    </string>
+    <string name="album_title_history">
+        Povijest
+    </string>
+    <string name="album_title_home">
+        Početna stranica
+    </string>
+    <string name="album_untitled">
+        Bez naslova
+    </string>
+
+    <!-- Clear -->
+    <string name="clear_label">
+        Obriši
+    </string>
+    <string name="clear_menu_done_all">
+        Gotovo
+    </string>
+    <string name="clear_title_quit">
+        Obriši prilikom izlaza
+    </string>
+    <string name="clear_title_bookmarks">
+        Obriši knjižne oznake
+    </string>
+    <string name="clear_title_cache">
+        Obriši priručnu memoriju
+    </string>
+    <string name="clear_title_cookie">
+        Obriši kolačiće
+    </string>
+    <string name="clear_title_form_data">
+        Izbriši podatke obrasca
+    </string>
+    <string name="clear_title_history">
+        Obriši povijest
+    </string>
+    <string name="clear_title_passwords">
+        Obriši lozinke
+    </string>
+
+    <!-- Dialog -->
+    <string name="dialog_title_hint">
+        Unesi naslov
+    </string>
+    <string name="dialog_se_hint">
+        https://www.google.com/search?q=
+    </string>
+    <string name="dialog_ua_hint">
+        Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36
+    </string>
+    <string name="dialog_sign_in_username">
+        Korisničko ime
+    </string>
+    <string name="dialog_sign_in_password">
+        Lozinka
+    </string>
+    <string name="dialog_button_positive">
+        U redu
+    </string>
+    <string name="dialog_button_negative">
+        Odustani
+    </string>
+    <string name="dialog_button_custom">
+        Prilagođeno
+    </string>
+    <string name="dialog_title_download">
+        Želite li preuzeti datoteku?
+    </string>
+    <string name="dialog_title_resubmission">
+        Ponovo pošalji
+    </string>
+    <string name="dialog_title_warning">
+        Upozorenje
+    </string>
+    <string name="dialog_title_sign_in">
+        Prijavi se
+    </string>
+    <string name="dialog_content_resubmission">
+        Želite li ponovo poslati svoje podatke?
+    </string>
+    <string name="dialog_content_ssl_error">
+        Cefritikat stranice nije pouzdan. Nastaviti?
+    </string>
+    <string name="dialog_content_donation">
+        The income from donations will be used to:\n
+        - Improve the development environment.\n
+        - Improve the developer\'s enthusiasm.\n\n
+        All donations will be considered:\n
+        - Unpaid which mains the donor can not command or force the developer to do anything the donor want.\n
+        - Owned by the developer.\n
+        - The donor have agreed all above points.\n\n
+    </string>
+    <string name="dialog_content_upload">
+        Odaberite upload datoteku
+    </string>
+
+    <!-- List -->
+    <string name="list_empty">
+        Trenutna lista je prazna
+    </string>
+
+    <!-- Main -->
+    <string name="main_menu_new_tab">
+        Nova kartica
+    </string>
+    <string name="main_menu_copy_link">
+        Kopiraj link
+    </string>
+    <string name="main_menu_save">
+        Spremi
+    </string>
+    <string name="main_omnibox_input_hint">
+        Pretraži ili unesi URL
+    </string>
+    <string name="main_relayout_ok">
+        U redu
+    </string>
+    <string name="main_about_blank">
+        about:blank
+    </string>
+
+    <!-- Notification -->
+    <string name="notification_content_holder">
+        Kliknite da biste vidjeli stranice
+    </string>
+
+    <!-- Readability -->
+    <string name="readability_label">
+        Čitljivost
+    </string>
+    <string name="readability_menu_background">
+        Pozadina
+    </string>
+    <string name="readability_menu_share">
+        Podijeli
+    </string>
+    <string name="readability_empty">
+        Učitavanje čitljivosti nije uspjelo, provjerite mrežnu vezu.
+    </string>
+
+    <!-- Search -->
+    <string name="search_hint">
+        Pretraži
+    </string>
+
+    <!-- Settings -->
+    <string name="setting_label">
+        Postavke
+    </string>
+    <!-- Browser setting -->
+    <string name="setting_title_browser">
+        Postavke pretraživača
+    </string>
+    <!-- Search engine -->
+    <string name="setting_title_search_engine">
+        Pretraživač
+    </string>
+    <string name="setting_summary_search_engine_google">
+        Google
+    </string>
+    <string name="setting_summary_search_engine_duckduckgo">
+        DuckDuckGo
+    </string>
+    <string name="setting_summary_search_engine_startpage">
+        StartPage
+    </string>
+    <string name="setting_summary_search_engine_bing">
+        Bing
+    </string>
+    <string name="setting_summary_search_engine_baidu">
+        Baidu
+    </string>
+    <string name="setting_summary_search_engine_yahoo">
+        Yahoo
+    </string>
+    <string name="setting_summary_search_engine_custom">
+        Prilagođeno
+    </string>
+    <!-- Notification -->
+    <string name="setting_title_notification_priority">
+        Prioritet obavijesti
+    </string>
+    <string name="setting_summary_notification_priority_default">
+        Zadano
+    </string>
+    <string name="setting_summary_notification_priority_high">
+        Visoko
+    </string>
+    <string name="setting_summary_notification_priority_low">
+        Nisko
+    </string>
+    <!-- Omnibox position -->
+    <string name="setting_title_omnibox_position">
+        Pozicija višenamjenskog okvira
+    </string>
+    <string name="setting_summary_omnibox_position_top">
+        Na vrhu
+    </string>
+    <string name="setting_summary_omnibox_position_bottom">
+        Na dnu
+    </string>
+    <!-- Omnibox control -->
+    <string name="setting_title_omnibox_control">
+        Kontrola višenamjenskog okvira
+    </string>
+    <string name="setting_summary_omnibox_control">
+        Prijeđite lijevo/desno preko višenamjenskog okvira  da biste promijenili kartice
+    </string>
+    <!-- Volume key scroll -->
+    <string name="setting_title_volume_control">
+        Kontrola zvuka
+    </string>
+    <string name="setting_summary_vc_switch_tabs">
+        Zamijeni kartice
+    </string>
+    <string name="setting_summary_vc_scroll_webpage">
+        Pomicanje web stranice
+    </string>
+    <string name="setting_summary_vc_system_default">
+        Zadana postavka sustava
+    </string>
+    <!-- Images -->
+    <string name="setting_title_images">
+        Slike
+    </string>
+    <string name="setting_summary_images">
+        Omogući mrežne slike
+    </string>
+    <!-- Cookies -->
+    <string name="setting_title_cookie">
+        Kolačići
+    </string>
+    <string name="setting_summary_cookie">
+        Omogući kolačiće
+    </string>
+    <!-- JavaScript -->
+    <string name="setting_title_javascript">
+        JavaScript
+    </string>
+    <string name="setting_summary_javascript">
+        Uključi JavaScript
+    </string>
+    <!-- Location -->
+    <string name="setting_title_location">
+        Lokacija
+    </string>
+    <string name="setting_summary_location">
+        Dopusti web stranicama pristup vašoj lokaciji
+    </string>
+    <!-- Multiple windows -->
+    <string name="setting_title_multiple_windows">
+        Višestruki prozori
+    </string>
+    <string name="setting_summary_multiple_windows">
+        Omogući više prozora
+    </string>
+    <!-- Scroll bar -->
+    <string name="setting_title_scroll_bar">
+        Traka za pomicanje
+    </string>
+    <string name="setting_summary_scroll_bar">
+        Prikaži/sakrij traku za pomicanje na web stranicama
+    </string>
+    <!-- Text reflow -->
+    <string name="setting_title_text_reflow">
+        Preoblikovanje teksta
+    </string>
+    <string name="setting_summary_text_reflow">
+        Omogući preoblikovanje teksta
+    </string>
+    <!-- User Agent -->
+    <string name="setting_title_user_agent">
+        Korisničko okruženje
+    </string>
+    <string name="setting_summary_user_agent_default">
+        Zadano
+    </string>
+    <string name="setting_summary_user_agent_desktop">
+        Radna površina
+    </string>
+    <string name="setting_summary_user_agent_custom">
+        Prilagođeno
+    </string>
+    <!-- Rendering -->
+    <string name="setting_title_rendering">
+        Iscrtavanje
+    </string>
+    <string name="setting_summary_rendering_default">
+        Zadano
+    </string>
+    <string name="setting_summary_rendering_grayscale">
+        Sivi tonovi
+    </string>
+    <string name="setting_summary_rendering_inverted">
+        Preokrenuto
+    </string>
+    <string name="setting_summary_rendering_inverted_grayscale">
+        Preokrenuti sivi tonovi
+    </string>
+    <string name="setting_title_textsize">
+        Veličina slova
+    </string>
+    <string name="setting_summary_textsize_normal">
+        Normalno
+    </string>
+    <string name="setting_summary_textsize_smallest">
+        Najmanje
+    </string>
+    <string name="setting_summary_textsize_smaller">
+        Manje
+    </string>
+    <string name="setting_summary_textsize_larger">
+        Veće
+    </string>
+    <string name="setting_summary_textsize_largest">
+        Najveće
+    </string>
+    <!-- AdBlock setting -->
+    <string name="setting_title_adblock">
+        AdBlock
+    </string>
+    <string name="setting_summary_adblock">
+        Omogući AdBlock
+    </string>
+    <string name="setting_title_whitelist">
+        Dozvoljena lista
+    </string>
+    <string name="setting_summary_whitelist">
+        Omogući tim web stranicama prikazivanje oglasa
+    </string>
+    <string name="setting_title_export_whilelist">
+        Izvoz dozvoljene liste
+    </string>
+    <string name="setting_title_import_whilelist">
+        Uvoz dozvoljene liste
+    </string>
+    <string name="whilelist_filename">
+        Preko dozvoljene liste
+    </string>
+    <!-- Readability setting -->
+    <string name="setting_title_readability">
+        Čitljivost
+    </string>
+    <string name="setting_title_token">
+        Znak
+    </string>
+    <string name="setting_summary_readability">
+        Omogući čitljivost
+    </string>
+    <string name="setting_summary_token">
+        Postavi znak čitljivosti
+    </string>
+    <!-- Data setting -->
+    <string name="setting_title_data">
+        Podaci
+    </string>
+    <!-- Passwords -->
+    <string name="setting_title_passwords">
+        Lozinke
+    </string>
+    <string name="setting_summary_passwords">
+        Spremi lozinke
+    </string>
+    <!-- Bookmarks -->
+    <string name="setting_title_export_bookmarks">
+        Izvezi knjižne oznake
+    </string>
+    <string name="setting_title_import_bookmarks">
+        Uvezi knjižne oznake
+    </string>
+    <string name="bookmarks_filename">
+        Knjižne oznake
+    </string>
+    <!-- Clear -->
+    <string name="setting_title_clear_control">
+        Obriši kontrolu
+    </string>
+    <string name="setting_title_clear_action">
+        Obriši
+    </string>
+    <!-- Others setting -->
+    <string name="setting_title_others">
+        Ostalo
+    </string>
+    <!-- Version -->
+    <string name="setting_title_version">
+        Verzija
+    </string>
+    <!-- License -->
+    <string name="setting_title_license">
+        Licenca
+    </string>
+    <!-- Contact -->
+    <string name="setting_title_donation">
+        Donacija
+    </string>
+
+    <!-- Toast -->
+    <string name="toast_add_bookmark_successful">
+        Knjižna oznaka uspješno dodana
+    </string>
+    <string name="toast_add_bookmark_failed">
+        Nije moguće dodati ovu stranicu u oznaku
+    </string>
+    <string name="toast_add_to_home_successful">
+        Uspješno je dodan na početnu stranicu
+    </string>
+    <string name="toast_add_to_home_failed">
+        Dodavanje na početnu stranicu nije uspjelo
+    </string>
+    <string name="toast_add_token_successful">
+        Uspješno dodan API za čitljivost
+    </string>
+    <string name="toast_add_whitelist_successful">
+        Uspješno dodana domena
+    </string>
+    <string name="toast_already_at_the_front">
+        Već na prednjoj strani
+    </string>
+    <string name="toast_already_exist_in_home">
+        Već postoji na početnoj stranici
+    </string>
+    <string name="toast_clear_successful">
+        Uspješno obrisano
+    </string>
+    <string name="toast_clear_failed">
+        Nije uspjelo brisanje
+    </string>
+    <string name="toast_copy_successful">
+        Uspješno kopirano
+    </string>
+    <string name="toast_delete_bookmark_successful">
+        Uspješno izbrisana oznaka
+    </string>
+    <string name="toast_delete_successful">
+        Uspješno obrisano
+    </string>
+    <string name="toast_domain_already_exists">
+        Domena već postoji
+    </string>
+    <string name="toast_double_taps_quit">
+        Pritisni ponovo za izlaz
+    </string>
+    <string name="toast_emoji">
+
+    </string>
+    <string name="toast_export_bookmarks_successful">
+        Izvozna datoteka oznaka na:&#160;
+    </string>
+    <string name="toast_export_bookmarks_failed">
+        Izvoz oznaka nije uspio
+    </string>
+    <string name="toast_export_whitelist_successful">
+        Izvozna datoteka dozvoljene liste na:&#160;
+    </string>
+    <string name="toast_export_whitelist_failed">
+        Izvoz dozvoljene liste nije uspio
+    </string>
+    <string name="toast_import_bookmarks_successful">
+        Broj uvezenih oznaka:&#160;
+    </string>
+    <string name="toast_import_bookmarks_failed">
+        Uvoz oznaka nije uspio
+    </string>
+    <string name="toast_import_whitelist_successful">
+        Broj uvezenih domeni:&#160;
+    </string>
+    <string name="toast_import_whitelist_failed">
+        Uvoz dopuštene liste nije uspio
+    </string>
+    <string name="toast_input_empty">
+        Niste ništa unijeli
+    </string>
+    <string name="toast_invalid_domain">
+        Nevažeća domena
+    </string>
+    <string name="toast_load_error">
+        URL se ne može učitati
+    </string>
+    <string name="toast_load_in_background">
+        Učitavanje u pozadini
+    </string>
+    <string name="toast_need_restart">
+        Ponovo pokrenite aplikaciju kako bi promjene postale učinkovite
+    </string>
+    <string name="toast_new_tab_successful">
+        Uspješno je otvoren u novoj kartici
+    </string>
+    <string name="toast_open_file_manager_failed">
+        Neuspješno pokretanje upravitelja datoteka
+    </string>
+    <string name="toast_refresh_failed">
+        Nije moguće osvježiti ovu stranicu
+    </string>
+    <string name="toast_relayout_successful">
+        Uspješno prosljeđivanje
+    </string>
+    <string name="toast_screenshot_successful">
+        Snimka zaslona spremljena na:&#160;
+    </string>
+    <string name="toast_screenshot_failed">
+        Snimak zaslona nije uspio
+    </string>
+    <string name="toast_share_failed">
+        Ne mogu podijeliti ovu stranicu
+    </string>
+    <string name="toast_start_download">
+        Početak preuzimanja
+    </string>
+    <string name="toast_token_empty">
+        Postavite znak za čitljivost
+    </string>
+    <string name="toast_wait_a_minute">
+        Pričekajte trenutak
+    </string>
+
+    <!-- Token -->
+    <string name="token_label">
+        Znak
+    </string>
+    <string name="token_edit_hint">
+        Znak čitljivosti
+    </string>
+    <string name="token_add">
+        Dodaj
+    </string>
+    <string name="token_desc">
+        Go to https://www.readability.com/developers/api to get your own Readability token
+    </string>
+
+    <!-- Whitelist -->
+    <string name="whitelist_label">
+        Dozvoljena lista
+    </string>
+    <string name="whitelist_menu_clear">
+        Obriši
+    </string>
+    <string name="whitelist_edit_hint">
+        Domena
+    </string>
+    <string name="whitelist_add">
+        Dodaj
+    </string>
+    <string name="bottom_ok">
+        U redu
+    </string>
+    <string name="bottom_back">
+        Nazad
+    </string>
+    <string name="bottom_menu">
+        Izbornik
+    </string>
+    <string name="bottom_clear">
+        Obriši
+    </string>
+    <string name="remove_bookmark">
+        Ukloni iz knjižnih oznaka
+    </string>
+    <string name="mouse_mode_on">
+        Uključi način miša
+    </string>
+    <string name="mouse_mode_off">
+        Isključi način miša
+    </string>
+    <string name="action_successful">
+        Uspješno
+    </string>
+
+    <string name="app_name">
+        Preglednik
+    </string>
+</resources>

@@ -13,6 +13,7 @@ import io.github.mthli.Ninja.Activity.WhitelistActivity;
 import io.github.mthli.Ninja.R;
 import io.github.mthli.Ninja.Task.*;
 import io.github.mthli.Ninja.Unit.IntentUnit;
+import io.github.mthli.Ninja.Utils.DefaultSettings;
 import io.github.mthli.Ninja.View.NinjaToast;
 
 import java.util.ArrayList;
@@ -71,7 +72,8 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
 
         seEntries = getResources().getStringArray(R.array.setting_entries_search_engine);
         searchEngine = (ListPreference) findPreference(getString(R.string.sp_search_engine));
-        int num = Integer.valueOf(sp.getString(getString(R.string.sp_search_engine), "5"));
+        int num = Integer.valueOf(sp.getString(getString(R.string.sp_search_engine), DefaultSettings.DEFAULT_SEARCH_INDEX));
+        // int num = Integer.valueOf(sp.getString(getString(R.string.sp_search_engine), "5")); // default search engine
         if (0 <= num && num <= 5) {
             summary = seEntries[num];
             searchEngine.setSummary(summary);
@@ -175,7 +177,8 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
     public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
         spChange = true;
         if (key.equals(getString(R.string.sp_search_engine))) {
-            int num = Integer.valueOf(sp.getString(key, "5"));
+            int num = Integer.valueOf(sp.getString(key, DefaultSettings.DEFAULT_SEARCH_INDEX));
+            //int num = Integer.valueOf(sp.getString(key, "5"));  // default search engine
             if (0 <= num && num <= 5) {
                 searchEngine.setSummary(seEntries[num]);
             } else {

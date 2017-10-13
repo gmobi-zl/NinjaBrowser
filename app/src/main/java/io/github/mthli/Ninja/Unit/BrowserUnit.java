@@ -13,6 +13,7 @@ import io.github.mthli.Ninja.Browser.AdBlock;
 import io.github.mthli.Ninja.Database.Record;
 import io.github.mthli.Ninja.Database.RecordAction;
 import io.github.mthli.Ninja.R;
+import io.github.mthli.Ninja.Utils.DefaultSettings;
 import io.github.mthli.Ninja.Utils.SystemHelper;
 import io.github.mthli.Ninja.View.NinjaToast;
 
@@ -125,7 +126,9 @@ public class BrowserUnit {
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         String custom = sp.getString(context.getString(R.string.sp_search_engine_custom), SEARCH_ENGINE_YAHOO);
-        final int i = Integer.valueOf(sp.getString(context.getString(R.string.sp_search_engine), "5"));
+
+        // final int i = Integer.valueOf(sp.getString(context.getString(R.string.sp_search_engine), "5")); // default search
+        final int i = Integer.valueOf(sp.getString(context.getString(R.string.sp_search_engine), DefaultSettings.DEFAULT_SEARCH_INDEX));
         switch (i) {
             case 0:
                 return SEARCH_ENGINE_GOOGLE + query;

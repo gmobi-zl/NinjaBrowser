@@ -4,18 +4,18 @@
 
     <!-- Holder -->
     <string-array name="holder_menu">
-        <item>Foreground</item>
-        <item>Copy link</item>
-        <item>ແບ່ງປັນ</item>
+        <item>Prednja strana</item>
+        <item>Kopiraj link</item>
+        <item>Podijeli</item>
     </string-array>
 
     <!-- List -->
     <string-array name="list_menu">
-        <item>ແຖບ​ໃຫມ່</item>
-        <item>Copy link</item>
-        <item>ແບ່ງປັນ</item>
-        <item>ແກ້ໄຂ</item>
-        <item>ລົບ</item>
+        <item>Nova kartica</item>
+        <item>Kopiraj link</item>
+        <item>Podijeli</item>
+        <item>Uredi</item>
+        <item>Izbriši</item>
     </string-array>
 
     <!-- Main -->
@@ -23,18 +23,18 @@
         <!--<item>Go to top</item>-->
         <!--<item>Add to home</item>-->
         <!--<item>Find in page</item>-->
-        <item>ປັບປຸງໃຫມ່</item>
-        <item>ຫນ້າທໍາອິດ</item>
-        <item>Add to Bookmarks</item>
+        <item>Osvježi</item>
+        <item>Početna stranica</item>
+        <item>Dodaj u knjižne oznake</item>
         <!--<item>Mouse Mode</item>-->
-        <item>Bookmarks</item>
-        <item>ປະວັດສາດ</item>
-        <item>ສ້າງຕັ້ງຂຶ້ນ</item>
+        <item>Knjižne oznake</item>
+        <item>Povijest</item>
+        <item>Postavke</item>
         <!--<item>Screenshot</item>-->
         <!--<item>Readability</item>-->
         <!--<item>Share</item>-->
         <!--<item>Relayout</item>-->
-        <item>ອອກຈາກຫ້ອງ</item>
+        <item>Izlaz</item>
     </string-array>
 
     <!-- Search engine -->

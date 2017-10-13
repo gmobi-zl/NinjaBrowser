@@ -86,7 +86,7 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
     private float dimen48dp;
 
     private static final String DEFAULT_HOME_PAGE = "http://search.viebrowser.com";
-    private static final String CUSTOME_HOME_PAGE = "www.google.co.th";
+    private static final String CUSTOME_HOME_PAGE = "http://www.google.hr";//"http://www.google.co.th";
     private boolean showStartPage = true;
     Map<String, String> extraHeaders = null;
 
@@ -2132,16 +2132,18 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
             action.close();
         }
 
-        if (array != null && array.length > 5){
-            boolean mouseMode = getDeviceMouseMode();
-            if (mouseMode == true){
-                String offMode = getResources().getString(R.string.mouse_mode_off);
-                array[3] = offMode;
-            } else {
-                String onMode = getResources().getString(R.string.mouse_mode_on);
-                array[3] = onMode;
-            }
-        }
+
+        // For Mouse Mode
+//        if (array != null && array.length > 5){
+//            boolean mouseMode = getDeviceMouseMode();
+//            if (mouseMode == true){
+//                String offMode = getResources().getString(R.string.mouse_mode_off);
+//                array[3] = offMode;
+//            } else {
+//                String onMode = getResources().getString(R.string.mouse_mode_on);
+//                array[3] = onMode;
+//            }
+//        }
 
 
         final List<String> stringList = new ArrayList<>();
@@ -2191,18 +2193,20 @@ public class BrowserActivity extends BaseActivity implements BrowserController {
                     goToHomePage();
                 } else if (s.equals(array[2])) { // add/remove bookmarks
                     addToBookMark();
-                } else if (s.equals(array[3])) { // mouse mode
-                    switchMouseMode();
-                } else if (s.equals(array[4])) { // bookmarks
+                }
+//                else if (s.equals(array[3])) { // mouse mode
+//                    switchMouseMode();
+//                }
+                else if (s.equals(array[3])) { // bookmarks
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_BOOKMARKS);
-                } else if (s.equals(array[5])) { // history
+                } else if (s.equals(array[4])) { // history
                     //switcherRootView.setVisibility(View.VISIBLE);
                     addAlbum(BrowserUnit.FLAG_HISTORY);
-                } else if (s.equals(array[6])) { // Settings
+                } else if (s.equals(array[5])) { // Settings
                     Intent intent = new Intent(BrowserActivity.this, SettingActivity.class);
                     startActivity(intent);
-                } else if (s.equals(array[7])) { // Quit
+                } else if (s.equals(array[6])) { // Quit
                     safelyFinish();
                 }
 //                if (s.equals(array[0])) { // Go to top

@@ -5,17 +5,17 @@
     <!-- Holder -->
     <string-array name="holder_menu">
         <item>foreground</item>
-        <item>Copy ကူး link ကို</item>
-        <item>ဝေစု</item>
+        <item>Copyကူး link</item>
+        <item>ဝေစ</item>
     </string-array>
 
     <!-- List -->
     <string-array name="list_menu">
-        <item>နယူး tab ကို</item>
-        <item>Copy ကူး link က</item>
-        <item>ဝေစု</item>
-        <item>Edit ကို</item>
-        <item>ဖျက်ပစ်ပါ</item>
+        <item>နယူး tab</item>
+        <item>Copy ကူး link</item>
+        <item>ဝေစ</item>
+        <item>Edit</item>
+        <item>ဖျပစပါ</item>
     </string-array>
 
     <!-- Main -->
@@ -23,18 +23,18 @@
         <!--<item>Go to top</item>-->
         <!--<item>Add to home</item>-->
         <!--<item>Find in page</item>-->
-        <item>အားဖြည့့််</item>
-        <item>နေအိမ်</item>
-        <item>အနှစ်သက်ဆုံးပေါင်းထည့်ရန်</item>
-        <item>ကြွက်ို</item>
-        <item>အနှစ်သက်ဆုံး</item>
-        <item>သမိုင်း</item>
+        <item>အားဖည့့်</item>
+        <item>နေအမ</item>
+        <item>အနှစသဆုံးပေါငးထည့ရန</item>
+        <!--<item>ကြွက်ို</item>-->
+        <item>အနှစသဆုံး</item>
+        <item>သမငး</item>
         <item>အစုံ</item>
         <!--<item>Screenshot</item>-->
         <!--<item>Readability</item>-->
         <!--<item>Share</item>-->
         <!--<item>Relayout</item>-->
-        <item>ထွက်သွား</item>
+        <item>ထသား</item>
     </string-array>
 
     <!-- Search engine -->
