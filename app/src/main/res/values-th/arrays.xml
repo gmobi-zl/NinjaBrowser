@@ -27,14 +27,14 @@
         <item>โฮมเพจ</item>
         <item>เพิ่มในบุ๊กมาร์ก</item>
         <!--<item>โหมดเมาส์</item>-->
-        <item>ที่คั่น</item>
-        <item>ประวัติศาสตร์</item>
+        <item>บุ๊กมาร์ก</item>
+        <item>ประวัติ</item>
         <item>การตั้งค่า</item>
         <!--<item>Screenshot</item>-->
         <!--<item>Readability</item>-->
         <!--<item>Share</item>-->
         <!--<item>Relayout</item>-->
-        <item>เลิก</item>
+        <item>ออก</item>
     </string-array>
 
     <!-- Search engine -->

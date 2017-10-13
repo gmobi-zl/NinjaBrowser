@@ -15,7 +15,7 @@
         Browser
     </string>
     <string name="app_version">
-        1.1.17
+        1.1.18
     </string>
 
     <!-- AndroidSlidingUpPanel -->
@@ -57,7 +57,7 @@
         Kiran Rao
     </string>
     <string name="license_url_android_ago">
-        http://git.io/vUrum
+        http://git.io/
     </string>
 
     <!-- DynamicGrid -->
@@ -71,7 +71,7 @@
         askerov
     </string>
     <string name="license_url_dynamic_grid">
-        http://git.io/vTHZH
+        http://git.io/
     </string>
 
     <!-- Lightning -->
@@ -85,7 +85,7 @@
         Anthony Restaino
     </string>
     <string name="license_url_lightning">
-        http://git.io/vUruk
+        http://git.io/
     </string>
 
     <!-- Ninja -->
@@ -99,7 +99,7 @@
         Matthew Lee
     </string>
     <string name="license_url_ninja">
-        http://git.io/vUrEh
+        http://git.io/
     </string>
 
     <!-- typo.css -->
