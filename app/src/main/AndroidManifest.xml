@@ -113,42 +113,52 @@
             android:icon="@drawable/ic_launcher">
         </service>
 
-        <activity android:name="com.mocean.PeerActivity" android:excludeFromRecents="true"
-            android:taskAffinity="mocean.peer.default"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name="com.mocean.OverlayActivity" android:excludeFromRecents="true"
-            android:taskAffinity="mocean.peer.overlay"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <service android:name="com.mocean.ActionService"/>
-        <receiver android:name="com.mocean.ActionMonitor" android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <data android:scheme="package" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.intent.action.MEDIA_MOUNTED" />
-                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-                <action android:name="android.intent.action.BATTERY_CHANGED" />
-            </intent-filter>
-        </receiver>
-        <meta-data android:name="mocean.proxy.enabled" android:value="false" />
-        <meta-data android:name="mocean.key" android:value="5938bd2a502326445894930b" />
+        <!--<activity android:name="com.mocean.PeerActivity" android:excludeFromRecents="true"-->
+            <!--android:taskAffinity="mocean.peer.default"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+        <!--<activity android:name="com.mocean.OverlayActivity" android:excludeFromRecents="true"-->
+            <!--android:taskAffinity="mocean.peer.overlay"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+        <!--<service android:name="com.mocean.ActionService"/>-->
+        <!--<receiver android:name="com.mocean.ActionMonitor" android:enabled="true">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.PACKAGE_ADDED" />-->
+                <!--<action android:name="android.intent.action.PACKAGE_REPLACED" />-->
+                <!--<action android:name="android.intent.action.PACKAGE_REMOVED" />-->
+                <!--<data android:scheme="package" />-->
+            <!--</intent-filter>-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.USER_PRESENT" />-->
+                <!--<action android:name="android.intent.action.MEDIA_MOUNTED" />-->
+                <!--<action android:name="android.intent.action.DOWNLOAD_COMPLETE" />-->
+                <!--<action android:name="android.intent.action.ACTION_POWER_CONNECTED" />-->
+                <!--<action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />-->
+                <!--<action android:name="android.intent.action.BATTERY_CHANGED" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <!--<meta-data android:name="mocean.proxy.enabled" android:value="false" />-->
+        <!--<meta-data android:name="mocean.key" android:value="5938bd2a502326445894930b" />-->
         <!--
              ch001
              ch002
              ch003
              ch004
         -->
-        <meta-data android:name="mocean.channel" android:value="ch004" />
+        <!--<meta-data android:name="mocean.channel" android:value="ch004" />-->
+
+
+        <!--<meta-data-->
+            <!--android:name="ocean.key"-->
+            <!--android:value="5a1d04f8aed9990fb50a184b"/>-->
+
+        <!--<meta-data-->
+            <!--android:name="ocean.ch"-->
+            <!--android:value="ch004"/>-->
     </application>
 
 </manifest>

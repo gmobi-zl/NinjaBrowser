@@ -40,11 +40,11 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.*;
 
-import com.mocean.AdServiceManager;
-import com.mocean.IAd;
-import com.mocean.IAdService;
-import com.mocean.ICallback;
-import com.mocean.IServiceCallback;
+//import com.mocean.AdServiceManager;
+//import com.mocean.IAd;
+//import com.mocean.IAdService;
+//import com.mocean.ICallback;
+//import com.mocean.IServiceCallback;
 
 import io.github.mthli.Ninja.Browser.AdBlock;
 import io.github.mthli.Ninja.Browser.AlbumController;

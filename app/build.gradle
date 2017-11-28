@@ -21,8 +21,8 @@ android {
         applicationId "com.viebrowser.lite"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1118
-        versionName "1.1.18"
+        versionCode 1119
+        versionName "1.1.19"
         //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
@@ -69,5 +69,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
-    compile files('libs/mocean.lite_5.8.3.jar')
+    //compile files('libs/mocean.lite_5.8.3.jar')
+    compile files('src/libs/mos.lite-171025.jar')
 }
